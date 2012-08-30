@@ -1,4 +1,0 @@
-gitproject
-==========
-
-gitproject
