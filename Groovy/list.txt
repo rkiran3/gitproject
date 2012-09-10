@@ -1,0 +1,6 @@
+def listA = [10, 20, 30]
+assert [10, 20, 30] == listA
+def listB = [40, 50, 60]
+def listC = listA.addAll(listB)
+[10, 20, 30, 40, 50, 60] == listC
+
