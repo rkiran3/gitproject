@@ -1,10 +1,17 @@
 // pattern for 3 digits
 def pattern = ~/\d{3}/
-
 def inputs = ["123", "456", "7890"]
-
 // Find all the input Strings that match the exact pattern of 3 digits
 assert ["123", "456"] == inputs.findAll{  it ==~ pattern }
+
+// Replace a pattern like -m2 or -2 with -d3
+def pattern = ~/-(m*)2/
+def input = "20456-m2"
+assert "20456-d3".equals(input.replaceFirst (pattern, "-d3"))
+input = "20876-2"
+assert "20876-d3".equals(input.replaceFirst (pattern, "-d3"))
+def inputs = ["20456-m2", "20876-2"]
+assert [ "20456-d3", "20876-d3"] == inputs.collect { it.replaceFirst (pattern, "-d3")}
 
 // ----- Matcher with Groups
 
