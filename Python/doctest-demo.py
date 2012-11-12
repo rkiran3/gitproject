@@ -4,12 +4,12 @@
 'this'
 """
 def fun():
-    """
-    >>> fun()
+	"""
+	>>> fun()
 	'abc'
 	"""
 	return 'abc'
 
-	if __name__ == '__main__':
-		import doctest
-		doctest.testmod()
+if __name__ == '__main__':
+	import doctest
+	doctest.testmod()
