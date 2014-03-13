@@ -12,3 +12,8 @@ def listAll = [ 10, 20, 30]
 def listThirty = [ 30 ]
 def listRemain = listAll - listThirty
 assert listRemain == [10,20]
+
+mylist = [2,3]
+assert mylist.contains(2)
+assert mylist.any {it == 2}   
+
