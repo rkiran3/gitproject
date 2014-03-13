@@ -13,7 +13,13 @@ def listThirty = [ 30 ]
 def listRemain = listAll - listThirty
 assert listRemain == [10,20]
 
+// Check if an element is in the list
 mylist = [2,3]
 assert mylist.contains(2)
 assert mylist.any {it == 2}   
 
+// Subtract one list from another
+def biglist = [1, 2, 3, 4]
+def excludeNums = [2, 3]
+def outlist = biglist - excludeNums
+assert outlist == [1, 4]
