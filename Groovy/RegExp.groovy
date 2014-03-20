@@ -4,6 +4,14 @@ def inputs = ["123", "456", "7890"]
 // Find all the input Strings that match the exact pattern of 3 digits
 assert ["123", "456"] == inputs.findAll{  it ==~ pattern }
 
+pattern = ~/\d/
+input = "abc12ac567"
+assert input =~ pattern
+input.eachMatch (pattern) {
+    print it  // print each integer (12567) in input String 
+}
+
+
 // Replace a pattern like -m2 or -2 with -d3
 def pattern = ~/-(m*)2/
 def input = "20456-m2"

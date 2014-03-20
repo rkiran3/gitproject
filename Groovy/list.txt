@@ -18,6 +18,14 @@ mylist = [2,3]
 assert mylist.contains(2)
 assert mylist.any {it == 2}   
 
+// Get the first and last elements in the list
+listA = [10, 5, 9]
+assert [10, 9] == listA[0,-1]
+
+// Check for max value amongst the first and last element in list
+listA = [10, 9, 11]
+assert 11 == listA[0,-1].max()
+
 // Subtract one list from another
 def biglist = [1, 2, 3, 4]
 def excludeNums = [2, 3]
