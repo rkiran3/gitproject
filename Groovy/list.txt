@@ -26,6 +26,9 @@ assert [10, 9] == listA[0,-1]
 listA = [10, 9, 11]
 assert 11 == listA[0,-1].max()
 
+// get list of all roots of range of number
+assert [1, 4, 9, 16] = (1..4).collect { it*2 }
+
 // Subtract one list from another
 def biglist = [1, 2, 3, 4]
 def excludeNums = [2, 3]
