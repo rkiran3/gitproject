@@ -1,3 +1,19 @@
+// Exact match ==~ and match anywhere =~
+def samples = ["   ", "234", "  123 45", "ccxy 12", "123a56"]
+def pattern = ~/\s+/
+
+// find the pattern ANYWHERE in each of the entries
+myresult = samples.findAll{ it =~ pattern }
+assert [ "   "  , "  123 45", "ccxy 12"] == myresult
+assert myresult.size() == 3
+
+// for exact matches use ==~, here search for consecutive digits
+def pattern2 = ~/\d+/
+// find exact pattern which contains only digits in the entry.
+myresult = samples.findAll { it ==~ pattern2 }
+assert [ "234"] == myresult
+
+
 // pattern for 3 digits
 def pattern = ~/\d{3}/
 def inputs = ["123", "456", "7890"]
