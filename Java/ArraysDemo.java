@@ -15,14 +15,6 @@ public class ArraysDemo {
 			// Count 
 			assert months.length == stringStream.count();
 			
-			
-			// Iterate and print contents
-			/*stringStream
-			.map(Object::toString)
-			//.filter(s-> s.endsWith("y"))
-			.forEach(System.out::println);
-			*/
-			
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
