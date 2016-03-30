@@ -14,6 +14,14 @@ public class ArraysDemo {
 			
 			// Count 
 			assert months.length == stringStream.count();
+
+			// Create a Stream from the Array 			
+			Stream <String> stringStream2 = Arrays.stream(months);
+
+			// will print months ending with "y"
+			stringStream2
+			.filter(s-> s.endsWith("y"))
+			.forEach(System.out::println);
 			
 		} catch (Exception ex) {
 			ex.printStackTrace();
