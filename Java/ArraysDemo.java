@@ -1,4 +1,4 @@
-//package sandbox;
+package com.sandbox;
 
 import java.util.Arrays;
 import java.util.stream.*;
