@@ -3,24 +3,25 @@ package com.sandbox.java8.util;
 import java.util.Arrays;
 import java.util.stream.*;
 
-public class ArraysDemo {
+public class StreamDemo {
 	public static void main(String [] args) {
 		try {
 			// Create Array of Strings
 			String [] months = { "Jan", "February", "March" };
 			
 			// Create a Stream of String from the Array 			
-			Stream <String> stringStream = Arrays.stream(months);
+			Stream <String> monthsStream = Arrays.stream(months);
 			
 			// Count 
-			assert months.length == stringStream.count();
+			assert months.length == monthsStream.count();
+			
+			int [] numbers = { 1, 2, 3, 4, 5};
+			IntStream intStream = Arrays.stream(numbers);
 
-			// Create a Stream from the Array 			
-			Stream <String> stringStream2 = Arrays.stream(months);
-
-			// Now, go through each element of Stream to find months ending with "y"
-			stringStream2
-				.filter(s-> s.endsWith("y"))
+			// A filter acts on each element and returns elements which
+			// are divisible by 2
+			intStream
+				.filter(e -> e%2 == 0)
 				.forEach(System.out::println);
 			
 		} catch (Exception ex) {
