@@ -25,9 +25,9 @@ public class ComparableDemo {
 
     public static void main(String [] args) {
 		
-        // Create few Item objects
-		Item perishableItem = new Item("APerishableItem");
-		Item anotherItem = new Item("BPerishableItem");
+        // Create few Item objects and store them in a List
+		Item perishableItem = new Item("BPerishableItem");
+		Item anotherItem = new Item("APerishableItem");
 		Item nonPerishableItem = new Item("NonPerishableItem");
 		
         List <Item> itemsList = new ArrayList<Item>();
@@ -37,8 +37,11 @@ public class ComparableDemo {
 
 		Collections.sort(itemsList);
 		
-		for (Item item: itemsList){
-			System.out.println(item);
-		}
+		// After sorting, the items are now sorted
+		assert (itemsList.get(0)).getName().equals("APerishableItem");
+		
+		assert (itemsList.get(1)).getName().equals("BPerishableItem");
+		
+		assert (itemsList.get(2)).getName().equals("NonPerishableItem");
     }
 }
