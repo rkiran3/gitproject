@@ -23,8 +23,6 @@ public class BooleanDemo {
 		for (String token : falseStringArray) {
 			assert (!(Boolean.valueOf(token).booleanValue()));
 		}
-
-		
 	}
 }
 
