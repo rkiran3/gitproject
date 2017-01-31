@@ -6,12 +6,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
-This program will go through a range of years and find if it 
-contains any duplicate digits.
+This program will reverse a string 
 
-Examples of years with duplicate digits: 
-1900	0 is duplicated
-1977 	7 is duplicated
 */
 public class ReverseStringDemo {
 	
