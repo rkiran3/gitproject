@@ -11,6 +11,26 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
-        log.info("Hello");
+        String message = "Hello, World";
+
+        if (args.length > 0) {
+            log.info("Program has arguments: " + args[0]);
+            message = args[0];
+        }
+        char[] charArray = message.toCharArray();
+
+        int msglength = message.length() - 1;
+        int begin = 0;
+        while (begin < msglength) {
+            char temp = charArray[begin];
+            charArray[begin] = charArray[msglength];
+            charArray[msglength] = temp;
+            begin++;
+            msglength--;
+        }
+        log.info("Input: " + message);
+        log.info("Output: " + new String(charArray));
+
+        log.info("username: " + System.getProperty("username"));
 	}
 }
