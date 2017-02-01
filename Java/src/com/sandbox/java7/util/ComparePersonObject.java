@@ -43,10 +43,10 @@ class Person {
 public class ComparePersonObject {
 
     public static void main(String [] args) {
-		
+
         Map <Person, String> personMap = new HashMap<Person, String>();
         // create Person objects in different formats
-		Person greenPerson = new Person("green", "Greenname");
+        Person greenPerson = new Person("green", "Greenname");
         Person [] personArray = {
                 new Person ("yellow", "number"),
                 new Person("red", "number")
