@@ -1,21 +1,25 @@
 package com.sandbox.java7.lang;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ScratchDemo {
 
-    public static void main(String [] args) {
-        String [] trueStringArray = {"True", "true", "TRUE" };
-        String [] falseStringArray = {"yes", "false", "FALSE", "", null};
-
-        int max = 10;
-        int i=0;
-        while ( i < max) {
-            i++;
-            for (int j=1; j<50; j++) {
-                System.out.println("Processing: i="+ i + " j=" + j);
-                if ( j%10 ==0)
-                    break;
+    public static void main(String[] args) {
+        String input = "XXYYX";
+        String pattern = "";
+        Map<Character, Integer> patternMap = new HashMap();
+        String desired = "(.)\\1";
+        int index = 1;
+        for (Character token: input.toCharArray()){
+            if (patternMap.containsKey(token)) {
+                pattern += "\\" + patternMap.get(token);
+            } else {
+                patternMap.put(token, index++);
+                pattern += "(.)";
             }
         }
+        System.out.println("Pattern: " + pattern);
     }
 }
 

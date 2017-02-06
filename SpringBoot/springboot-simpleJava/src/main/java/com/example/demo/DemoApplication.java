@@ -30,7 +30,5 @@ public class DemoApplication {
         }
         log.info("Input: " + message);
         log.info("Output: " + new String(charArray));
-
-        log.info("username: " + System.getProperty("username"));
 	}
 }
