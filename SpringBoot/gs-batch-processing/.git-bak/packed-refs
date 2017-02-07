@@ -1,0 +1,7 @@
+# pack-refs with: peeled fully-peeled 
+b7e382dbfad42392506598447aa9e091219ba305 refs/remotes/origin/master
+96d26d3ca4378dae7096bbb316ef9ca5acaf0413 refs/tags/1.4.1.RELEASE
+a4ebc5cc1413edac707d07662e54e40526a66498 refs/tags/1.4.2.RELEASE
+a7e1c9b3d59e4dd58da1d6ee29dacf2fd539d77b refs/tags/1.4.3.RELEASE
+e5de22de82b94e9fe56336db3c1f3bcbf4675acc refs/tags/maven
+^42242c179b3d67642650a384895c015a187ca005
