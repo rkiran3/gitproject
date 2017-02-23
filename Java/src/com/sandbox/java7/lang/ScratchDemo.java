@@ -9,17 +9,10 @@ public class ScratchDemo {
         String input = "XXYYX";
         String pattern = "";
         Map<Character, Integer> patternMap = new HashMap();
-        String desired = "(.)\\1";
-        int index = 1;
-        for (Character token: input.toCharArray()){
-            if (patternMap.containsKey(token)) {
-                pattern += "\\" + patternMap.get(token);
-            } else {
-                patternMap.put(token, index++);
-                pattern += "(.)";
-            }
-        }
-        System.out.println("Pattern: " + pattern);
+        String message = "Hello";
+        System.out.println(String.format("Actual:[%s] Show max 2 chars:[%.2s]", message, message));
+        System.out.println(String.format("Actual:[%s] LeftJustified 10 chars:[%-10s]", message, message));
+        System.out.println(String.format("Actual:[%s] RightJustified 10 chars:[%10s]", message, message));
     }
 }
 
