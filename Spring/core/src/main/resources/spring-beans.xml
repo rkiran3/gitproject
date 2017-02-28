@@ -18,4 +18,13 @@
     <bean id="jobTypeBean" class="com.sandbox.JobType">
     </bean>
 
+    <bean id="citiesBean" class="com.sandbox.CitiesList">
+        <property name="cities">
+            <list>
+                <value>Topeka</value>
+                <value>Tulsa</value>
+            </list>
+        </property>
+    </bean>
+
 </beans>
