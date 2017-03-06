@@ -7,15 +7,16 @@
       http://www.springframework.org/schema/context
       http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
-    <bean id="jobBean" class="com.sandbox.Job">
+    <!--<bean id="jobBean" class="com.sandbox.Job">
         <constructor-arg ref="jobTypeBean" />
-    </bean>
+    </bean>-->
 
-    <bean id="jobBeanSingleton" class="com.sandbox.Job">
+    <!--<bean id="jobBeanSingleton" class="com.sandbox.Job">
         <constructor-arg ref="jobTypeBean" />
-    </bean>
+    </bean>-->
 
     <bean id="jobTypeBean" class="com.sandbox.JobType">
+        <property name="name" value="Box" />
     </bean>
 
     <bean id="citiesBean" class="com.sandbox.CitiesList">
@@ -27,4 +28,7 @@
         </property>
     </bean>
 
+    <bean id="autoWireByName" class="com.sandbox.AutowireByName">
+        <property name="jobType" ref="jobTypeBean"/>
+    </bean>
 </beans>

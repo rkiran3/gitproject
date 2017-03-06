@@ -1,5 +1,6 @@
 package com.sandbox;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.logging.Logger;
@@ -25,5 +26,13 @@ public class DIDemo
         for (String city : citiesList.getCities()) {
             log.info("City: " + city);
         }
+
+        log.info("Creating a AutoWireByName Bean");
+        AutowireByName awName = (AutowireByName) context.getBean("autoWireByName");
+
+        log.info("Printing awName:");
+        log.info(awName.getJobType().getName());
+
+        ((ConfigurableApplicationContext)context).close();
     }
 }
