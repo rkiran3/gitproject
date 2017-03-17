@@ -12,4 +12,7 @@ public class RegexDemoTest extends TestCase {
         String output = RegexDemo.prependLeadingZeros(pattern, input);
         assert(output.equals("AAA0000567"));
     }
+
+
+
 }
