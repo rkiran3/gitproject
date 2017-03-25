@@ -4,21 +4,35 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
- * Created by ravikir on 3/16/2017.
+ *
  */
 public class LambdaExample01 {
     public static void main(String [] args) {
+        /* printing random integers in a range */
+        Random random = new Random();
+        random.ints(1, 25).limit(4).forEach(n -> System.out.print(n + " "));
+
         final List<String> friends = Arrays.asList(
                 "Brian", "Nate", "cate", "bob"
         );
 
         final List <String> upperCaseNames = new ArrayList<String>();
-
+        System.out.println("Creating list of upper case names");
         friends.forEach(name -> upperCaseNames.add(name.toUpperCase()));
+        System.out.println("Printing upper case names");
+        // prints {BRIAN, NATE, CATE, BOB}
+        System.out.println(
+                upperCaseNames
+                        .stream()
+                        .collect(Collectors.joining(", ", "{", "}")));
 
-        upperCaseNames.forEach(System.out::println);
+        System.out.println("Iterate and print uppercase names");
+        upperCaseNames.forEach(System.out::print);
+        upperCaseNames.forEach(name -> System.out.print(name + " "));
 
         List<BigDecimal> prices = Arrays.asList(
                 new BigDecimal("20"), new BigDecimal("15"),
@@ -42,6 +56,5 @@ expressions.
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         System.out.println("finalPrices = " + finalPrices);
-
     }
 }
