@@ -6,8 +6,6 @@ package com.spoj;
 public class PALIN {
 
     public String reverse(String input) {
-        String reverseStr = "";
-
         return new StringBuilder(input).reverse().toString();
     }
 
