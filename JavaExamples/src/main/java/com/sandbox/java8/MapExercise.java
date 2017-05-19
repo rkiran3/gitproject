@@ -105,6 +105,7 @@ public class MapExercise {
                 .forEach(ch -> System.out.printf("%s ", ch));
 
         // Get a Map of frequencies of 1 and 0's for all integers between 1..10
+        // Function.identity() Returns a function that always returns its input argument.
         Map<Character, Long> frequencies = IntStream
                 .range(1, 10)
                 .mapToObj(i -> Integer.toBinaryString(i))
@@ -119,5 +120,9 @@ public class MapExercise {
                 .mapToObj(i -> (char)i)
                 .forEach(ch -> System.out.printf("%c %s \n", ch, ch.getClass()));*/
                 //.forEach(System.out::println);
+
+        int [] intprices = prices.stream().mapToInt(Integer::intValue).toArray();
+
+        System.out.println("intprices = " + intprices);
     }
 }

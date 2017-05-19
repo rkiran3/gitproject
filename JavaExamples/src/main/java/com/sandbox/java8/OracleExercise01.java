@@ -10,8 +10,7 @@ package com.sandbox.java8;
  * JDK 8 MOOC Lesson 2 homework
  */
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,6 +18,23 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+class SonnetFile {
+    public static String sonnetData = "From fairest creatures we desire increase,\n" +
+            "That thereby beauty's rose might never die,\n" +
+            "But as the riper should by time decease,\n" +
+            "His tender heir might bear his memory:\n" +
+            "But thou contracted to thine own bright eyes,\n" +
+            "Feed'st thy light's flame with self-substantial fuel,\n" +
+            "Making a famine where abundance lies,\n" +
+            "Thy self thy foe, to thy sweet self too cruel:\n" +
+            "Thou that art now the world's fresh ornament,\n" +
+            "And only herald to the gaudy spring,\n" +
+            "Within thine own bud buriest thy content,\n" +
+            "And, tender churl, mak'st waste in niggarding:\n" +
+            "Pity the world, or else this glutton be,\n" +
+            "To eat the world's due, by the grave and thee.\n";
+}
 
 /**
  * @author Speakjava (Simon Ritter)
@@ -41,6 +57,8 @@ public class OracleExercise01 {
         exercise3();
         System.out.println("Running exercise 4 solution...");
         exercise4();
+        System.out.println("Running exercise 4 Sonnet solution...");
+        exercise4SonnetFile();
         System.out.println("Running exercise 5 solution...");
         exercise5();
         System.out.println("Running exercise 6 solution...");
@@ -102,6 +120,19 @@ public class OracleExercise01 {
                 Paths.get(dataFile), StandardCharsets.UTF_8)) {
             long lineCount = reader.lines().count();
             System.out.println("Line Count: " + lineCount);
+        }
+    }
+
+    /**
+     * Count the number of lines in the file using the BufferedReader provided
+     */
+    private void exercise4SonnetFile() throws IOException {
+        try {
+            BufferedReader reader = new BufferedReader(new StringReader((SonnetFile.sonnetData)));
+            long lineCount = reader.lines().count();
+            System.out.println("Line Count: "+lineCount);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
