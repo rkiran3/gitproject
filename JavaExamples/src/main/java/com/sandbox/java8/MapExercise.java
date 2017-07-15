@@ -8,7 +8,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import static java.util.stream.Collectors.*;
+//import static java.util.stream.Collectors.*;
 
 /**
  *
@@ -22,16 +22,15 @@ public class MapExercise {
 
     /**
      * map() returns a stream of values
-     * @return
+     * @return a List of updated prices
      */
     public static List <Double> increasePrice(List <Integer> prices, int percentage) {
         List <Double> increasedPrices;
-        //List <Integer> prices = Arrays.asList(100, 200, 300);
         double percentageDbl = percentage/100.0;
 
         prices
                 .stream()
-                .map( cost ->  (cost*percentage/100) + cost)
+                .map(cost -> (cost*percentage/100) + cost)
                 .forEach(System.out::println);
 
         increasedPrices = prices

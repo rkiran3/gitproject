@@ -8,34 +8,24 @@ import java.util.Optional;
  *
  */
 public class Scratch {
+    public void print(byte x) {
+        System.out.print("byte");
+    }
+    public void print(int x) {
+        System.out.print("int");
+    }
+    public void print(float x) {
+        System.out.print("float");
+    }
+    public void print(Object x) {
+        System.out.print("Object");
+    }
+
     public static void main(String []args) {
-        int [] intarray = {
-                9785818,
-                9969733,
-                9997229,
-                9999036,
-                9999428,
-                9999816,
-                9999875,
-                9999919,
-                10099077
-                };
-
-        int processed = 0;
-        for (Integer x : intarray) {
-
-            Integer.parseInt(Integer.toString(x));
-            System.out.printf("Processing: %d\n", x);
-            processed++;
-        }
-
-
-        if (intarray.length == processed) {
-            System.out.println("Success");
-        } else {
-            System.out.println("Error");
-
-        }
-
+        Scratch t = new Scratch();
+        short s = 123;
+        t.print(s);
+        t.print(true);
+        t.print(6.789);
     }
 }
