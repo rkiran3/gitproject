@@ -123,5 +123,12 @@ public class MapExercise {
         int [] intprices = prices.stream().mapToInt(Integer::intValue).toArray();
 
         System.out.println("intprices = " + intprices);
+
+        Stream.of("January", "February", "March", "April", "May", "June", "July", "August")
+                .peek(System.out::println)
+                .forEach(System.out::println);
+                //.filter(month -> month.endsWith("y"))
+                //.peek(System.out::println)
+                //.limit(2);
     }
 }
