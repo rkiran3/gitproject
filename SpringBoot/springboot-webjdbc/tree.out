@@ -1,0 +1,52 @@
+.
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── springboot-webjdbc.iml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── sandbox
+│   │   │           └── springbootwebjdbc
+│   │   │               └── springbootwebjdbc
+│   │   │                   ├── DemoController.java
+│   │   │                   ├── SpringbootWebjdbcApplication.java
+│   │   │                   ├── User.java
+│   │   │                   └── UserRepository.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       ├── static
+│   │       └── templates
+│   └── test
+│       └── java
+│           └── com
+│               └── sandbox
+│                   └── springbootwebjdbc
+│                       └── springbootwebjdbc
+│                           └── SpringbootWebjdbcApplicationTests.java
+├── target
+│   ├── classes
+│   │   ├── application.properties
+│   │   └── com
+│   │       └── sandbox
+│   │           └── springbootwebjdbc
+│   │               └── springbootwebjdbc
+│   │                   ├── DemoController.class
+│   │                   ├── SpringbootWebjdbcApplication.class
+│   │                   ├── User.class
+│   │                   ├── UserRepository.class
+│   │                   └── UserRowMapper.class
+│   ├── generated-sources
+│   │   └── annotations
+│   ├── generated-test-sources
+│   │   └── test-annotations
+│   └── test-classes
+│       └── com
+│           └── sandbox
+│               └── springbootwebjdbc
+│                   └── springbootwebjdbc
+│                       └── SpringbootWebjdbcApplicationTests.class
+└── tree.out
+
+31 directories, 18 files
