@@ -9,7 +9,7 @@ for root, dirs, files in os.walk(mypath):
     for entry in files:
         completep = os.path.join(root, entry)
         if (re.compile('d:\\\\data\\\\General').match(completep)):
-            s = string.replace(completep, 'd:\\', '%BPCSHOME%\\')
+            s = string.replace(completep, 'd:\\', '%HOME%\\')
             print
             s
 

@@ -3,7 +3,7 @@ import urllib3
 import re
 
 # specify url
-target_page = 'http://www.investors.com/management/'
+target_page = 'http://website/management/'
 
 # query the website and return the html
 http = urllib3.PoolManager()
