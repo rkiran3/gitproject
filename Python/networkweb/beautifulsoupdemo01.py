@@ -12,7 +12,7 @@ for link in soup.findAll('a'):
     print (link['href'])
 
 
-data2 = ''''<div>
+data2 = ''''<div>d
                 <a href="Testing.html" class=" 202193">Check this
                     <span>
                         <h5>This is heading</h5>

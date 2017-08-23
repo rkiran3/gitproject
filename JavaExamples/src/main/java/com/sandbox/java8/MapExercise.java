@@ -28,10 +28,10 @@ public class MapExercise {
         List <Double> increasedPrices;
         double percentageDbl = percentage/100.0;
 
-        prices
+        /*prices
                 .stream()
                 .map(cost -> (cost*percentage/100) + cost)
-                .forEach(System.out::println);
+                .forEach(System.out::println);*/
 
         increasedPrices = prices
                 .stream()
