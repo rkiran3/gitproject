@@ -1,0 +1,64 @@
+.
+├── META-INF
+│   └── application.xml
+├── mvnw
+├── mvnw.cmd
+├── pom.xml
+├── springboot-springrestfulstore.iml
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── sandbox
+│   │   │           └── springstore
+│   │   │               └── springbootspringrestfulstore
+│   │   │                   └── SpringbootSpringrestfulstoreApplication.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       ├── static
+│   │       └── templates
+│   └── test
+│       └── java
+│           └── com
+│               └── sandbox
+│                   └── springstore
+│                       └── springbootspringrestfulstore
+│                           └── SpringbootSpringrestfulstoreApplicationTests.java
+├── target
+│   ├── classes
+│   │   ├── application.properties
+│   │   └── com
+│   │       └── sandbox
+│   │           └── springstore
+│   │               └── springbootspringrestfulstore
+│   │                   └── SpringbootSpringrestfulstoreApplication.class
+│   ├── generated-sources
+│   │   └── annotations
+│   ├── generated-test-sources
+│   │   └── test-annotations
+│   ├── maven-archiver
+│   │   └── pom.properties
+│   ├── maven-status
+│   │   └── maven-compiler-plugin
+│   │       ├── compile
+│   │       │   └── default-compile
+│   │       │       ├── createdFiles.lst
+│   │       │       └── inputFiles.lst
+│   │       └── testCompile
+│   │           └── default-testCompile
+│   │               ├── createdFiles.lst
+│   │               └── inputFiles.lst
+│   ├── springboot-springrestfulstore-1.0.jar
+│   ├── springboot-springrestfulstore-1.0.jar.original
+│   ├── surefire-reports
+│   │   ├── com.sandbox.springstore.springbootspringrestfulstore.SpringbootSpringrestfulstoreApplicationTests.txt
+│   │   └── TEST-com.sandbox.springstore.springbootspringrestfulstore.SpringbootSpringrestfulstoreApplicationTests.xml
+│   └── test-classes
+│       └── com
+│           └── sandbox
+│               └── springstore
+│                   └── springbootspringrestfulstore
+│                       └── SpringbootSpringrestfulstoreApplicationTests.class
+└── tree.out
+
+40 directories, 21 files

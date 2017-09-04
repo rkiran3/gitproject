@@ -1,10 +1,7 @@
 package com.sandbox.java8;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -56,5 +53,12 @@ expressions.
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
         System.out.println("finalPrices = " + finalPrices);
+
+        //System.out.println("Random UUID: " + UUID.randomUUID().toString().replace("[^a-z]", ""));
+
+        String rawUUID = UUID.randomUUID().toString();
+        String convertedUUID = rawUUID.replaceAll("[\\p{Digit}-]", "");
+        System.out.println(rawUUID);
+        System.out.println(convertedUUID);
     }
 }
