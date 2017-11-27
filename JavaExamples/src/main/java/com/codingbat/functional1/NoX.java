@@ -18,8 +18,9 @@ public class NoX {
         List<String> wordsList = Arrays.asList("ax", "bb", "cx");
 
         wordsList.stream()
-                .map(w -> w.chars().filter(c -> c != 'x').collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append))
-                .forEach(System.out::println)
-                ;
+                .map(w -> w.chars()
+                .filter(c -> c != 'x')
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append))
+                .forEach(System.out::println);
     }
 }

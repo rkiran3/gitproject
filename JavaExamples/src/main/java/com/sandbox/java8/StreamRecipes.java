@@ -164,7 +164,7 @@ public class StreamRecipes {
         // The Collectors.partitioningBy method splits elements into those that satisfy a Predicate and those that do not.
         // The Collectors.groupingBy method produces a Map of categories, where the values are the elements in each category.
 
-        //The groupingBy method performs an operation like a “group by” statement in SQL. It returns a Map where the keys are the groups and the values are lists of elements in each group.
+        //The groupingBy method performs an operation like a "group by" statement in SQL. It returns a Map where the keys are the groups and the values are lists of elements in each group.
 
 
         //fibbonacci
