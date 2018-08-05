@@ -7,10 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 /**
- * Found on Stackoverflow, Print a list of elements grouped by a size
+ * Found on Stackoverflow, Print a list of elements grouped by a user specified partition
  *
  * Input:
- *  "a", "b", "c", "d", "e"
+ *  "a", "b", "c", "d", "e"    // Separate them by 3
  * Output:
  * a,b,c
  * d,e
