@@ -42,7 +42,7 @@ public class HashMapExercise {
      * Create a simple hashMap to store objects and print them.
      */
     private static Map<String, Integer> simpleHashMap() {
-        Map<String, Integer> testMap = new HashMap();
+        Map<String, Integer> testMap = new HashMap<String, Integer>();
         testMap.put("January", 31);
         testMap.put("February", 28);
 
@@ -56,6 +56,21 @@ public class HashMapExercise {
 
     public static void main(String [] args) {
         HashMapExercise.simpleHashMap();
-        HashMapExercise.splitNames();
+        List <Object[]> tokensList = HashMapExercise.splitNames();
+        
+        // Create a string that reconstructs the names and print
+        /*
+			John Woo
+			Jeff Dean
+			Josh Bloch
+			Josh Long
+         */
+        String output = tokensList.stream()
+	    	.map(entry -> String.format("%s %s", entry[0], entry[1]))
+	    	.collect(Collectors.joining("\n"));
+        
+        System.out.println(output);
+        
+
     }
 }

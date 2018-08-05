@@ -25,7 +25,7 @@ public class CopyEndy {
         int [] result = IntStream.of(nums)
                 .boxed()
                 //.filter(n -> isEndy(n))
-                        .filter(isEndyPredicate)
+                .filter(isEndyPredicate)
                 //.peek(System.out::println)
                 .limit(count)
                 .mapToInt(i -> i)

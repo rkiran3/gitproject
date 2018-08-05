@@ -10,26 +10,57 @@ import java.util.stream.Collectors;
 public class LambdaExample01 {
     public static void main(String [] args) {
         /* printing random integers in a range */
-        Random random = new Random();
-        random.ints(1, 25).limit(4).forEach(n -> System.out.print(n + " "));
-
+        System.out.println("Printing Random Integers: " + 
+        		new Random()
+            	.ints(1, 25)
+            	.limit(4)
+            	.mapToObj(i -> String.valueOf(i))	// Convert ints to String
+            	.collect(Collectors.joining(" ")));        
+        // Initialize a list of names to use in tests
         final List<String> friends = Arrays.asList(
                 "Brian", "Nate", "cate", "bob"
         );
 
+        // store uppercased names into another array
         final List <String> upperCaseNames = new ArrayList<String>();
-        System.out.println("Creating list of upper case names");
+        System.out.println("\nCreating list of upper case names");
         friends.forEach(name -> upperCaseNames.add(name.toUpperCase()));
-        System.out.println("Printing upper case names");
         // prints {BRIAN, NATE, CATE, BOB}
-        System.out.println(
+        System.out.println("\nPrinting upper case names: " + 
                 upperCaseNames
                         .stream()
                         .collect(Collectors.joining(", ", "{", "}")));
-
-        System.out.println("Iterate and print uppercase names");
-        upperCaseNames.forEach(System.out::print);
-        upperCaseNames.forEach(name -> System.out.print(name + " "));
+        
+        // Print the original list of names
+        System.out.println("\nOriginal list: " + 
+	        friends
+	        	.stream()
+	        	.collect(Collectors.joining(", ", "{", "}"))
+	        	);
+        
+        System.out.println("\nCapitalize First Character of each word " +
+        	friends
+        	.stream()
+        	.map(w -> 
+        		new Character(w.charAt(0)).toString().toUpperCase() + w.substring(1).toLowerCase()
+        		)
+        	.collect(Collectors.joining(", ", "{", "}"))
+        ); // prints {Brian, Nate, Cate, Bob};
+        
+        // another way of getting first character
+        System.out.println("\nCapitalize First Character of each word " +
+            	friends
+            	.stream()
+            	.map(w -> 
+            		String.valueOf(w.charAt(0)).toUpperCase() + w.substring(1).toLowerCase()
+            		)
+            	.collect(Collectors.joining(", ", "{", "}"))
+            ); // prints {Brian, Nate, Cate, Bob};
+        
+        System.out.println("\nIterate and print uppercase names");
+        System.out.println(upperCaseNames
+        	.stream()
+        	.collect(Collectors.joining(" ")));
 
         List<BigDecimal> prices = Arrays.asList(
                 new BigDecimal("20"), new BigDecimal("15"),
