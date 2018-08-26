@@ -15,7 +15,7 @@ public class Copies3 {
     public static List <String> copies3(List<String> strings) {
 
         List <String> output = strings.stream()
-                .map(w -> String.join("", Collections.nCopies(3, w)))
+                .map(word -> String.join("", Collections.nCopies(3, word)))
                 .collect(Collectors.toList());
 
         return output;

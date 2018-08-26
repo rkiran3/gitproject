@@ -20,8 +20,6 @@ public class ListDemo {
         
         summerMonthsList.add("June");
         summerMonthsList.add("July");
-        //summerMonthsList.stream()
-        //    .forEach(System.out::println);
             
         // Store the list in the Map, using a String Key
         myMap.put("months", summerMonthsList);

@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- *
+ * Lower case the very first character of each word
  */
 public class Lower {
     public static List <String> lower(List<String> strings) {
@@ -18,8 +18,12 @@ public class Lower {
         String [] words = { "Hello", "Hi"};
         List <String> wordsList = Arrays.asList(words);
         List <String> outputList = lower(wordsList);
-
+    
+        // Construct an expectedList to compare with modified List
+        List <String> expectedList = Arrays.asList(new String[] {"hello", "hi"});
         outputList.stream()
                 .forEach(System.out::println);
+                
+        assert(outputList.equals(expectedList));
     }
 }

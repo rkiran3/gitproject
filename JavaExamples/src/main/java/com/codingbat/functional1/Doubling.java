@@ -20,8 +20,10 @@ public class Doubling {
                 .map(n -> n * 2)
                 .collect(Collectors.toList());
 
-        doubledList.stream()
-                .forEach(System.out::println);
-
+        //doubledList.stream()
+         //       .forEach(System.out::println);
+        List <Integer> expectedList = Arrays.asList(new Integer[] {12, 16, 12, 16, -2});
+        
+        assert(doubledList.equals(expectedList));
     }
 }
