@@ -13,23 +13,14 @@ import java.util.stream.Collectors;
  */
 public class WordsWithoutList {
     public static List <String> wordsWithoutList(String [] words, int len) {
-
-        List<String> wordsList = (Arrays.asList(words)).stream()
+        return (Arrays.asList(words)).stream()
                 .filter(s -> (s.length() != len))
                 .collect(Collectors.toList());
-
-        //String [] frontWords = wordsList.toArray(new String[wordsList.size()]);
-
-        return wordsList;
     }
 
     public static void main(String [] args) {
         String [] words = {"a", "bb", "b", "ccc"};
-        if (wordsWithoutList(words, 1)
-            .equals(Arrays.asList("bb", "ccc"))) {
-            System.out.println("Test1 passes");
-        } else {
-            System.out.println("Test1 fails");
-        }
+        assert(wordsWithoutList(words, 1)
+            .equals(Arrays.asList("bb", "ccc"))) ;
     }
 }

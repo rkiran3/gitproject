@@ -11,56 +11,71 @@ import java.util.stream.Collectors;
 /**
  * Exercise to add entries to List, Map and modify Map
  */
- 
+
+class ItemConstant {
+    public static final String ITEM_NAME="Default";
+    public static final String ITEM_RED="RED";
+}
+
 class Item {
     String name;
     Integer Id;
     Item (String name, Integer id) { this.name = name; this.Id = id; }
-    Item() { name = "Default" ; Id = new Integer(99); }
+    Item() { name = ItemConstant.ITEM_NAME ; Id = new Integer(99); }
     public String toString() { return name + " " + Id; }
     public Integer getId() { return Id; }
     public void setId(Integer id) { this.Id = id; }
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
-}
+} 
 
 
 public class MethodRefTest {
-
     public static void main( String [] args) {
+        
         List <Item> itemList = new ArrayList<Item>();
         // Add an Item with a name
-        itemList.add(new Item("Blue", new Integer(11)));
-        itemList.add(new Item());
+        itemList.add(new Item(ItemConstant.ITEM_RED, new Integer(11)));
+        itemList.add(new Item()); // will set to name="Default" and Id=99
     
-        // get all items with explicit name
+        // get all items that contain ITEM_NAME 
         Stream <Item> filtered = itemList.stream()
-            .filter(a -> !a.getName().equals("Default"));
+            .filter(a -> !a.getName().equals(ItemConstant.ITEM_NAME));
         
-        // Get first entry in list
+        // Get first entry in list, 
+        // when there are no matches - return null
+        // else return first Item that matches
         Item firstItem = itemList.stream()
-            .filter(a -> !a.getName().equals("Default"))
+            .filter(a -> !a.getName().equals(ItemConstant.ITEM_NAME))
             .findFirst()
             .orElse(null);
-        if (firstItem != null){ 
-            System.out.println("found entry ");
-        } else {
-            System.out.println("No entries found");
-        }
+        assert(firstItem != null);
         
-        // Get selectedItem 
+        // Get selected Item that matches the ID
         Item selectedItem = itemList.stream()
             .filter(a -> a.getId() == 11)
             .findFirst()
             .orElse(null);
-            
-        if (selectedItem != null) { 
-            System.out.println ("Selected Item" + selectedItem);
-        }
-        
+        System.out.println("Testing 1");
+        assert(selectedItem.getName().equals(ItemConstant.ITEM_RED));
 
         List <Item> filteredList = filtered.collect(Collectors.toList());
-        filteredList.stream()
-            .forEach(System.out::println);
+            
+        // Return first item in the list, if there are no items - return a null
+        List <Item> itemList2 = new ArrayList<Item>();
+        Item dummyItem = itemList2.stream()
+                            .findFirst()
+                            .orElse(null);
+        System.out.println("Testing 2");
+        assert(dummyItem == null);
+        
+        // Return first item in the list, if there are no items - return default Item
+        // In this case we construct a new Item and return object.
+        List <Item> itemList3 = new ArrayList<Item>();
+        Item dummyItem3 = itemList3.stream()
+                            .findFirst()
+                            .orElse(new Item());
+        System.out.println("Testing 3");
+        assert(dummyItem3.getName().equals(ItemConstant.ITEM_NAME));
     }
 }
