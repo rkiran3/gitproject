@@ -65,5 +65,14 @@ public class ListOfMapsDemo {
             .collect(Collectors.toList());  //
         
         assert(Arrays.asList(new Integer[] { 31, 28 }).equals(daysList));
+        
+        Integer firstEntry = listOfMonthMaps.stream()
+            .limit(1)
+            .findFirst()
+            .map(x -> x.get("days"))
+            .orElse(new Integer(0));
+            
+            
+        System.out.println("First: " + firstEntry);
     }
 }
