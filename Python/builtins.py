@@ -1,5 +1,8 @@
 #!/usr/local/python
 
+# To invoke program
+# python -m doctest filename.py
+
 ################## sorted #############################
 """
 >>> names = ['Chris', 'Brown', 'Jack']

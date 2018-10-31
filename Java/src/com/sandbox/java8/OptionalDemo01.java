@@ -56,5 +56,13 @@ public class OptionalDemo01 {
             .orElse("Default Vendor");        
         //System.out.println("default["+ defaultBroker+"]");
         assert("Default Vendor".equals(defaultVendor));
+        
+        // debug
+        users.stream()
+            .forEach(u -> System.out.println(u));
+            
+        boolean found = users.stream()
+            .anyMatch(u->u.getName().equals("Manager"));
+        System.out.println("Found Manager: " + found);
     }
 }

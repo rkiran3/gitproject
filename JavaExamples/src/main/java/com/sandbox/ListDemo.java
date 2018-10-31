@@ -5,7 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Arrays;
-
+import java.util.regex.Pattern;
+import java.util.stream.*;
 /**
  * Exercise to add entries to List, Map and modify Map
  */
@@ -13,12 +14,11 @@ public class ListDemo {
 
     public static void main( String [] args) {
         Map<String, List<String>> myMap = new HashMap<String, List<String>>(); // Map to Store Key, Value
-        String [] months = { "November", "December" };
+        String [] months = { "November" + " Month", "December" };
         List <String> winterMonths = Arrays.asList(months);
-        
         List <String>summerMonthsList = new ArrayList<String>();
         
-        summerMonthsList.add("June");
+        summerMonthsList.add("June" + " Month");
         summerMonthsList.add("July");
             
         // Store the list in the Map, using a String Key
@@ -28,8 +28,37 @@ public class ListDemo {
         List <String>secondList = myMap.get("months");
         secondList.add("August");
         
-        System.out.println("Lists should be same " + (summerMonthsList == secondList));
-        assert(summerMonthsList == secondList);
+        assert(summerMonthsList == secondList);        
         
+        String message = "jan:31|feb: 28";
+        
+        //System.out.println("Total String: " + message);
+        //Map <String, String> myMonthMap = Pattern.compile("\\|")
+            //.splitAsStream(message)
+            
+        // Split delimited string and convert to Stream
+        Map <String, String> myMonthMap = Stream.of(message.split("\\|"))
+            //.peek(m -> System.out.printf("MonthDay:[%s]\n", m))
+            // split again on : delimiter
+            .map(s -> s.split(":"))
+            // print the tokens
+            //.peek(md -> System.out.printf("Month [%s] Day [%s]\n", md[0].trim(), md[1].trim()))
+            // collect tokens into a Map
+            .collect(Collectors.toMap(t -> t[0].trim(), t-> t[1].trim()));
+        
+        // test generated output
+        assert(myMonthMap.size() == 2);
+        assert(myMonthMap.get("jan").equals("31"));
+        assert(myMonthMap.get("feb").equals("28"));
+        
+        
+        String janMonthAndDay = "Jan:31";
+        //myMonthMap.forEach((k, v) -> System.out.println(k + " " + v));        
+        Map <String, String> monthDayMap = Stream.of(janMonthAndDay)
+            .map(s -> s.split(":", 2))
+            //.peek((k) -> System.out.println(k[0] + " " + k[1]))
+            .collect(Collectors.toMap(a -> a[0], a -> a[1]));
+            //.forEach((k) -> System.out.println(k[0] + " " + k[1]));
+        System.out.println("Program complete");
     }
 }
