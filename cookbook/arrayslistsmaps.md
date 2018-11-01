@@ -33,18 +33,21 @@ assert(Arrays.asList(new Integer[]{0, 100, 200, 300})
 
 # Create a List of Integers <a name="example2"></a>
 
-We can create a List using:  **Arrays.asList(new Integer[]{11, 22, 33})**
+We can create a List using:  **Arrays.asList(new Integer[]{11, 22, 33})**  
 
-    import java.util.Arrays;
-    import java.util.stream.Stream;
 
-    //Create a list of Integers
-    contains = Arrays.asList(new Integer[]{11, 22, 33}).stream()
-        .mapToInt(Integer::valueOf)
-        .anyMatch(i -> i == 33);        
-    assert(contains);
+<pre>
+import java.util.Arrays;
+import java.util.stream.Stream;
 
+//Create a list of Integers
+contains = <b>Arrays.asList(new Integer[]{11, 22, 33})</b>.stream()
+    .mapToInt(Integer::valueOf)
+    .anyMatch(i -> i == 33);        
+assert(contains);
+</pre>
 We can also create them like `new ArrayList<>(Arrays.asList(1, 2, 3, 4))`
+[Code](../JavaExamples/src/main/java/com/sandbox/ConstructListDemo.java)
 
     import java.util.List;
     import java.util.Arrays;
@@ -60,51 +63,56 @@ We can also create them like `new ArrayList<>(Arrays.asList(1, 2, 3, 4))`
 # Filter a List <a name="filterList"></a>
 
 To filter, we can use the `filter()` method and collect the entries that match a condition.
- 
-    import java.util.Arrays;
-    import java.util.List;
-    import java.util.stream.Collectors;
+[Code](../JavaExamples/src/main/java/com/codingbat/ap1/WordsWithoutList.java)
 
-    // return a new list that match a condition
-    public static List <String> wordsWithoutList(String [] words, int len) {
-        return (Arrays.asList(words)).stream()
-                .filter(s -> (s.length() != len))
-                .collect(Collectors.toList());
-    }
+<pre>
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
-    public static void main(String [] args) {
-        String [] words = {"a", "bb", "b", "ccc"};
-        assert(wordsWithoutList(words, 1)
-            .equals(Arrays.asList("bb", "ccc"))) ; 
-    }
+// return a new list that match a condition
+public static List <String> wordsWithoutList(String [] words, int len) {
+    return (Arrays.asList(words)).stream()
+            <b>.filter(s -> (s.length() != len))</b>
+            .collect(Collectors.toList());
+}
 
+public static void main(String [] args) {
+    String [] words = {"a", "bb", "b", "ccc"};
+    assert(wordsWithoutList(words, 1)
+        .equals(Arrays.asList("bb", "ccc"))) ; 
+}
+</pre>
 
 # Create a List of Objects <a name="listObjects"></a>
 
 Here we create a list of Month Objects using a stream. The Month object has a constructor that needs a String parameter, this parameter is passed when the List is created. 
+[Code](../JavaExamples/src/main/java/com/sandbox/ExecMethodForEachDemo.java)
 
-    // Object that represents a Month
-    class Month {
-        public String name;
-        public Month(String name) {this.name = name; }
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
-        public String toString() { return this.name; }
-    }
+<pre>
+// Object that represents a Month
+class Month {
+    public String name;
+    public Month(String name) {this.name = name; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String toString() { return this.name; }
+}
 
-    // Create a list of Strings
-    String [] monthsArr = { "November", "December" };
+// Create a list of Strings
+String [] monthsArr = { "November", "December" };
 
-    // Create a list of Month objects
-    Stream <Month> stream = Arrays.asList(monthsArr).stream()
-        .map(Month::new);
+// Create a list of Month objects
+Stream <Month> stream = Arrays.asList(monthsArr).stream()
+    <b>.map(Month::new);</b>
 
-    // Invoke a method for each of the object, in this case - the method returns a String
-    // which is then collected into a List.
-    List <String> allMonthsList = stream
-        .map(DemoClass::displayStr)
-        .collect(Collectors.toList());
-
+// Invoke a method for each of the object, in this case - the method returns a String
+// which is then collected into a List.
+List <String> allMonthsList = stream
+    .map(DemoClass::displayStr)
+    .collect(Collectors.toList());
+</pre>
+        
 # Process each entry using map  <a name="map01"></a>
 When we need to process each entry of a Stream of String (for example extract a specific word in a String), we can use `map` to retrieve the word and store the result.
 
