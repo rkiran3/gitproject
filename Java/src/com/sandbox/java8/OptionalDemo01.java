@@ -10,7 +10,7 @@ class User {
     String name;
     String type;
     public User(String name, String type) { this.name = name; this.type = type; }
-    
+
     public String toString() { return this.name + "-" + this.type; }
     public String getName() { return name; }
     public String getType() { return type; }
@@ -33,16 +33,16 @@ public class OptionalDemo01 {
             .filter(u -> u.getType().equals("guest"))  // search existent/nonexistent user
             .findFirst();
             //.orElse(defaultUser);
-        
+
         // return user if found, otherwise return first user in list
         User contact = optUser.isPresent() ? optUser.get() : users.get(0);
         assert("Employee-employee".equals(contact.toString()));
-       
+
         // Object is not null, print Object 
         User guest = new User("Guest", "guest");
         Optional<User> opt = Optional.of(guest); // will return User
         assert("Guest".equals(opt.get().getName()));
- 
+
         // Object is null, use ifPresent() to print its value
         User neighbor = null;
         Optional<User> optNeighbor = Optional.ofNullable(neighbor);  // Object can be null

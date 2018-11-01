@@ -21,6 +21,6 @@ public class WordsWithoutList {
     public static void main(String [] args) {
         String [] words = {"a", "bb", "b", "ccc"};
         assert(wordsWithoutList(words, 1)
-            .equals(Arrays.asList("bb", "ccc"))) ;
+            .equals(Arrays.asList("bb", "ccc")));
     }
 }
