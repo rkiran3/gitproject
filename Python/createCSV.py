@@ -11,7 +11,7 @@ outputFile = "C:\\tmp\\demo-anki.txt"
 f = open(outputFile, 'r')
 
 # use this pattern to separate each QA chunk
-pattern = r'(.*?)----'
+pattern = r'(.*?)\+\+\+\+'
 p = re.compile(pattern, re.DOTALL|re.MULTILINE)
 
 # use this pattern to identify Ques-Ans

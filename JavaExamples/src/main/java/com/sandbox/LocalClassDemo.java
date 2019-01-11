@@ -14,8 +14,8 @@ public class LocalClassDemo {
 
     public static void display() {
         System.out.println("Display");
-        class Demo {
-            
+
+        class Demo {            
             public void displayInDemo() { 
                 String [] months = { "January", "February", "March" };
                 Stream<String> streamString = Arrays.asList(months).stream()

@@ -1,5 +1,53 @@
 # Table of Contents
-1. [Process each entry in a Map](#pem)
+
+1. [Print each entry in a HashMap](#phm)
+2. [Print filtered entries in a HashMap](#pfem)
+3. [Process each entry in a Map](#pem)
+4. [Filter a List of Maps](#flm)
+
+# Print each entry in a HashMap <a name="phm"></a>
+To print key value pairs in a HashMap use the entrySet and print each entry.
+
+<pre>
+
+Map<String, Integer> testMap = new HashMap<String, Integer>();
+testMap.put("January", 31);
+testMap.put("February", 28);
+
+testMap.entrySet()
+    .forEach(entry -> System.out.printf("%s:%d\n", entry.getKey(), entry.getValue()));
+
+</pre>
+
+Example [Code](../JavaExamples/src/main/java/com/sandbox/java8/HashMapExercise.java)
+
+# Print filtered entries in a HashMap <a name="pfem"></a>
+To print key value pairs in a HashMap use the entrySet and print each entry.
+
+<pre>
+
+Map<String, Integer> testMap = new HashMap<String, Integer>();
+testMap.put("January", 31);
+testMap.put("February", 28);
+
+// print only months that have value > 28
+testMap.entrySet().stream()
+    <b> .filter(entry -> entry.getValue() > 28)  </b>
+    .forEach(entry -> System.out.printf("%s:%d\n", entry.getKey(), entry.getValue()));
+
+</pre>
+
+Another example is to filter only entries that have String values
+<pre>
+
+testMap.entrySet().stream()
+    <b>.filter(entry -> entry.getValue() instanceof String) </b>
+    .forEach(entry -> System.out.printf("%s %s\n", entry.getKey(), (String)entry.getValue()));
+    
+</pre>
+
+Example [Code](../JavaExamples/src/main/java/com/sandbox/java8/HashMapExercise.java)
+
 
 
 # Process each entry in a List of Maps <a name="pem"></a>
@@ -46,3 +94,26 @@ Example showing processing of each element in List: [Code](../JavaExamples/src/m
     Integer sum = revenueList.stream()
         .reduce(0, Integer::sum);       // total all the revenue amounts
     System.out.println("Sum: " + sum);
+
+    
+# Filter a List of Maps <a name="flm"></a>
+
+We can filter a list of Maps and get only the interested entries, for example to get a subset of entries that match a criteria - we can convert the list to a Stream and then apply the filter method to each entry.  
+[Code](../JavaExamples/src/main/java/com/sandbox/ListOfMapsFilterDemo.java)
+
+
+<pre>
+
+// Now filter the List of Maps and get only the "valid" entries
+List <Map<String, Object>> resultList = listOfMaps.stream()
+    <b>.filter(m -> (Boolean)m.get("valid")) </b>
+    .collect(Collectors.toList());
+
+// Verify results
+if (resultList.size() > 0) {
+    System.out.println("Found values: ");
+    resultList.stream()
+        .forEach(m -> System.out.println((Integer)m.get("revenue")));
+
+</pre>
+
