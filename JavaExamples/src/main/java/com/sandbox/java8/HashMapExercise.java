@@ -45,13 +45,18 @@ public class HashMapExercise {
         Map<String, Integer> testMap = new HashMap<String, Integer>();
         testMap.put("January", 31);
         testMap.put("February", 28);
+        testMap.put("March", 31);
+        
+        testMap.entrySet()
+                .forEach(entry -> System.out.printf("%s:%d\n", entry.getKey(), entry.getValue()));
 
-        testMap
-                .entrySet()
-                .forEach(entry -> System.out.printf("%s:%d\n", entry.getKey(), entry.getValue())
-                );
+        // print only months that have value > 28
+        testMap.entrySet().stream()
+            .filter(entry -> entry.getValue() > 28)
+                .forEach(entry -> System.out.printf("%s:%d\n", entry.getKey(), entry.getValue()));
 
-        return testMap;
+                
+                return testMap;
     }
 
     public static void main(String [] args) {
