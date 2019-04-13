@@ -13,7 +13,6 @@ import java.util.Map;
 public class Euler005 {
     public static void main(String [] args) {
         long max = 999999999;
-        int maxIndex = 10;
         long startTime = System.currentTimeMillis();
         for (int i = 1; i< max; i++) {
             //System.out.println("Processing " + i);

@@ -11,7 +11,7 @@ public class AddToSeparateLists {
 		List <String> allowedWords = new LinkedList<String>();
 		
 		Stream.of("AA", "BB", "CCCC", "DDD")
-			///    .peek(w -> System.out.println(w))
+			.peek(w -> System.out.println(w))
 			.filter(w -> w.length() > 2)			
 			.forEach(allowedWords::add);
 		

@@ -1,9 +1,6 @@
 package com.codingbat.ap1;
 
 import java.util.Arrays;
-import java.util.List;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -25,7 +22,9 @@ public class WordsCount {
         //Predicate<String> getWordsOfLen = (l) -> l.length()
    	    //Predicate<String> getWordsOfLen(final int len) = { w -> w.length() == len ;}
             
-        long count = Stream.of(words).filter(w -> w.length() == 1).count();
+        long count = Stream.of(words)
+                .filter(w -> w.length() == 1)
+                .count();
         if (count != 2) {
         	System.out.println("Test fails");
         }
