@@ -2,13 +2,12 @@ package com.sandbox.java8;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
-import com.sandbox.java8.MapExercise02.Item;
 
 /**
  *
@@ -55,5 +54,28 @@ public class CreateMapWithIndex {
         //IntStream.range(0, numbersArray.length).asLongStream()
         //        .collect(
         //                Collectors.toMap(Function.identity(), v-> v));
+        
+        class Choice {
+            public String name;
+            public Choice(String name) {
+                this.name = name;
+            }
+            
+            public String getName() { return name; }
+            
+            public String toString() { return "[" + name + "]"; }
+        }
+        
+        List <Choice> choiceList = Arrays.asList(
+                new Choice("Red"), 
+                new Choice("Black"),
+                new Choice("Green")
+                );
+        
+        Map <String, Choice> choiceMap = choiceList.stream()
+            .collect(Collectors.toMap(Choice::getName, Function.identity()));
+        
+        choiceMap.entrySet()
+            .forEach(System.out::println);
     }
 }
