@@ -3,7 +3,6 @@ package com.codingbat.functional2;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  * Given a list of integers, return a list of those numbers, omitting any that are between 13 and 19 inclusive.
