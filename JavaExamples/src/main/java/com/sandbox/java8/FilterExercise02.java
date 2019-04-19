@@ -3,6 +3,7 @@ package com.sandbox.java8;
 import java.util.Arrays;
 import java.util.List;
 import static java.util.stream.Collectors.*;
+import java.util.ArrayList;
 
 // Class that contains an attribute which is used for filtering.
 class Quote {
@@ -53,6 +54,15 @@ public class FilterExercise02 {
         System.out.println("Printing Exposed Quotes");
         quotesList.stream()
             .filter(q -> q.isExposed())
-            .forEach(System.out::println);            
+            .forEach(System.out::println);
+        
+        List <Box> boxList = new ArrayList<FilterExercise02.Box>();
+        
+        FilterExercise02 fexer02 = new FilterExercise02();
+        Box b = fexer02.new Box();
+    }
+    
+    public class Box {
+        boolean isExposed;
     }
 }
