@@ -1,11 +1,56 @@
 package com.sandbox.regextest;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class GetSubString {
 
+    
+    public static void testOrderNumberWithoutHyphens(String input) {
+        String regex = "(\\p{Alpha}+)(\\p{Digit}+)(\\p{Alpha}\\p{Digit}+)";    //wordfollowedbydigitsfollowedbywordfollowedbydigits
+        
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+ 
+        if (matcher.matches()) {
+            System.out.println(input + " matches regex: " + regex + " has groupcount: " + matcher.groupCount());
+            System.out.println(matcher.group(1) + " " + matcher.group(2) + " " + matcher.group(3));
+        } else {
+            System.out.println(input + " does NOT matches regex: " + regex);
+            
+        }
+        
+        
+    }
+
+    
+    /**
+     * Enter an Order Number that looks like AWS-33-P23
+     * extract the subcomponents and print them.
+     * @param input
+     */
+    public static void testOrderNumberWithHyphens(String input) {
+        // matches: AWS-33-P12
+        // no match: 1122, 1BAWS-AA-P12
+        String regex = "(\\p{Alpha}+)-(\\p{Digit}+)-(\\p{Alpha}\\p{Digit}+)";    //word-followedbyhypen-digits-singlewordfollowedbydigits
+        
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+ 
+        if (matcher.matches()) {
+            System.out.println(input + " matches regex: " + regex + " has groupcount: " + matcher.groupCount());
+            
+            System.out.println(matcher.group(1) + " " + matcher.group(2) + " " + matcher.group(3));
+        } else {
+            System.out.println(input + " does NOT matches regex: " + regex);
+            
+        }
+
+        
+    }
+    
     public static void extractFromXML(String input) {
         
         try {
@@ -19,7 +64,7 @@ public class GetSubString {
                 identifier = String.format("%1s_%2s_", matcher.group(1), matcher.group(2));
             }
             
-            File emailFile = File.createTempFile("Quote_" + identifier, ".xml");
+            File emailFile = File.createTempFile("order_" + identifier, ".xml");
             
             System.out.println(emailFile.getAbsolutePath());
             
@@ -54,5 +99,13 @@ public class GetSubString {
                 System.out.println("There are no matches");
             }
         }
+
+        System.out.println("Testing 2 start");
+        String [] tests = { "AWS-33-P12", "1122", "1BAWS-AA-P12"};
+        for (String entry: Arrays.asList(tests)) {
+            testOrderNumberWithHyphens(entry);
+            testOrderNumberWithoutHyphens(entry.replace("-", ""));
+        }
+        
     }
 }
