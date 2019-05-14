@@ -1,68 +1,87 @@
 package com.sandbox.java8;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
-import static java.util.stream.Collectors.*;
-import java.util.ArrayList;
-
-// Class that contains an attribute which is used for filtering.
-class Quote {
-    public String name;
-    public boolean isExposed;
-    public Quote(String name, boolean isExposed) {
-        this.name = name;
-        this.isExposed = isExposed;
-    }
-    public boolean isExposed() {
-        return isExposed;
-    }
-    
-    public String toString(){
-        return String.format("Quote:[%-20s]isExposed:[%5s]", name, isExposed);
-    }
-}
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class FilterExercise02 {
     public static void main(String []args) {
+        FilterExercise02 fexer02 = new FilterExercise02();
+
         char givenChar = 's';
         String state = "mississippi";
-
         long count = state.chars()
                 .filter(i -> i == givenChar)
                 .count();
+        assertEquals(count, 4);
 
-        System.out.println(String.format("Found %d occurrences of %c in %s ",
-                count, givenChar, state));
-            
+        
         String [] monthsArray = { "January", "February", "March", "May", "June", "July" };
 
         // simple test to show filtering on an array of objects.
-        java.util.List <Quote> quotesList = new java.util.ArrayList<>();
+        java.util.List <Month> monthList = Arrays.asList(monthsArray).stream()
+                // create new classes with their name and if name ends with y boolean attribute 
+                .map(m -> fexer02.new Month(m, m.endsWith("y")))
+                .collect(Collectors.toList());
         
-        // set some quotes with an attribute which will be used for filtering. 
-        int i=10;
-        for (String month: monthsArray) {
-            boolean isExposed = (i % 2) == 0;
-            quotesList.add(new Quote(month, isExposed));
-            i++;
-        }
-        // debug
-        quotesList.stream()
-            .forEach(System.out::println);
-            
-        // print only exposed quotes.
-        System.out.println("Printing Exposed Quotes");
-        quotesList.stream()
-            .filter(q -> q.isExposed())
-            .forEach(System.out::println);
+        List <String> monthsEndsY = monthList.stream()
+                //.peek(m -> System.out.println("Processing: " + m))
+                .filter(Month::isEndsWithY)
+                //.peek(m -> System.out.println("EndsWithY: " + m))
+                .map(Month::getName)
+                .collect(Collectors.toList());
         
-        List <Box> boxList = new ArrayList<FilterExercise02.Box>();
+        String[] expected = { "January", "February", "May", "July" };
+        assertArrayEquals(expected, monthsEndsY.toArray());
         
-        FilterExercise02 fexer02 = new FilterExercise02();
-        Box b = fexer02.new Box();
+        // another example to filter out null values
+        Map <String, Object> dict = new LinkedHashMap<>();
+        dict.put("January", null);
+        dict.put("February", new Integer(28));
+        dict.put("March", null);
+        
+        Map <String, Object> newMap = dict.entrySet().stream()
+            .filter(m -> m.getValue() != null)
+            .collect(
+                    Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        
+        assertTrue(newMap.size() ==  1);
+        assertTrue(newMap.containsKey("February"));
+        
+        // another way to remove entries with null values is to use removeIf
+        dict.values().removeIf(Objects::isNull);
     }
     
-    public class Box {
-        boolean isExposed;
+    public class Month {
+        private String name;
+        private boolean endsWithY;
+        public Month(String name, boolean endsWithY) {
+            this.setName(name);
+            this.endsWithY = endsWithY;
+        }
+        
+        public String toString(){
+            return String.format("%s", getName());
+        }
+        public boolean isEndsWithY() {
+            return endsWithY;
+        }
+        public void setEndsWithY(boolean endsWithY) {
+            this.endsWithY = endsWithY;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }

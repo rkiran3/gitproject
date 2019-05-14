@@ -7,8 +7,9 @@ import csv
 # Q: What is first month of year
 # A: January
 # ----
-outputFile = "C:\\tmp\\demo-anki.txt"
-f = open(outputFile, 'r')
+outputFile = "c:\\tmp\\demo-anki.csv"
+inputFile = "C:\\tmp\\demo-anki.txt"
+f = open(inputFile, 'r')
 
 # use this pattern to separate each QA chunk
 pattern = r'(.*?)\+\+\+\+'
@@ -31,7 +32,7 @@ for chunk in chunks:
 
 print ("Writing ", len(dictQA), " Ques-Ans chunks to file " + outputFile )        
 # write the dictionary as comma separated fields into CSV
-with open("c:\\tmp\\demo-anki.csv", "w") as out:
+with open(outputFile, "w") as out:
     csv_out = csv.writer(out)
     for key, value in dictQA.items():
         csv_out.writerow([key.strip(), value.strip()])
