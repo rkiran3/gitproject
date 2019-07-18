@@ -1,7 +1,9 @@
 package com.ctci;
 
 /**
- *
+ * Report if we find a duplicate character in String, 
+ * Have a array to store flag at the character's index, if we come across duplicate
+ * character, we can check that array index and stop processing.
  */
 public class UniqueCharacters {
     public static boolean isUniqueChars(String input) {

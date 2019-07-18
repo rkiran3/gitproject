@@ -32,8 +32,8 @@ class DerivedItem extends BaseItem {
 public class HideVariableTest {
 
     public static void main( String [] args) {
-        DerivedItem baseItem = new DerivedItem();
-        System.out.println(baseItem.getId());
-        System.out.println(baseItem.getSuperId());
+        DerivedItem item = new DerivedItem();
+        System.out.println(item.getId()); // will print the instance variable of Derived Item i.e 23
+        System.out.println(item.getSuperId()); // invokes super.getId() returning BaseItem id i.e. 99
     }
 }
