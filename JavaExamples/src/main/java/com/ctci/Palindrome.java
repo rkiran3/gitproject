@@ -5,7 +5,6 @@ package com.ctci;
  */
 public class Palindrome {
     public static void main(String []args) {
-        String str = "maddam";
         String words [] = { "Anna","Civic",
                 "Kayak",
                 "Level",

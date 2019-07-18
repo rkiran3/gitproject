@@ -38,7 +38,7 @@ public class CopyEndy {
         System.out.println(
                 IntStream.of(copyEndy(nums, 2))
                         .mapToObj(Integer::toString)
-                        .collect(Collectors.joining(", ", "[", "]")));// prints [1, 1]
+                        .collect(Collectors.joining(", ", "[", "]")));// prints [9, 90]
 
         System.out.println("Test2");
         System.out.println(
@@ -52,6 +52,6 @@ public class CopyEndy {
         System.out.println(
                 IntStream.of(copyEndy(nums, 2))
                         .mapToObj(Integer::toString)
-                        .collect(Collectors.joining(", ", "[", "]")));  // prints 6, 2, 4
+                        .collect(Collectors.joining(", ", "[", "]")));  // prints [1, 1]
     }
 }
