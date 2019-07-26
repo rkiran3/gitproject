@@ -126,7 +126,7 @@ String result  = Stream.of("jan,31", "feb,28")
 // will print "31,28"    
 </pre>
 
-# Iterate a list and create a new LinkedList <a name="linked01"></a>
+# Iterate a List and create a new LinkedList <a name="linked01"></a>
 Using an existing list, we can iterate to create another List with a different type. For example, we could create a Linked List of objects. Notice in below example - a new LinkedList is created by going over objects in a list.
 [Code](../JavaExamples/src/main/java/com/sandbox/java8/CollectorExercise07.java)
 <pre>
