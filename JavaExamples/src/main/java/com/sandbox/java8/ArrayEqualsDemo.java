@@ -1,7 +1,5 @@
 package com.sandbox.java8;
 
-import org.junit.Assert;
-
 public class ArrayEqualsDemo {
 
     public static void testArrayEquals() {
@@ -18,14 +16,10 @@ public class ArrayEqualsDemo {
         Item1 [] actualArr = new Item1[] { itemA, itemB };        
         Item1 [] expectedArr = new Item1[] { itemC, itemD };
 
-        Assert.assertArrayEquals(expectedArr, actualArr);
-        
-        
+        assert expectedArr.length == actualArr.length;
+        assert (expectedArr[0]).name.equals((actualArr[0]).name); 
     }
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
-
         testArrayEquals();
     }
-
 }
