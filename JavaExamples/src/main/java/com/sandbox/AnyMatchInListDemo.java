@@ -1,6 +1,8 @@
 package com.sandbox;
 
 import java.util.Arrays;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -34,28 +36,41 @@ public class AnyMatchInListDemo {
         
         contains = Arrays.asList(new Integer [] {11, 22, 33}).stream()            
             .mapToInt(Integer::valueOf)
-            .anyMatch(i -> i == 33);
+            .anyMatch(i -> i == 33);    // will find 33 in List
         // contains will be true
         assert(contains);
         
         // Test to filter entries with no name (i.e. null values)
         List <Employee> empList = new ArrayList<>();
-        empList.add(new Employee(22, null ));
-        empList.add(new Employee(44, "Chicago"));    // populate with no value
+        Employee emp1 = new Employee(22, null);     // emp with no name
+        Employee emp2 = new Employee(44, "Smith");
+                
+        // Add to Employee List
+        empList.add(emp1);
+        empList.add(emp2);
         
-        List <Employee> filteredEmpList = empList.stream()
+        // Get all employees with No Name
+        List <Employee> empWithNameList = empList.stream()
+                .filter(e -> e.getName() != null)
+                .collect(Collectors.toList());
+        
+        assertEquals(1, empWithNameList.size());    // only one Employee does not have name
+        assertTrue(empWithNameList.get(0).getName().equals("Smith"));
+        
+        // Find all employees under age 30
+        List <Employee> youngEmpList = empList.stream()
             .filter(e -> e.getAge() < 30 )
             .collect(Collectors.toList());
-                    
-        System.out.println(filteredEmpList); // will print Emp with 22
+          
+        assertEquals(1, youngEmpList.size()); // will show employees less than age 30 
         
         // Now add a check for an employee having a name value (i.e filter before using)
-        filteredEmpList = empList.stream()
+        youngEmpList = empList.stream()
             .filter(e -> e.getName() != null)
             .filter(e -> e.getAge() < 30 )
             .collect(Collectors.toList());
             
-        System.out.println(filteredEmpList); // should print empty list
+        assertEquals(0, youngEmpList.size()); 
 
     }
 }
