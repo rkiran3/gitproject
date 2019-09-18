@@ -9,21 +9,24 @@ import java.util.function.Function;
 /**
  * Convert Array of primitive integers to List of Integer Objects
  */
-class ItemP {
-    private Integer id;
-    private String name;
-    
-    public ItemP (Integer id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-    
-    public String toString() { return this.name; }
-}
 
 public class ItemPriceList {
 
+    class ItemP {
+        private Integer id;
+        private String name;
+        
+        public ItemP (Integer id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+        
+        public String toString() { return this.name; }
+    }
+
     public static void main( String [] args) {
+        ItemPriceList itemPriceList = new ItemPriceList();
+        
         // Array of primitives
         int [] priceArray = { 0, 100, 200, 300 };
         
@@ -38,7 +41,7 @@ public class ItemPriceList {
         // Construct a List of Objects, pass constructor parameters to each Object
         List <ItemP> itemPList = intList
             .stream()
-            .map(i -> new ItemP(i, i.toString()))
+            .map(i -> itemPriceList.new ItemP(i, i.toString()))
             .collect(Collectors.toList());
             
        String outString = itemPList.stream()    
@@ -47,5 +50,10 @@ public class ItemPriceList {
             .collect(Collectors.joining(","));
 
         System.out.println("output: "+ outString);
+        
+        if (!outString.equals("0,100,200,300")) {
+            System.out.println("Error");
+            
+        }
     }
 }
