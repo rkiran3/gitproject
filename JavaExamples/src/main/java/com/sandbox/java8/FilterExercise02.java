@@ -1,8 +1,8 @@
 package com.sandbox.java8;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+//import static org.junit.Assert.assertArrayEquals;
+//import static org.junit.Assert.assertEquals;
+//import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -19,7 +19,7 @@ public class FilterExercise02 {
         long count = state.chars()
                 .filter(i -> i == givenChar)
                 .count();
-        assertEquals(count, 4);
+        //assertEquals(count, 4);
 
         
         String [] monthsArray = { "January", "February", "March", "May", "June", "July" };
@@ -38,7 +38,7 @@ public class FilterExercise02 {
                 .collect(Collectors.toList());
         
         String[] expected = { "January", "February", "May", "July" };
-        assertArrayEquals(expected, monthsEndsY.toArray());
+        //assertArrayEquals(expected, monthsEndsY.toArray());
         
         // another example to filter out null values
         Map <String, Object> dict = new LinkedHashMap<>();
@@ -51,8 +51,8 @@ public class FilterExercise02 {
             .collect(
                     Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         
-        assertTrue(newMap.size() ==  1);
-        assertTrue(newMap.containsKey("February"));
+        //assertTrue(newMap.size() ==  1);
+        //assertTrue(newMap.containsKey("February"));
         
         // another way to remove entries with null values is to use removeIf
         dict.values().removeIf(Objects::isNull);
