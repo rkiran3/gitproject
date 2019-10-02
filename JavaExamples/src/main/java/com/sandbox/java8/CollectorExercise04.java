@@ -34,3 +34,4 @@ public class CollectorExercise04 {
         System.out.println(accounts);
     }
 }
+    

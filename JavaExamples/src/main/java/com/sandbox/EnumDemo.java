@@ -13,8 +13,12 @@ public class EnumDemo{
     public static void main (String [] args) {
         System.out.println("Hello");
         
-        Integer value = new Integer(4);
-        switch(value) {
+        System.out.println(Type.RED);
+        Type inType = Type.RED;
+        
+        switch(inType) {
+            case RED:
+                break;
             default:
                 break;
         }
