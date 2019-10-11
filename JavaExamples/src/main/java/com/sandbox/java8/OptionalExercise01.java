@@ -24,6 +24,8 @@ public class OptionalExercise01 {
     public void runExercises() throws IOException {
         System.out.println("Running exercise 1 solution...");
         exercise1();
+        
+        exercise2();
     }
 
     /**
@@ -60,6 +62,35 @@ public class OptionalExercise01 {
     }
 
     private void exercise2() {
+        // Inner class for testing List 
+        class Cover {
+            private List <String> coverList;
+
+            public List <String> getCoverList() {
+                return coverList;
+            }
+
+            public void setCoverList(List <String> coverList) {
+                this.coverList = coverList;
+            }
+            
+        }
+
+        Cover cover = new Cover();
+        List <String> namesList = Stream.of("January", "February")
+                .collect(Collectors.toList());
+        
+        //namesList.forEach(System.out::println);
+        cover.setCoverList(namesList);
+        cover.setCoverList(null);
+        
+         Optional.ofNullable(cover.getCoverList())
+                .map(list -> list.clear())
+                //.orElse//(() -> new ArrayList<String>());
+        
+        System.out.println(" Test: " );
+        
+        
     }
 
     /**
