@@ -22,7 +22,14 @@ public class ConstructListDemo {
             .collect(Collectors.toList());
             //.forEach(System.out::println);
            
+        // prints 2 4 
         evenList.stream()
-            .forEach(System.out::println);
+            .forEach(e -> System.out.printf("%d ", e));
+            
+        
+        assert evenList.size() == 2; // found two even entries 
+        
+        Integer first = evenList.stream().limit(1).findFirst().get();
+        assert first.equals(2);
     }
 }

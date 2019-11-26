@@ -2,6 +2,9 @@ package com.sandbox;
 
 import java.util.logging.Logger;
 
+import org.springframework.stereotype.Component;
+
+@Component("job")
 public class Job {
 
     String message;
@@ -26,6 +29,6 @@ public class Job {
     public Job(JobType jobType) {
         this.jobType = jobType;
         log.info("In Job Constructor, calling jobType.setName() ");
-        jobType.setName("Default ");
+        //jobType.setName("Default ");
     }
 }
