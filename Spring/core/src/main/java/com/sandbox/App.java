@@ -21,17 +21,17 @@ public class App
         // Create a bean which is declared as a Singleton and associate
         // a value to its member field, the same value can be viewed in
         // any bean that is created at later stage.
-        System.out.println("Creating a singleton \"jobBean\"");
+        log.info("Creating a singleton \"jobBean\"");
         Job job = (Job) context.getBean("jobBean");
 
         // set a value which can be printed later
         job.setMessage("SingletonDemo");
 
-        System.out.println("jobBean message=" + job.getMessage());
+        log.info("jobBean message=" + job.getMessage());
         log.info("Calling job.getJobType().getName()");
-        System.out.println(job.getJobType().getName());
+        log.info(job.getJobType().getName());
 
-        System.out.println("Creating another singleton \"jobBean\" ");
+        log.info("Creating another singleton \"jobBean\" ");
         Job jobSingleton = (Job) context.getBean("jobBean");
         System.out.println("Printing jobSingletonBean message=" +
                 jobSingleton.getMessage());

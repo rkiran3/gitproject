@@ -83,13 +83,8 @@ public class OptionalExercise01 {
         //namesList.forEach(System.out::println);
         cover.setCoverList(namesList);
         cover.setCoverList(null);
-        
-         Optional.ofNullable(cover.getCoverList())
-                .map(list -> list.clear())
-                //.orElse//(() -> new ArrayList<String>());
-        
+                
         System.out.println(" Test: " );
-        
         
     }
 
