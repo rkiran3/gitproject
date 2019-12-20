@@ -4,7 +4,7 @@ enum Type {
     RED(4);
     final Integer wheels;
     Type(int wheels) {
-        this.wheels = new Integer(wheels);
+        this.wheels = Integer.valueOf(wheels);
     }
 }
 

@@ -50,7 +50,7 @@ public class OptionalExercise01 {
         }
         
         // test3: check for Integer
-        Integer defaultDays = new Integer(90);
+        Integer defaultDays = Integer.valueOf(90);
         Integer current = null;
         Integer days = Optional.ofNullable(current)
             .orElse(defaultDays);

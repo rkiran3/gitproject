@@ -42,7 +42,7 @@ public class LambdaExample01 {
         	friends
         	.stream()
         	.map(w -> 
-        		new Character(w.charAt(0)).toString().toUpperCase() + w.substring(1).toLowerCase()
+        		Character.valueOf(w.charAt(0)).toString().toUpperCase() + w.substring(1).toLowerCase()
         		)
         	.collect(Collectors.joining(", ", "{", "}"))
         ); // prints {Brian, Nate, Cate, Bob};

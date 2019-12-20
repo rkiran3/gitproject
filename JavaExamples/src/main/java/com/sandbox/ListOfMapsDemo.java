@@ -69,7 +69,7 @@ public class ListOfMapsDemo {
             .limit(1)
             .findFirst()
             .map(x -> x.get("days"))
-            .orElse(new Integer(0));
+            .orElse(Integer.valueOf(0));
             
             
         System.out.println("First: " + firstEntry);

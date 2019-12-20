@@ -1,7 +1,6 @@
 package com.sandbox.java8;
 
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 /**
  *

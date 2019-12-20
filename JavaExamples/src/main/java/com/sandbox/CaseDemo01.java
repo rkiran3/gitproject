@@ -1,24 +1,28 @@
 package com.sandbox;
 
+import java.util.logging.Logger;
+
 public class CaseDemo01 {
-    public static final Integer PRODUCT_10 = new Integer (10);
-    public static final Integer PRODUCT_20 = new Integer (20);
-    public static final Integer PRODUCT_30 = new Integer (30);
+	public final static Logger log = Logger.getLogger(CaseDemo01.class.getName());
+	
+    public static final Integer PRODUCT_10 = Integer.valueOf(10);
+    public static final Integer PRODUCT_20 = Integer.valueOf(20);
+    public static final Integer PRODUCT_30 = Integer.valueOf(30);
 
     public static void main(String [] args) {
-        Integer productId = new Integer (10);
+        Integer productId = Integer.valueOf(10);
              
         switch (productId.intValue()) {
             case 10:
-                System.out.println("found 10");
+                log.info("found 10");
                 break;
                 
             case 20:
-                System.out.println("Found 20");
+                log.info("Found 20");
                 break;
                 
             default:
-                System.out.println("Default");
+                log.info("Default");
                 break;
         }
     }

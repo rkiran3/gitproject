@@ -22,8 +22,6 @@ public class CollectorExercise04 {
 
     public static void main(String[] args) {
     
-        List <String> entries = new ArrayList<String> ();
-
         String [] tokens = demoStr.split("\n");
         //System.out.println(tokens);
         List <String> accounts = Arrays.asList(tokens).stream()

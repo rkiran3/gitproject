@@ -1,6 +1,5 @@
 package com.sandbox;
 
-//import static org.junit.Assert.assertArrayEquals;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -38,10 +37,10 @@ public class FindDuplicateFileNamesInList {
         Map <String, String> map = new LinkedHashMap<String, String>(); // keep them ordered, easier to test
         String destFolder = "C://dest//";
         for (String srcFullName: srcFullNames) {
-            // Get filename from fullpath
+            // Get filename from full path
             String fileName = srcFullName.substring(srcFullName.lastIndexOf("//")+2, srcFullName.length());
             
-            // construct dest filename
+            // construct destination filename
             String destFullName = destFolder + fileName;
             if (!map.containsValue(destFullName)) {
                 map.put(srcFullName, destFullName);
