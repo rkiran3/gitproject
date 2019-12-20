@@ -14,12 +14,9 @@ public class ContainsStringTest {
         // Create an array of Strings
         List <String> colors = Arrays.asList("Red", "Blue", "Green");
 
-        // Convert to int value and check if number exists
         boolean contains = colors.stream()
             .anyMatch(c -> c.equals("Red"));
         assert(contains);
 
-        System.out.println(contains);
-        
     }
 }

@@ -3,9 +3,7 @@ package com.sandbox;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
 /**
@@ -19,14 +17,14 @@ public class ListOfMapsFilterDemo {
         
         // Create a Map to store attributes
         Map <String, Object> tmpMap = new HashMap<String, Object>();
-        tmpMap.put("revenue", new Integer(21));
-        tmpMap.put("valid", new Boolean(false));
+        tmpMap.put("revenue", Integer.valueOf(21));
+        tmpMap.put("valid", Boolean.FALSE);
         // Add the map to List
         listOfMaps.add(tmpMap);
         
         Map <String, Object> tmpMap2 = new HashMap<String, Object>();
-        tmpMap2.put("revenue", new Integer(33));
-        tmpMap2.put("valid", new Boolean(true));
+        tmpMap2.put("revenue", Integer.valueOf(33));
+        tmpMap2.put("valid", Boolean.TRUE);
         // Add the map to List
         listOfMaps.add(tmpMap2);
         

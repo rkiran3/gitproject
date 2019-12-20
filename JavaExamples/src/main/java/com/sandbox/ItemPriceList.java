@@ -2,9 +2,7 @@ package com.sandbox;
 
 import java.util.List;
 import java.util.Arrays;
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
-import java.util.function.Function;
 
 /**
  * Convert Array of primitive integers to List of Integer Objects
@@ -30,7 +28,7 @@ public class ItemPriceList {
         // Array of primitives
         int [] priceArray = { 0, 100, 200, 300 };
         
-        // Convert from Array of primitive ints to List of Integers
+        // Convert from Array of primitive integers to List of Integers
         List <Integer> intList = Arrays.stream(priceArray)
             .boxed()
             .collect(Collectors.toList());
@@ -44,7 +42,7 @@ public class ItemPriceList {
             .map(i -> itemPriceList.new ItemP(i, i.toString()))
             .collect(Collectors.toList());
             
-       String outString = itemPList.stream()    
+       String outString = itemPList.stream()
             //.forEach(System.out::println);
             .map(Object::toString)
             .collect(Collectors.joining(","));

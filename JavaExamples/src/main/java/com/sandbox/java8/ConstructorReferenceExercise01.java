@@ -14,6 +14,8 @@ class User {
     public User(String name) {this.name = name;}
     public String toString() { return "User: " + name;}
 }
+
+
 public class ConstructorReferenceExercise01 {
 
     public static void main(String [] args) {
@@ -24,6 +26,8 @@ public class ConstructorReferenceExercise01 {
                 .stream()
                 .map(User::new);
 
-        userStream.forEach(System.out::println);
+        //userStream.forEach(System.out::println);
+        
+        assert (userStream.count() == 2);
     }
 }

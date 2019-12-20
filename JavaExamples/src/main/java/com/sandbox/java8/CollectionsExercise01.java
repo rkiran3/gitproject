@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class CollectionsExercise01 {
     public static void main(String[]args) {
-        String [] cities = {"A", "B"};
         List<String> values = Collections.emptyList();
         for (Iterator<String> valuesIterator = values.iterator();
                 valuesIterator.hasNext();) {

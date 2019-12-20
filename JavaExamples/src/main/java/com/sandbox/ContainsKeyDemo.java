@@ -1,7 +1,5 @@
 package com.sandbox;
 
-import java.util.Arrays;
-//import java.util.stream.Stream;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -12,8 +10,8 @@ public class ContainsKeyDemo {
 
     public static Map <String, Integer> STATES_MAP = new HashMap<String, Integer>();
     static {
-        STATES_MAP.put("AK", new Integer(31));
-        STATES_MAP.put("FL", new Integer(28));
+        STATES_MAP.put("AK", Integer.valueOf(31));
+        STATES_MAP.put("FL", Integer.valueOf(28));
     }
     
     public static void main( String [] args) {

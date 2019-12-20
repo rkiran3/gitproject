@@ -1,9 +1,7 @@
 package com.sandbox;
 
-import java.util.ArrayList;
 import java.util.stream.Stream;
 import java.util.List;
-import java.util.Map;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -48,6 +46,6 @@ public class ExecMethodForEachDemo {
             .map(Object::toString)
             .collect(Collectors.joining(","));
             
-        assert(allMonths.equals("November,December")); 
+        assert(allMonths.equals("November,December"));
     }
 }
