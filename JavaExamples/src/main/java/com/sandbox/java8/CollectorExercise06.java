@@ -1,7 +1,5 @@
 package com.sandbox.java8;
 
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +22,7 @@ public class CollectorExercise06 {
                           }
                           return str;
                         }));
-        //assertEquals("Jan,Feb,Mar", result1);
+        assert("Jan,Feb,Mar".equals(result1));
 
         // Test for empty entries, should return "Jan, Mar"
         String [] emptyMonthsArray = { "Jan", "", "Mar"};
@@ -38,7 +36,7 @@ public class CollectorExercise06 {
                           }
                           return str;
                         }));
-        //assertEquals("Jan,Mar", result2);
+        assert("Jan,Mar".equals(result2));
         
 
         // Test for null string entries, should return "Jan,Mar"
@@ -53,7 +51,7 @@ public class CollectorExercise06 {
                           }
                           return str;
                         }));
-        //assertEquals("Jan,Mar", result3);
+        assert("Jan,Mar".equals(result3));
 
         
         // Test for null string entries, should return null
