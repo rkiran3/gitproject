@@ -33,15 +33,19 @@ public class CollectorExercise08 {
                 .map(p -> p.getName())
                 .collect(Collectors.joining(","));
         
-        if (!"January,February".equals(expected)) {
-            System.out.println("Test fails");
-        }
+        assert("January,February".equals(expected));
         
         return names;
     }
+    
     public static void main(String[] args) {
-        System.out.println("CollectorExercise");
-        CollectorExercise08.getNames();        
+    	List<String> namesList = CollectorExercise08.getNames();
+        assert(2 == namesList.size());
+        
+        String names = namesList.stream()
+        		.collect(Collectors.joining(","));
+        
+        assert("January,February".equals(names));
     }
 
 }

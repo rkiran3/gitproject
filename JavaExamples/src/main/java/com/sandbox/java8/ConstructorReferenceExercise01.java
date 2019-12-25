@@ -26,8 +26,6 @@ public class ConstructorReferenceExercise01 {
                 .stream()
                 .map(User::new);
 
-        //userStream.forEach(System.out::println);
-        
         assert (userStream.count() == 2);
     }
 }
