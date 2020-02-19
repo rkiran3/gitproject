@@ -1,6 +1,5 @@
 package com.sandbox.java8;
 
-//import static org.junit.Assert.assertArrayEquals;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -59,7 +58,7 @@ public class ComparatorExercise01 {
                 }; 
         
         // Define comparator for Names, sort and validate
-        Comparator <Person> personNameComparator = Comparator.comparing(Person::getName);        
+        Comparator <Person> personNameComparator = Comparator.comparing(Person::getName);
         Person [] personArray = personList.toArray(new Person[personList.size()]);
         Arrays.sort(personArray, personNameComparator);
         //assertArrayEquals(personArray, sortedPersonByName);

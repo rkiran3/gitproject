@@ -13,8 +13,8 @@ public class ReduceExercise01 {
                 .mapToInt(word -> word.length())
                 .reduce (0, (len1, len2) -> len1+len2);
 
-        // Prints total of all words.
-        System.out.println("Total: " + total);
+        // total of all words.
+        assert(11 == total);
 
     }
 }

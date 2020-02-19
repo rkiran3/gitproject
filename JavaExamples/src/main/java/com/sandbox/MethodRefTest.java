@@ -21,7 +21,7 @@ class Item {
     String name;
     Integer Id;
     Item (String name, Integer id) { this.name = name; this.Id = id; }
-    Item() { name = ItemConstant.ITEM_NAME ; Id = new Integer(99); }
+    Item() { name = ItemConstant.ITEM_NAME ; Id = Integer.valueOf(99); }
     public String toString() { return name + " " + Id; }
     public Integer getId() { return Id; }
     public void setId(Integer id) { this.Id = id; }
@@ -35,7 +35,7 @@ public class MethodRefTest {
         
         List <Item> itemList = new ArrayList<Item>();
         // Add an Item with a name
-        itemList.add(new Item(ItemConstant.ITEM_RED, new Integer(11)));
+        itemList.add(new Item(ItemConstant.ITEM_RED, Integer.valueOf(11)));
         itemList.add(new Item()); // will set to name="Default" and Id=99
     
         // get all items that contain ITEM_NAME 
@@ -59,8 +59,6 @@ public class MethodRefTest {
         System.out.println("Testing 1");
         assert(selectedItem.getName().equals(ItemConstant.ITEM_RED));
 
-        List <Item> filteredList = filtered.collect(Collectors.toList());
-            
         // Return first item in the list, if there are no items - return a null
         List <Item> itemList2 = new ArrayList<Item>();
         Item dummyItem = itemList2.stream()

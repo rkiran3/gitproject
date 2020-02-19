@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Arrays;
-import java.util.regex.Pattern;
 import java.util.stream.*;
 /**
  * Exercise to add entries to List, Map and modify Map
@@ -14,8 +12,6 @@ public class ListDemo {
 
     public static void main( String [] args) {
         Map<String, List<String>> myMap = new HashMap<String, List<String>>(); // Map to Store Key, Value
-        String [] months = { "November" + " Month", "December" };
-        List <String> winterMonths = Arrays.asList(months);
         List <String>summerMonthsList = new ArrayList<String>();
         
         summerMonthsList.add("June" + " Month");
@@ -28,7 +24,7 @@ public class ListDemo {
         List <String>secondList = myMap.get("months");
         secondList.add("August");
         
-        assert(summerMonthsList == secondList);        
+        assert(summerMonthsList == secondList); 
         
         String message = "jan:31|feb: 28";
         
@@ -53,12 +49,14 @@ public class ListDemo {
         
         
         String janMonthAndDay = "Jan:31";
-        //myMonthMap.forEach((k, v) -> System.out.println(k + " " + v));        
+        //myMonthMap.forEach((k, v) -> System.out.println(k + " " + v));
         Map <String, String> monthDayMap = Stream.of(janMonthAndDay)
             .map(s -> s.split(":", 2))
             //.peek((k) -> System.out.println(k[0] + " " + k[1]))
             .collect(Collectors.toMap(a -> a[0], a -> a[1]));
             //.forEach((k) -> System.out.println(k[0] + " " + k[1]));
+        assert(monthDayMap != null);
+        
         System.out.println("Program complete");
     }
 }

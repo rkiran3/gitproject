@@ -20,7 +20,7 @@ public class SPOJSMPSUM {
         int total=0;
         int start = 5;
         int end = 6;
-        /* conventional accumate of totals */
+        /* conventional accumulate of totals */
         for (int i=start; i <=end; i++) {
             total+= (i*i);
         }
