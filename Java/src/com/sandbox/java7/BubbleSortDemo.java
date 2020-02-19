@@ -2,15 +2,17 @@ package com.sandbox.java7;
 
 // This program will sort an array of ints and prints output array
 //
-public class BubbleSortDemo {
+public final class BubbleSortDemo {
+	
+	private BubbleSortDemo() { }
     // input array
     static int [] elements = { 15, 4, 2, 6, 10 };   // after sorting: 4 2 6 10 15
 
     // Print array
     public static void printArray() {
         //
-        for (int i=0; i< elements.length; i++ ){
-            System.out.print("[ " + elements[i] + " ] ");
+        for (int element : elements){
+            System.out.print("[ " + element + " ] ");
         }
     }
 
