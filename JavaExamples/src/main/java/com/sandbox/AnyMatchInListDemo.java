@@ -1,20 +1,21 @@
 package com.sandbox;
 
 import java.util.Arrays;
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
 import java.util.Objects;
+import java.util.logging.Logger;
+
 
 /**
  * Check for existence of Integer in an Array
  */ 
  public class AnyMatchInListDemo {
+	 final static Logger log = Logger.getLogger(AnyMatchInListDemo.class.getName());
 
-    class Employee {
+	 // class to use for testing
+	 class Employee {
         int age;
         String name;
         public Employee(int age, String name ) { this.age = age; this.name = name; }
@@ -24,61 +25,61 @@ import java.util.Objects;
     }
 
     public static void main( String [] args) {
-        System.out.println("Begin");
+        log.info("Begin");
         
-        AnyMatchInListDemo anyMatchInList = new AnyMatchInListDemo();
-        
-        Integer []types = {new Integer(22), new Integer (33)};
+        AnyMatchInListDemo demo = new AnyMatchInListDemo();
+
+        // Sample values for testing - we will check if array contains a specific value
+        Integer []types = {Integer.valueOf(22), Integer.valueOf(33)};
            
-        // Convert to int value and check if number exists
-        boolean contains = Arrays.asList(types).stream()            
-            .mapToInt(Integer::valueOf)            
+        // Convert to integer value and check if number exists in Array [22, 33]
+        boolean contains24 = Arrays.asList(types).stream()
+            .mapToInt(Integer::valueOf)		// this converts from Integer Object to primitive integer
             .anyMatch(i -> i == 24);
-        // contains will be false
-        assert(!contains);
+        assert(!contains24);	// 24 does not exist in array
         
-        contains = Arrays.asList(new Integer [] {11, 22, 33}).stream()            
+        boolean contains33 = Arrays.asList(new Integer [] {11, 22, 33}).stream()
             .mapToInt(Integer::valueOf)
             .anyMatch(i -> i == 33);    // will find 33 in List
-        // contains will be true
-        assert(contains);
+        assert(contains33);		// found specific value
         
-        // Test to filter entries with no name (i.e. null values)
-        List <Employee> empList = new ArrayList<>();
-        Employee emp1 = anyMatchInList.new Employee(22, null);     // emp with no name
-        Employee emp2 = anyMatchInList.new Employee(44, "Smith");
-                
+        // Now, test by adding an Employee Object with different attributes
+        List <Employee> employeeList = new ArrayList<>();
+        Employee emp1 = demo.new Employee(22, null);     // add an Employee whose name is not defined yet
+        Employee emp2 = demo.new Employee(44, "Smith");
+
         // Add to Employee List
-        empList.add(emp1);
-        empList.add(emp2);
+        employeeList.add(emp1);
+        employeeList.add(emp2);
+        
+        boolean containsUnder30Age = employeeList.stream()
+        	.anyMatch(e -> e.getAge() < 30); // we have one employee under 30 years of age
+        assert(containsUnder30Age);
+        
+        boolean containsUnder10Age = employeeList.stream()
+            	.anyMatch(e -> e.getAge() < 10); // we do not have any employees under 30 years of age
+        assert(!containsUnder10Age);
         
         // Get all employees with No Name
-        List <Employee> empWithNameList = empList.stream()
+        List <Employee> empWithNameList = employeeList.stream()
                 .filter(e -> e.getName() != null)
                 .collect(Collectors.toList());
-
-        if (empWithNameList.size() != 1){
-            System.out.println("Error");
-        }
-        //assertEquals(1, empWithNameList.size());    // only one Employee does not have name
-        //assertTrue(empWithNameList.get(0).getName().equals("Smith"));
+        assert(empWithNameList.size() > 0);
         
-        // Find all employees under age 30
-        List <Employee> youngEmpList = empList.stream()
+        // Find all employees under age 30 (employeeList
+        List <Employee> under30EmployeeList = employeeList.stream()  // employeeList has one entry with 22
             .filter(e -> e.getAge() < 30)
             .collect(Collectors.toList());
-
-            
-        //assertEquals(1, youngEmpList.size()); // will show employees less than age 30 
+        assert(under30EmployeeList.size() > 0);
         
         // Now add a check for an employee having a name value (i.e filter before using)
-        youngEmpList = empList.stream()
+        List <Employee> under30WithNameEmployeeList = employeeList.stream()
             .filter(e -> Objects.nonNull(e.getName()))
             .filter(e -> e.getAge() < 30)
             .collect(Collectors.toList());
             
-        //assertEquals(0, youngEmpList.size()); 
+        assert(under30WithNameEmployeeList.size() == 0); 
 
-        System.out.println("End");
+        log.info("End");
     }
 }

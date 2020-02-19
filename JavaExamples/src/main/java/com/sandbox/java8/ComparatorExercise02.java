@@ -11,8 +11,8 @@ import static java.util.Comparator.*;
  * to sort them by name, days
  */
 class Month {
-    private     int     days;
-    private     String name;
+    private int days;
+    private String name;
 
     public String getName() {
         return name;

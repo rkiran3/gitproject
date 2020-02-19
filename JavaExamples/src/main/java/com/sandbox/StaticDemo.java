@@ -6,11 +6,11 @@ import java.util.List;
 class Board {
 	public static final List<Integer> idList = new ArrayList<Integer>();
 	static {
-		idList.add(new Integer(22));
+		idList.add(Integer.valueOf(22));
 	}
 
 	static {
-		idList.add(new Integer(22));
+		idList.add(Integer.valueOf(22));
 	}
 }
 

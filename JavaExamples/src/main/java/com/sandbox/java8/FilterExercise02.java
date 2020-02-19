@@ -20,7 +20,7 @@ public class FilterExercise02 {
         long count = state.chars()
                 .filter(i -> i == givenChar)
                 .count();
-        //assertEquals(count, 4);
+        assert(count == 4);
 
         
         String [] monthsArray = { "January", "February", "March", "May", "June", "July" };
@@ -38,7 +38,11 @@ public class FilterExercise02 {
                 .map(Month::getName)
                 .collect(Collectors.toList());
         
-        String[] expected = { "January", "February", "May", "July" };
+        assert (monthsEndsY.size() == 4);
+        assert (monthsEndsY.get(0).equals("January"));
+        assert (monthsEndsY.get(1).equals("February"));
+        assert (monthsEndsY.get(2).equals("May"));
+        assert (monthsEndsY.get(3).equals("July"));
         //assertArrayEquals(expected, monthsEndsY.toArray());
         
         // another example to filter out null values
@@ -46,13 +50,15 @@ public class FilterExercise02 {
         // Output:  { "February": Integer(28) }
         Map <String, Object> dict = new LinkedHashMap<>();
         dict.put("January", null);
-        dict.put("February", new Integer(28));
+        dict.put("February", Integer.valueOf(28));
         dict.put("March", null);        
         Map <String, Object> newMap = dict.entrySet().stream()
             .filter(m -> m.getValue() != null)
             .collect(
                     Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
+        assert(newMap.size() == 1);
+        
         // Filter map entries and get the value associated with Key 
         // Input: { "December": "Cold", "January": "Colder", "February" : "Coldest" }
         // key = February
@@ -126,7 +132,7 @@ public class FilterExercise02 {
         Map <String, Object> demoMap3 = new HashMap<>();
         demoMap3.put("December", null);
         demoMap3.put("January", "Colder         ");
-        demoMap3.put("February", new Integer(23));
+        demoMap3.put("February", Integer.valueOf(23));
 
         demoMap3.entrySet().stream()
             .filter(entry -> entry.getValue() instanceof String)
