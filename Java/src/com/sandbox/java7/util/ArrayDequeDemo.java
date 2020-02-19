@@ -14,8 +14,7 @@ public class ArrayDequeDemo {
         for (String city : cityList) {            cityDeque.addFirst(city);        }
 
         // Iterate the queue and print entries, prints [C, B, A] in reverse
-        for (Iterator <String> iterator = cityDeque.iterator(); iterator.hasNext();) {
-            String entry = iterator.next();
+        for (String entry : cityDeque) {
             System.out.println(entry);
         }
 
@@ -23,8 +22,7 @@ public class ArrayDequeDemo {
         monthsDeque.addFirst("January");    // January, February
         monthsDeque.addLast("December");    // January, February, December
 
-        for (Iterator <String> iterator = monthsDeque.iterator(); iterator.hasNext();) {
-            String entry = iterator.next();
+        for (String entry : monthsDeque) {
             System.out.println(entry);
         }
     }

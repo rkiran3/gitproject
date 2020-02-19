@@ -12,8 +12,7 @@ class Person {
     }
 
     public String toString() {
-        String info = String.format("[%s]", this.name);
-        return info;
+        return String.format("[%s]", this.name);
     }
 
     public String getName() {
@@ -31,7 +30,7 @@ class Person {
                 result = false;
             } else {
                 Person person = (Person)object;
-                if ((person.name == this.name) && (person.number == this.number)) {
+                if ((person.name.equals(this.name)) && (person.number == this.number)) {
                     result = true;
                 }
             }

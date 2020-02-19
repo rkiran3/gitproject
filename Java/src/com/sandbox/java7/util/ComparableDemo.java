@@ -14,9 +14,7 @@ class Item implements Comparable <Item> {
 
     @Override
     public int compareTo(Item otherItem) {
-        int result = this.getName().compareTo(otherItem.getName());
-
-        return result;
+        return this.getName().compareTo(otherItem.getName());
     }
 }
 
@@ -38,10 +36,10 @@ public class ComparableDemo {
         Collections.sort(itemsList);
 
         // After sorting, the items are now sorted
-        assert (itemsList.get(0)).getName().equals("APerishableItem");
+        assert itemsList.get(0).getName().equals("APerishableItem");
 
-        assert (itemsList.get(1)).getName().equals("BPerishableItem");
+        assert itemsList.get(1).getName().equals("BPerishableItem");
 
-        assert (itemsList.get(2)).getName().equals("NonPerishableItem");
+        assert itemsList.get(2).getName().equals("NonPerishableItem");
     }
 }
