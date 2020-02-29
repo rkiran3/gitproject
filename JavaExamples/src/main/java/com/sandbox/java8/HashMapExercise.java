@@ -24,7 +24,7 @@ class Buyer {
 }
 
 public class HashMapExercise {
-    private static Map<String, Buyer> buyerMap = new HashMap<>();
+    //private static Map<String, Buyer> buyerMap = new HashMap<>();
 
     /**
      * Returns a list of Names

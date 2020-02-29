@@ -15,7 +15,7 @@ public class ConstructorDemo extends BaseDemo {
 	}
 	
 	public static void main(String[] args) {
-		ConstructorDemo demo = new ConstructorDemo();
+		//ConstructorDemo demo = new ConstructorDemo();
 	}
 
 }

@@ -66,10 +66,6 @@ public class OptionalExercise01 {
         class Cover {
             private List <String> coverList;
 
-            public List <String> getCoverList() {
-                return coverList;
-            }
-
             public void setCoverList(List <String> coverList) {
                 this.coverList = coverList;
             }

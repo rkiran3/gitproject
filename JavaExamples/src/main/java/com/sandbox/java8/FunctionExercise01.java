@@ -5,7 +5,6 @@ import java.util.function.Function;
 import java.util.function.IntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import static java.lang.Math.*;
 /**
  * A Function<T, R> operates on something and returns something:
  * it takes one argument (of generic type T) and
@@ -28,7 +27,7 @@ public class FunctionExercise01 {
         Function <Integer, Integer> absInt = java.lang.Math::abs;
         // this can be replaced by IntFunction which works with Primitives
         Function<String, Integer> parseIntPrimitive = Integer::parseInt;
-        IntFunction absIntPrimitive = Math::abs;
+        //IntFunction absIntPrimitive = Math::abs;
         Function<String, Integer> parseAndAbsInt = parseInt.andThen(absInt);
         //IntFunction<String, int> parseAndAbsInt2 = parseIntPrimitive.andThen(absIntPrimitive);
 
