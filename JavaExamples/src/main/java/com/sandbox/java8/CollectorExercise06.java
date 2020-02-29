@@ -66,6 +66,6 @@ public class CollectorExercise06 {
                           }
                           return str;
                         }));
-        //assertNull(result4);
+        assert(result4.equals(null));
     }
 }

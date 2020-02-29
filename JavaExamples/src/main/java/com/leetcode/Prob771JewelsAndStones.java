@@ -17,7 +17,7 @@ public class Prob771JewelsAndStones {
                 .filter(c -> J.contains(String.valueOf(c)))
                 .count();
         
-        //System.out.println("Count: " + count);
+        System.out.println("Count: " + count);
         return counter;
     }
     

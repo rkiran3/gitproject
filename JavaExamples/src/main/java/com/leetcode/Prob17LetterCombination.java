@@ -7,7 +7,7 @@ import java.util.Map;
  *
  */
 public class Prob17LetterCombination {
-    private static Map <Integer, String>phoneRepresentation = new HashMap();
+    private static Map <Integer, String>phoneRepresentation = new HashMap<Integer, String>();
     static {
         phoneRepresentation.put(1, "--");
         phoneRepresentation.put(2, "abc");

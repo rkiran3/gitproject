@@ -1,7 +1,5 @@
 package com.leetcode;
 
-import java.util.function.Consumer;
-
 /**
  *
  */

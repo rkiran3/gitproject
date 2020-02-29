@@ -15,8 +15,8 @@ public class DeletePriorChar {
         int dIndex = 0;
         
         for (int sIndex=0; sIndex < input.length; sIndex++) {
-            if (input[sIndex] == "$" || 
-                    ((sIndex+1 < input.length) && input[sIndex+1] == "$")) {
+            if (input[sIndex].equals("$") || 
+                    ((sIndex+1 < input.length) && input[sIndex+1].equals("$"))) {
                 continue;
             } 
             
