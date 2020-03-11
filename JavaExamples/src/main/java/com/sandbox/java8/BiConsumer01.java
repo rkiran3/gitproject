@@ -17,5 +17,4 @@ public class BiConsumer01 {
     static <T>void printMessage(T a, T b, BiConsumer<T, T> c) {
         c.accept(a, b);        
     }
-
 }
