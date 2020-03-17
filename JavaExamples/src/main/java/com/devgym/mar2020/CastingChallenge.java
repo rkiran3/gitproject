@@ -1,13 +1,5 @@
 package com.devgym.mar2020;
 
-/**
-java.lang.ClassCastException will be thrown.
-
-9.0
-
-java.lang.ArithmeticException will be thrown
-
-*/
 
 public class CastingChallenge {
 
@@ -33,5 +25,15 @@ What will be the output when the main method is executed as follows:
 
 javac CastingChallenge.java
 java CastingChallenge
+
+
+Correct Answer:
+java.lang.ClassCastException will be thrown. : Exception in thread "main" java.lang.ClassCastException: java.lang.Double cannot be cast to java.lang.Integer
+
+Incorrect Answer
+9.0
+
+Incorrect Answer
+java.lang.ArithmeticException will be thrown
 
 */
