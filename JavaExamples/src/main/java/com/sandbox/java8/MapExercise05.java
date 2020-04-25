@@ -7,7 +7,14 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class MapExercise05 {
-
+	public static Map<String, Object> loadMap() {
+        Map <String, Object> myMap = new HashMap<String, Object>();
+        myMap.put("ITEM", Integer.valueOf(44));
+        myMap.put("NUMBER", String.valueOf(44));
+		
+        return myMap;
+	}
+	
     public static void main(String[] args) {
         List <Map<String, Integer>> listOfMaps = new ArrayList<Map<String, Integer>>();
         
@@ -64,6 +71,11 @@ public class MapExercise05 {
             .collect(Collectors.toList());
         assert(listOfItemsWithInv.size() == 2);
         
+        MapExercise05 mapExercise = new MapExercise05();
+        Map <String, Object>initialMap = new HashMap<String, Object>();
+        
+        initialMap.putAll(mapExercise.loadMap()); 
+        System.out.println(initialMap);
         
         //System.out.println("Printing filtered list of maps");
         //listOfItemsWithInv
