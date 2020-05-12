@@ -2,7 +2,7 @@ package com.sandbox.java8;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.function.Function;
+//import java.util.function.Function;
 import java.util.function.Predicate;
 
 class Item {
@@ -52,20 +52,20 @@ public class PredicateExercise01 {
 
     public static void main(String[] args) {
         List <Item> itemsList = new LinkedList<Item>();
-        itemsList.add(new Item("January", new Integer(30)));
-        itemsList.add(new Item("February", new Integer(28)));
+        itemsList.add(new Item("January", Integer.valueOf(30)));
+        itemsList.add(new Item("February", Integer.valueOf(28)));
         
-        Function <Item, Boolean> funcEqDays = (Item i) -> { return i.getDays() > 30; } ;
+        //Function <Item, Boolean> funcEqDays = (Item i) -> { return i.getDays() > 30; } ;
         
         
         boolean equals31 = false;
 			 
 		// @formatter:on
         System.out.println("equals31 " + equals31);
-        //printListGreaterThan(itemsList, 5);
+        printListGreaterThan(itemsList, 5);
         
         
-        itemsList = null;
+        //itemsList = null;
         Item first = itemsList.stream()
         	.limit(1)
         	.findFirst()
