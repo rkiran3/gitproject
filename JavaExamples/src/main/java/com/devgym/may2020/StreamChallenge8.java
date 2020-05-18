@@ -1,3 +1,5 @@
+package com.devgym.may2020;
+
 import java.util.stream.*; 
 
 public class StreamChallenge8 {
