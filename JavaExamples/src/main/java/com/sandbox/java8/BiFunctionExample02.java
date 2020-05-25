@@ -2,8 +2,6 @@ package com.sandbox.java8;
 
 import java.util.Scanner;
 import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
 import java.util.logging.Logger;
 
 /**

@@ -6,9 +6,9 @@ public class BiConsumer01 {
 
     public static void main(String[] args) {
         BiConsumer<Integer, Integer> demoPrint = 
-                (a, b ) -> System.out.println(a + b) ;
+                (a, b) -> System.out.println(a + b) ;
                 
-        demoPrint.accept(new Integer(22), new Integer (44)); // prints 66
+        demoPrint.accept(Integer.valueOf(22), Integer.valueOf(44)); // prints 66
        
         printMessage("Hello", "World", (x, y) -> System.out.println(x + y));
         
