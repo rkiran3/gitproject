@@ -15,14 +15,14 @@ import java.util.logging.Logger;
 	 final static Logger log = Logger.getLogger(AnyMatchInListDemo.class.getName());
 
 	 // class to use for testing
-	 class Employee {
+     class Employee {
         int age;
         String name;
         public Employee(int age, String name ) { this.age = age; this.name = name; }
         public int getAge() { return age; }
         public String getName() { return name; }
         public String toString() { return "Age: " + age ; }
-    }
+     }
 
     public static void main( String [] args) {
         log.info("Begin");
