@@ -102,18 +102,16 @@ We can filter a list of Maps and get only the interested entries, for example to
 [Code](../JavaExamples/src/main/java/com/sandbox/ListOfMapsFilterDemo.java)
 
 
-<pre>
 
-// Now filter the List of Maps and get only the "valid" entries
-List <Map<String, Object>> resultList = listOfMaps.stream()
+
+	// Now filter the List of Maps and get only the "valid" entries
+	List <Map<String, Object>> resultList = listOfMaps.stream()
     <b>.filter(m -> (Boolean)m.get("valid")) </b>
     .collect(Collectors.toList());
 
-// Verify results
-if (resultList.size() > 0) {
-    System.out.println("Found values: ");
-    resultList.stream()
-        .forEach(m -> System.out.println((Integer)m.get("revenue")));
-
-</pre>
-
+	// Verify results
+	if (resultList.size() > 0) {
+		System.out.println("Found values: ");
+		resultList.stream()
+			.forEach(m -> System.out.println((Integer)m.get("revenue")));
+	}

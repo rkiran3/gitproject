@@ -4,56 +4,43 @@ import feedparser
 import sys
 
 urlDict = {
-    'ibd-business':'http://feeds2.feedburner.com/BusinessRss'
-#    'tech':'https://www.nasdaq.com/feed/rssoutbound?category=Technology'
-#    'stocks' : 'https://www.nasdaq.com/feed/rssoutbound?category=Stocks'
+    'ibd-business': 'http://feeds2.feedburner.com/BusinessRss',
+    'nasdaq-tech':'https://www.nasdaq.com/feed/rssoutbound?category=Technology',
+    'nasdaq-stocks': 'https://www.nasdaq.com/feed/rssoutbound?category=Stocks',
 }
 
 for key, value in urlDict.items():
-    print ('Processing ', key, '->', value)
+    print('Processing ', key, '->', value)
     url = value
+    json_feed = feedparser.parse(url)
 
-    json_feed  = feedparser.parse(url)
-
-    # works
-    entry = json_feed['entries'][0]
+    # for debugging
+    # entry = json_feed['entries'][0]
     # summary_detail prints too much info for IBD
-    #print ("summary_detail: ", entry['summary_detail'])
-    #print ("links: ",  entry['links'])#
-    print ("link ====> " ,  entry['link'])
-    #print ("title_detail", entry['title_detail'])
-    print ("summary ====>", entry["summary"])
-    if ('content' in entry):
-        print ("content====>", entry["content"])
+    # print ("summary_detail: ", entry['summary_detail'])
+    # print ("links: ",  entry['links'])#
+    # print("link ====> ", entry['link'])
+    # print ("title_detail", entry['title_detail'])
+    # print("summary ====>", entry["summary"])
+    # if 'content' in entry:
+    #    print("content====>", entry["content"])
 
-    #print (len(entry))
+    # print (len(entry))
     print("")
 
-    sys.exit(-1)
-    for entry in json_feed['entries']:
-        #print (entry['links']['href'])
-        linksMap = entry['links'][0]
-        
-        print (linksMap['href'])
-        #print (entry['summary_detail'])
-        print ("Title: " + entry['title'])
-        print ("Description: " + entry['description'])
-        #print (entry['subtitle'])
-        print ("----------\n")
+    with open(key + '-feedoutput.html', 'w', encoding='utf-8') as fo:
+        fo.write("<html>")
 
-#print (json_obj.feed.title)
+        for entry in json_feed['entries']:
+            # print("Link: " + entry['link'])
+            # linksMap = entry['links'][0]
+            # print(linksMap['href'])
+            # print (entry['summary_detail'])
+            fo.write("<a href=" + entry['link'] + ">" + entry['title'] + "</a>")
+            fo.write(entry['description'])
+            # print (entry['subtitle'])
+            fo.write("<br />")
 
-#print (json_obj.feed.subtitle)
+        fo.write("</html>")
 
-#print (json_obj['entries'])
-
-#for i in json_obj['entries']:
-#    print  i['summary']
-#    print ('')
-
-#print ('---')
-
-
-
-#print ("hello")
-
+# print ("hello")
