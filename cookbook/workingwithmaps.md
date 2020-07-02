@@ -7,10 +7,33 @@ To print key value pairs in a HashMap use the entrySet and print each entry.
         
         testMap.entrySet()
             .forEach(entry -> System.out.printf("%s:%d\n", entry.getKey(), entry.getValue()));
-        
-    
 
 Example [Code](../JavaExamples/src/main/java/com/sandbox/java8/HashMapExercise.java)
+
+# Remove certain keys from HashMap 
+When dealing with Map, it may sometimes be required to remove certain keys based on some criteria. In those cases we can use the **Collection.removeif()**
+
+KeysToInclude: "Chicago", "Phoenix"  
+Before  
+    Chicago=60612, Phoenix=76543, Boston=12345  
+After  
+    Chicago=60612, Phoenix=76543}  
+
+        String [] reqKeys = {"Chicago", "Phoenix"};
+        List<String> reqKeysList = Arrays.asList(reqKeys);
+        
+        Map <String, String> hashMap = new HashMap<>();
+        hashMap.put("Chicago", "60612");
+        hashMap.put("Boston", "12345");
+        hashMap.put("Phoenix", "76543");
+        
+        hashMap.entrySet()
+            	.removeIf(e -> !reqKeysList.contains(e.getKey()));
+
+Output:  
+Chicago=60612, Phoenix=76543  
+Example [Code](../JavaExamples/src/main/java/com/sandbox/java8/CollectorExercise05.java)
+
 
 # Print filtered entries in a HashMap
 To print key value pairs in a HashMap use the entrySet and print each entry.
@@ -30,14 +53,10 @@ Another example is to filter only entries that have String values
             .filter(entry -> entry.getValue() instanceof String)
             .forEach(entry -> System.out.printf("%s %s\n", entry.getKey(), (String)entry.getValue()));
             
-    
-
 Example [Code](../JavaExamples/src/main/java/com/sandbox/java8/HashMapExercise.java)
 
 
-
 # Process each entry in a List of Maps
-
 When we have a list where each entry is a Map, we can process them by converting the List into a stream and processing each entry.
 
 In this example, we will create two Maps with key value pairs, then add the Maps to a List.
