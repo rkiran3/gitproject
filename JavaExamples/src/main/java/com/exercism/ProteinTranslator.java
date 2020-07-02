@@ -22,8 +22,7 @@ public class ProteinTranslator {
 	public static void multiPut(String value, String ... keys) {
 		
 		Arrays.asList(keys).stream()
-			.map(k -> proteinMap.put(k, value))
-			.collect(Collectors.toList());
+			.forEach(k -> proteinMap.put(k, value));
 		
 	}
 	
