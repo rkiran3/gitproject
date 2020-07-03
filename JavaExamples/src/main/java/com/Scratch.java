@@ -1,5 +1,9 @@
 package com;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -31,6 +35,30 @@ public class Scratch {
 
         StringBuffer sb1 = new StringBuffer();
         sb1.append("012345678901234567890");
+        
+        Stream<String> singleStrs = java.util.regex.Pattern.compile("\\s*")
+        	.splitAsStream("a bag sentence");
+        
+        Map<String, Long> occur = singleStrs.collect(
+        		Collectors.groupingBy(
+        				Function.identity(), LinkedHashMap::new, Collectors.counting()));
+
+        Map.Entry<String, Long> result = occur.entrySet()
+        	.stream()
+        	.filter(entry -> entry.getValue() == 1)
+        	.findFirst()
+        	.orElse(null);
+        	
+       if(result != null) {
+    	   System.out.println("First entry: " + result.getKey());
+       }
+        
+        
+        Stream<Character> strChars = Integer.toBinaryString(15)
+        	.chars()
+        	.mapToObj(i -> (char) i);
+        
+        
         
         
         java.util.regex.Pattern.compile("\\s*").splitAsStream("wordx")
