@@ -8,14 +8,21 @@ import java.util.stream.Collectors;
  * For example, if there were two buyers each buying different items (list of Items)
  * then we can combine all those items into a single List that shows all the items.
  *   
- * @author rkiran
+ * Input 
+ * BuyersList:   [	
+ * 		"Tim", [ "beans", "carrots" ],
+ * 		"Tom", [ "apples", "oranges" ]
+ * ]
+ *
+ * Output:
+ *		[ "beans", "carrots", "apples", "oranges"]
  *
  */
 public class FlatMapExercise01 {
 
 	class Buyer {
 	    String name;
-	    private List<String> product;
+	    private List<String> productsList;
 
 	    public String getName() { return name; }
 
@@ -23,53 +30,41 @@ public class FlatMapExercise01 {
 
 	    public Buyer(String name, List<String> list) { 
 	    	this.name = name;
-	    	this.setProduct(list);    
+	    	this.setProductsList(list);    
 	    }
 
-		public List<String> getProduct() {
-			return product;
+		public List<String> getProductsList() {
+			return productsList;
 		}
 
-		public void setProduct(List<String> product) {
-			this.product = product;
+		public void setProductsList(List<String> productsList) {
+			this.productsList = productsList;
 		}
+
 	}
 
     public static void main(String [] args) {
-    	FlatMapExercise01 flat = new FlatMapExercise01();
+    	FlatMapExercise01 flatMapExercise = new FlatMapExercise01();
     	
-    	String [] produce = new String [] {"beans", "carrots"};
-    	List <String> produceList = new ArrayList<String>(Arrays.asList(produce));
+    	List <String> produceList = Arrays.asList("beans", "carrots");
 
-    	String [] fruits = new String [] {"apples", "oranges"};
-    	List <String> fruitsList = new ArrayList<String>(Arrays.asList(fruits));
+    	List <String> fruitsList = Arrays.asList("apples", "oranges");
 
-    	//FlatMapExercise01.Buyer buyer1 = flat.new Buyer("Tim", produceList);
-    	
     	Buyer [] buyersArray = {
-        		flat.new Buyer ("Tim", produceList),
-        		flat.new Buyer ("Tom", fruitsList)
+    			flatMapExercise.new Buyer ("Tim", produceList),
+    			flatMapExercise.new Buyer ("Tom", fruitsList)
         };
 
         // Convert array to List of Items
-        List <Buyer> buyersList = new ArrayList<Buyer>(Arrays.asList(buyersArray));
-    	
-//    	buyersList.stream()
-//    		.forEach(b -> System.out.println(b.getName()));
+        List <Buyer> buyersList = new ArrayList<>(Arrays.asList(buyersArray));    	
         
     	List <String> itemsList = buyersList.stream()
-    		.flatMap(b -> b.getProduct().stream())
+    		.flatMap(b -> b.getProductsList().stream())
     		.collect(Collectors.toList());
-    	
-    	// Print all the items that were bought by Tim and Tom
-//    	itemsList.stream()
-//    		.forEach(System.out::println);
     	
     	String allItems = itemsList.stream()
     		.collect(Collectors.joining(", "));
 
-    	//System.out.println(allItems);
-    	
     	if (!allItems.equals("beans, carrots, apples, oranges")) {
     		System.out.println ("Test fails");
     	}
