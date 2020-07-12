@@ -1,35 +1,48 @@
 package com.sandbox.java8;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.logging.*;
 
+/**
+ * Input:
+ * 	Months [ "Jan", "Feb" ]
+ *  days: 2
+ *  
+ * Output:
+ * 	[ "Jan-0", "Jan-1", "Feb-0", "Feb-1" ] 
+ * 
+ *
+ */
 public class FlatMapExercise02 {
 
+	public static Logger logger = Logger.getLogger(FlatMapExercise02.class.getName());
+	
+	// Create a List of Strings given month and num of days
+	// Input: Jan, 2
+	// Output: Jan-1, Jan-2
 	public static List <String> getDays(String month, int limit) {
-		List <String> daysList = new ArrayList<String>();
-		for (int i=0; i<limit; i++) {
-			daysList.add(month + "-" + i);
-		}		
+		List <String> daysList = IntStream.range(0, limit)
+			.mapToObj(i -> String.format("%s-%d", month, i))
+			.collect(Collectors.toList());
+		
 		return daysList;
 	}
 	
 	public static void main(String[] args) {
-		List <String> monthList = Arrays.asList("Jan", "Feb");
-		List <String> daysList = new ArrayList <String>();
+		logger.info("Begin");
+
+		List <String> monthsList = Arrays.asList("Jan", "Feb");
 				
-		// create a list of days using a limit (example: Jan-0, Jan-1, Feb-0, Feb-1)
-		daysList = monthList.stream()
-			.flatMap(m -> getDays(m,2).stream())
+		// Expected: Jan-0, Jan-1, Feb-0, Feb-1
+		List <String> daysList = monthsList.stream()
+			.flatMap(m -> getDays(m, 2).stream())
 			.collect(Collectors.toList());
+	
+		logger.info(daysList.toString());
 		
-		//daysList.forEach(System.out::println);
-		String totalDays = daysList.stream()
-			.collect(Collectors.joining(", "));
-		//System.out.println(totalDays);
-		if (!totalDays.equals("Jan-0, Jan-1, Feb-0, Feb-1")){
-			System.out.println("Fails");
-		}
+		logger.info("End");
 	}
 }
