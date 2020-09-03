@@ -32,7 +32,7 @@ We can create a List using:  **Arrays.asList(new Integer[]{11, 22, 33})**
         import java.util.stream.Stream;
         
         //Create a list of Integers
-        contains  = <b>Arrays.asList(new Integer[]{11, 22, 33})</b>.stream()
+        contains  = Arrays.asList(new Integer[]{11, 22, 33}).stream()
             .mapToInt(Integer::valueOf)
             .anyMatch(i -> i == 33);
         assert(contains);
@@ -69,7 +69,7 @@ To filter, we can use the `filter()` method and collect the entries that match a
         }
         
         public static void main(String [] args) {
-            String [] words                  = {"a", "bb", "b", "ccc"};
+            String [] words = {"a", "bb", "b", "ccc"};
             assert(wordsWithoutList(words, 1)
                 .equals(Arrays.asList("bb", "ccc"))) ; 
         }
@@ -97,15 +97,9 @@ Here we create a list of Month Objects using a stream. The Month object has a co
         Stream <Month> stream = Arrays.asList(monthsArr).stream()
             .map(Month::new);
         
-        // Invoke a method for each of the object, in this case - the method returns a String
-        // which is then collected into a List.
-        List <String> allMonthsList = stream
-            .map(DemoClass::displayStr)
-            .collect(Collectors.toList());
-        
-        
-# Process each entry using map  <a name="map01"></a>
-When we need to process each entry of a Stream of String (for example extract a specific word in a String), we can use `map` to retrieve the word and store the result.
+# Process each entry using map
+When we need to process each entry of a Stream of String 
+(for example extract a specific word in a String), we can use `map` to retrieve the word and store the result.
 
     String result  = Stream.of("jan,31", "feb,28")
         .map(w->w.split(",")[1])
@@ -113,7 +107,6 @@ When we need to process each entry of a Stream of String (for example extract a 
         
     // will print "31,28"    
     
-
 # Iterate a List and create a new LinkedList
 Using an existing list, we can iterate to create another List with a different type. For example, we could create a Linked List of objects. Notice in below example - a new LinkedList is created by going over objects in a list.
 [Code](../JavaExamples/src/main/java/com/sandbox/java8/CollectorExercise07.java)
