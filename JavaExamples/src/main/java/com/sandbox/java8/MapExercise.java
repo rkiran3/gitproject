@@ -24,31 +24,25 @@ public class MapExercise {
      * map() returns a stream of values
      * @return a List of updated prices
      */
-    public static List <Double> increasePrice(List <Integer> prices, int percentage) {
-        List <Double> increasedPrices;
+    public static List<Double> increasePrice(List <Integer> prices, int percentage) {
+        List<Double> increasedPrices;
         double percentageDbl = percentage/100.0;
 
-        /*prices
-                .stream()
-                .map(cost -> (cost*percentage/100) + cost)
-                .forEach(System.out::println);*/
-
-        increasedPrices = prices
-                .stream()
+        increasedPrices = prices.stream()
                 .map(cost -> (cost*percentageDbl) + cost)
                 .collect(Collectors.toList());
 
         return increasedPrices;
     }
     public static void main(String [] args) {
-        Converter <String, Integer> converter = (from) -> Integer.valueOf(from);
+        Converter<String, Integer> converter = (from) -> Integer.valueOf(from);
 
         Integer converted = converter.convert("20");
         System.out.println("converted = " + converted);
 
-        List <Integer> prices = Arrays.asList(100, 200, 300);
+        List<Integer> prices = Arrays.asList(100, 200, 300);
         int percentage = 10;
-        List <Double> increasedPrices = increasePrice(prices, percentage);
+        List<Double> increasedPrices = increasePrice(prices, percentage);
 
         prices.stream()
                 .map((cost)  -> (cost*0.12)+cost)
@@ -97,8 +91,7 @@ public class MapExercise {
 
         System.out.println("Printing Integer List: ");
         List <Integer> integerList = null;
-        IntStream
-                .range(1, 10)
+        IntStream.range(1, 10)
                 .mapToObj(i -> Integer.toBinaryString(i))
                 .flatMap(w -> w.chars().mapToObj(i -> (char) i))
                 .forEach(ch -> System.out.printf("%s ", ch));

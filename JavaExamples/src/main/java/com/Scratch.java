@@ -26,8 +26,11 @@ public class Scratch {
     }
 
     public static void main(String []args) {
-        String [] cities = { "Chicago", "Austin", "Topeka"};
-        String [] combination = combinations(cities);
+    	String[] months = null;
+    	java.util.Objects.requireNonNull(months);
+    	
+    	String[] cities = { "Chicago", "Austin", "Topeka"};
+        String[] combination = combinations(cities);
 
         for (String city: combination) {
             System.out.println(city);

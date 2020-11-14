@@ -23,8 +23,8 @@ public class FlatMapExercise02 {
 	// Create a List of Strings given month and num of days
 	// Input: Jan, 2
 	// Output: Jan-1, Jan-2
-	public static List <String> getDays(String month, int limit) {
-		List <String> daysList = IntStream.range(0, limit)
+	public static List<String> getDays(String month, int limit) {
+		List<String> daysList = IntStream.range(0, limit)
 			.mapToObj(i -> String.format("%s-%d", month, i))
 			.collect(Collectors.toList());
 		
@@ -34,10 +34,10 @@ public class FlatMapExercise02 {
 	public static void main(String[] args) {
 		logger.info("Begin");
 
-		List <String> monthsList = Arrays.asList("Jan", "Feb");
+		List<String> monthsList = Arrays.asList("Jan", "Feb");
 				
 		// Expected: Jan-0, Jan-1, Feb-0, Feb-1
-		List <String> daysList = monthsList.stream()
+		List<String> daysList = monthsList.stream()
 			.flatMap(m -> getDays(m, 2).stream())
 			.collect(Collectors.toList());
 	

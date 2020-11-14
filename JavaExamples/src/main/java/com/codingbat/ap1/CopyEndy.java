@@ -1,5 +1,6 @@
 package com.codingbat.ap1;
 
+import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -13,7 +14,8 @@ import java.util.stream.IntStream;
  */
 public class CopyEndy {
     public static Predicate<Integer> isEndyPredicate = n -> (n >=0 && n <10) || (n>=90 && n<=100);
-
+    public static IntPredicate isEndyIntPredicate = n -> (n >=0 && n <10) || (n>=90 && n<=100);
+    
     public static boolean isEndy(int n) {
         //System.out.println("n = [" + n + "]");
         boolean result = (n >=0 && n <10) || (n>=90 && n<=100);
@@ -21,13 +23,28 @@ public class CopyEndy {
     }
 
     public static int [] copyEndy(int [] nums, int count) {
-        int [] result = IntStream.of(nums)
+        int [] result = null;
+        result = IntStream.of(nums)
                 .boxed()
-                //.filter(n -> isEndy(n))
-                .filter(isEndyPredicate)
+                .filter(n -> isEndy(n))
                 //.peek(System.out::println)
                 .limit(count)
                 .mapToInt(i -> i)
+                .toArray();
+    	
+    	
+    	// using Predicate<Integer>
+        result = IntStream.of(nums)
+                .boxed()
+                .filter(isEndyPredicate)
+                .limit(count)
+                .mapToInt(i -> i)
+                .toArray();
+
+        // using IntPredicate
+        result = IntStream.of(nums)
+                .filter(isEndyIntPredicate)
+                .limit(count)
                 .toArray();
 
         return result;
@@ -44,7 +61,6 @@ public class CopyEndy {
         System.out.println(
                 IntStream.of(copyEndy(nums, 3))
                         .mapToObj(Integer::toString)
-                                //.boxed()
                         .collect(Collectors.joining(", ", "[", "]")));  // prints [9, 90, 6]
 
         System.out.println("Test3");

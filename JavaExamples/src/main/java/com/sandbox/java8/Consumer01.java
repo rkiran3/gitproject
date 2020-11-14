@@ -5,22 +5,34 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.function.Consumer;
 
+/*
+    Constructs a two Lists
+        One List of Strings corresponding to Array entries
+        Another List of String Lengths of those entries.
+
+    Input: {"January", "February", "March" }
+    Output
+        plainList = ["January", "February", "March"]
+        wordLengthList =  [7, 8, 5]
+
+*/
+
 public class Consumer01 {
 
 	public static void main(String[] args) {
 
-		List <String> plainList = new LinkedList<>();
-		List <Integer> wordLengthList = new LinkedList<>();
+		List<String> plainList = new LinkedList<>();
+		List<Integer> wordLengthList = new LinkedList<>();
 
 		// Create a Consumer that accepts a String and adds to LinkedList
 		// it does output any value
-		Consumer <String> myConsumerAddToList =  c -> plainList.add(c);
+		Consumer<String> myConsumerAddToList =  c -> plainList.add(c);
 		
 		// This Consumer adds length of word to Linked List
-		Consumer <String> myConsumerLength = c -> wordLengthList.add(c.length());
+		Consumer<String> myConsumerLength = c -> wordLengthList.add(c.length());
 		
 		// Example list of words to test Consumer
-		List <String> wordsList = Arrays.asList("January", "February", "March");
+		List<String> wordsList = Arrays.asList("January", "February", "March");
 		
 		wordsList.stream()
 			.forEach(e -> myConsumerAddToList
