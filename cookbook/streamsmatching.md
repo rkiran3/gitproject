@@ -2,25 +2,23 @@
 
 To match any entry in a list, use `anymatch`
 
-<pre>
-import java.util.Arrays;
-import java.util.stream.Stream;
-
-// Create a list of Integers and use anymatch,
-// this returns a boolean true/false which can then be checked using assert
-contains = Arrays.asList(new Integer [] {11, 22, 33}).stream()            
-    .mapToInt(Integer::valueOf)
-    <b>.anyMatch(i -> i == 33);</b>
-    
-assert(contains);
-</pre>
-
+        import java.util.Arrays;
+        import java.util.stream.Stream;
+        
+        // Create a list of Integers and use anymatch,
+        // this returns true/false
+        contains = Arrays.asList(new Integer [] {11, 22, 33}).stream()
+            .mapToInt(Integer::valueOf)
+            .anyMatch(i -> i == 33);
+        assert(contains);
 
 Without using streams, we can do a quick check using `contains`
 
-<pre>
+```java
 // will return true if it finds entry in the List
-contains = Arrays.asList(new Integer [] {11, 22, 33}).<b>contains(33);</b>
-        
+contains = Arrays.asList(new Integer [] {11, 22, 33})
+    .contains(33);
 assert(contains)
-</pre>
+```
+
+        

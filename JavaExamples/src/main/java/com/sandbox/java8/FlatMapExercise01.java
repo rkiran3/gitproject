@@ -10,12 +10,12 @@ import java.util.stream.Collectors;
  *   
  * Input 
  * BuyersList:   [	
- * 		"Tim", [ "beans", "carrots" ],
- * 		"Tom", [ "apples", "oranges" ]
+ * 		"Tim", ["beans", "carrots"],
+ * 		"Tom", ["apples", "oranges"]
  * ]
  *
  * Output:
- *		[ "beans", "carrots", "apples", "oranges"]
+ *		["beans", "carrots", "apples", "oranges"]
  *
  */
 public class FlatMapExercise01 {
@@ -40,25 +40,23 @@ public class FlatMapExercise01 {
 		public void setProductsList(List<String> productsList) {
 			this.productsList = productsList;
 		}
-
 	}
 
     public static void main(String [] args) {
     	FlatMapExercise01 flatMapExercise = new FlatMapExercise01();
     	
     	List <String> produceList = Arrays.asList("beans", "carrots");
-
     	List <String> fruitsList = Arrays.asList("apples", "oranges");
 
-    	Buyer [] buyersArray = {
+    	Buyer[] buyersArray = {
     			flatMapExercise.new Buyer ("Tim", produceList),
     			flatMapExercise.new Buyer ("Tom", fruitsList)
         };
 
         // Convert array to List of Items
-        List <Buyer> buyersList = new ArrayList<>(Arrays.asList(buyersArray));    	
+        List<Buyer> buyersList = new ArrayList<>(Arrays.asList(buyersArray));    	
         
-    	List <String> itemsList = buyersList.stream()
+    	List<String> itemsList = buyersList.stream()
     		.flatMap(b -> b.getProductsList().stream())
     		.collect(Collectors.toList());
     	

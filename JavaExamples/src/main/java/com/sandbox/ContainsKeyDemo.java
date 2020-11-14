@@ -8,7 +8,7 @@ import java.util.HashMap;
  */
 public class ContainsKeyDemo {
 
-    public static Map <String, Integer> STATES_MAP = new HashMap<String, Integer>();
+    public static Map<String, Integer> STATES_MAP = new HashMap<String, Integer>();
     static {
         STATES_MAP.put("AK", Integer.valueOf(31));
         STATES_MAP.put("FL", Integer.valueOf(28));

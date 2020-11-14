@@ -4,4 +4,6 @@
 
 ### [Matching with Streams](./streamsmatching.md)
 
+### [IO](./io.md)
+
 ### [Demo](./demo.md)
