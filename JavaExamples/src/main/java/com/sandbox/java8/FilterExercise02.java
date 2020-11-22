@@ -1,8 +1,5 @@
 package com.sandbox.java8;
 
-//import static org.junit.Assert.assertArrayEquals;
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.assertTrue;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.HashMap;
@@ -31,7 +28,7 @@ public class FilterExercise02 {
                 .map(m -> fexer02.new Month(m, m.endsWith("y")))
                 .collect(Collectors.toList());
         
-        List <String> monthsEndsY = monthList.stream()
+        List<String> monthsEndsY = monthList.stream()
                 //.peek(m -> System.out.println("Processing: " + m))
                 .filter(Month::isEndsWithY)
                 //.peek(m -> System.out.println("EndsWithY: " + m))
@@ -71,7 +68,7 @@ public class FilterExercise02 {
         String condition = demoMap.entrySet().stream()
             .filter(m -> m.getKey().equals(monthKey))
             .map(m -> m.getValue())
-            .findFirst()            
+            .findFirst()
             .orElse(null);
         System.out.println(condition);
         if (!condition.equals("Coldest")) {

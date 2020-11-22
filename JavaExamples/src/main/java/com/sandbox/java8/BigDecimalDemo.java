@@ -9,10 +9,10 @@ public class BigDecimalDemo {
 	public static Logger logger = Logger.getLogger(BigDecimalDemo.class.getName());
     public static void main(String[] args) {
 
-        BigDecimal total = new BigDecimal(0);
+        BigDecimal total = BigDecimal.ZERO;
         total = total.setScale(2, RoundingMode.HALF_UP);
         
-        double [] percentageArr = { 30.73, 2.50, 42.22, 16.76, 7.24, 0.17 };
+        double[] percentageArr = { 30.73, 2.50, 42.22, 16.76, 7.24, 0.17 };
         
         DecimalFormat numberFormatter = new DecimalFormat("##.##");
         for (int i=0; i <percentageArr.length; i++) {

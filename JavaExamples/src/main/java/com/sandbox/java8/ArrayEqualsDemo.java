@@ -13,8 +13,8 @@ public class ArrayEqualsDemo {
         Item1 itemC = new Item1("Jan");
         Item1 itemD = new Item1("Feb");
         
-        Item1 [] actualArr = new Item1[] { itemA, itemB };        
-        Item1 [] expectedArr = new Item1[] { itemC, itemD };
+        Item1[] actualArr = new Item1[] { itemA, itemB };        
+        Item1[] expectedArr = new Item1[] { itemC, itemD };
 
         assert expectedArr.length == actualArr.length;
         assert (expectedArr[0]).name.equals((actualArr[0]).name); 

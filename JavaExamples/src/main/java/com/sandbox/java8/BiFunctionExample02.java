@@ -10,9 +10,7 @@ import java.util.logging.Logger;
 public class BiFunctionExample02 {
 
     static BiFunction<Integer, Integer, Integer> powerOf =
-            (n1, n2) ->  (n2 == 1) ? 
-            		n1 : 
-            			n1 * BiFunctionExample02.powerOf.apply(n1, (n2-1));
+            (n1, n2) ->  (n2 == 1) ? n1 : n1 * BiFunctionExample02.powerOf.apply(n1, (n2-1));
 
 	
 	public static void main(String []args) {

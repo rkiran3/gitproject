@@ -13,16 +13,14 @@ public class MapExercise03 {
     public static void main(String [] args) {
 
     	// Data Map that will contain default values 
-        Map<String, String> data = new HashMap<String, String>() {/**
-			 * 
-			 */
+        Map<String, String> data = new HashMap<String, String>() {
 			private static final long serialVersionUID = 1L;
-
-		{
-            put("name", "Middle");
-            put("prefix", "Front");
-            put("postfix", "Back");
-        }};
+			{
+	            put("name", "Middle");
+	            put("prefix", "Front");
+	            put("postfix", "Back");
+	        }
+        };
 
         // Replace each of the tokens with the values found in the "data" Map template.
         String title = Stream.of("prefix", "name", "postfix")

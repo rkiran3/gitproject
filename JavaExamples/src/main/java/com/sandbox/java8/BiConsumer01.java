@@ -5,8 +5,7 @@ import java.util.function.BiConsumer;
 public class BiConsumer01 {
 
     public static void main(String[] args) {
-        BiConsumer<Integer, Integer> demoPrint = 
-                (a, b) -> System.out.println(a + b) ;
+        BiConsumer<Integer, Integer> demoPrint = (a, b) -> System.out.println(a + b) ;
                 
         demoPrint.accept(Integer.valueOf(22), Integer.valueOf(44)); // prints 66
        

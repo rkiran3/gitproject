@@ -32,11 +32,10 @@ public class FilterExercise01 {
         );
 
         // Print all items of both types
-        itemsList
-                .stream()
-                .filter(item -> item.getType() == Filter01Item.Type.PERISHABLE ||
-                    item.getType() == Filter01Item.Type.NONPERISHABLE)
-                .collect(toList())
-                .forEach(System.out::println);
+        itemsList.stream()
+            .filter(item -> item.getType() == Filter01Item.Type.PERISHABLE ||
+                item.getType() == Filter01Item.Type.NONPERISHABLE)
+            .collect(toList())
+            .forEach(System.out::println);
     }
 }

@@ -4,15 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-//import java.util.function.Function;
-//import java.util.function.Predicate;
 import java.util.stream.Collectors;
-//import java.util.stream.IntStream;
-//import java.util.stream.Stream;
-//import static java.util.stream.Collectors.*;
-
-//import com.sandbox.java8.MapExercise02.Item;
-
 /*
  * Exercise that 
  */
@@ -58,7 +50,7 @@ public class MapExercise02 {
                 new Item("03", "Green")
         };
         // Convert array to List of Items
-        List <Item> items = new ArrayList<Item>(Arrays.asList(itemsArray));
+        List<Item> items = new ArrayList<Item>(Arrays.asList(itemsArray));
 
         items.stream().forEach(System.out::println);
         // convert List to Map         Key=Item.Code         Value=List of Items grouped by Code
