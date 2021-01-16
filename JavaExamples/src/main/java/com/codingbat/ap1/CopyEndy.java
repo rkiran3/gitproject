@@ -13,26 +13,33 @@ import java.util.stream.IntStream;
  copyEndy([12, 1, 1, 13, 0, 20], 2) => [1, 1]
  */
 public class CopyEndy {
-    public static Predicate<Integer> isEndyPredicate = n -> (n >=0 && n <10) || (n>=90 && n<=100);
-    public static IntPredicate isEndyIntPredicate = n -> (n >=0 && n <10) || (n>=90 && n<=100);
+    public static final Predicate<Integer> isEndyPredicate = n -> (n >=0 && n <10) || 
+    		(n >= 90 && n <= 100);
+    public static final IntPredicate isEndyIntPredicate = n -> (n >=0 && n <10) || 
+    		(n >= 90 && n <= 100);
+    public static final IntPredicate isLessThan10 = n -> (n >=0 && n <10);
     
-    public static boolean isEndy(int n) {
+    public static final IntPredicate isGreaterThan90 = n -> (n >= 90 && n <= 100);
+    
+    public static final boolean isEndy(int n) {
         //System.out.println("n = [" + n + "]");
         boolean result = (n >=0 && n <10) || (n>=90 && n<=100);
         return result;
     }
 
-    public static int [] copyEndy(int [] nums, int count) {
-        int [] result = null;
+    /**
+     *  
+     * @param nums
+     * @param count
+     * @return
+     */
+    public static int[] copyEndy(int[] nums, int count) {
+        int[] result = null;
         result = IntStream.of(nums)
-                .boxed()
                 .filter(n -> isEndy(n))
-                //.peek(System.out::println)
                 .limit(count)
-                .mapToInt(i -> i)
                 .toArray();
-    	
-    	
+        
     	// using Predicate<Integer>
         result = IntStream.of(nums)
                 .boxed()
@@ -44,6 +51,12 @@ public class CopyEndy {
         // using IntPredicate
         result = IntStream.of(nums)
                 .filter(isEndyIntPredicate)
+                .limit(count)
+                .toArray();
+
+        // using multiple Predicates
+        result = IntStream.of(nums)
+                .filter(isLessThan10.or(isGreaterThan90))
                 .limit(count)
                 .toArray();
 

@@ -1,9 +1,12 @@
 package com;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -26,16 +29,14 @@ public class Scratch {
     }
 
     public static void main(String []args) {
-    	String[] months = null;
-    	java.util.Objects.requireNonNull(months);
     	
     	String[] cities = { "Chicago", "Austin", "Topeka"};
         String[] combination = combinations(cities);
 
-        for (String city: combination) {
-            System.out.println(city);
-        }
-
+DoubleStream doubleStream = java.util.stream.DoubleStream.of(1.1, 1.2, 1.3);
+doubleStream
+	.forEach(System.out::print);
+        
         StringBuffer sb1 = new StringBuffer();
         sb1.append("012345678901234567890");
         
