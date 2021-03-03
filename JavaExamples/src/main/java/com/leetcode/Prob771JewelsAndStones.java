@@ -2,6 +2,13 @@ package com.leetcode;
 
 public class Prob771JewelsAndStones {
 
+	/**
+	 * Calculate number of Jewels in Stones
+	 * 
+	 * @param J
+	 * @param S
+	 * @return
+	 */
     public int numJewelsInStones(String J, String S) {
         int counter = 0;
         for(Character c : S.toCharArray()){
