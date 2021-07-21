@@ -20,7 +20,7 @@ public class FileReadLinesDemo {
 
             String regex = "[\\p{Alnum}-_]+";    // handle Alphanumeric
             //String regex = "[a-zA-Z0-9-]+"; // works
-            List <String> matchedLines = Files.lines(path)
+            List<String> matchedLines = Files.lines(path)
                     //.peek(line -> System.out.printf("Starting: [%s]\n", line))
                     .map(line ->line.trim())
                     //.peek(line -> System.out.printf("After trim: [%s]\n", line))
@@ -31,7 +31,7 @@ public class FileReadLinesDemo {
 //            matchedLines.stream()
 //                .forEach(System.out::println);
             
-            List <String> unMatchedLines = Files.lines(path)
+            List<String> unMatchedLines = Files.lines(path)
                     //.peek(line -> System.out.printf("Starting: [%s]\n", line))
                     .map(line ->line.trim())
                     .filter(line -> line.length() >0)

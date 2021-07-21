@@ -45,7 +45,7 @@ public class MapExercise {
         List<Double> increasedPrices = increasePrice(prices, percentage);
 
         prices.stream()
-                .map((cost)  -> (cost*0.12)+cost)
+                .map((cost) -> (cost*0.12)+cost)
                 .forEach(System.out::println);
 
         // Declare a function that returns a boolean
