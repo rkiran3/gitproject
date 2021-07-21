@@ -10,22 +10,17 @@ public class GetSubString {
     
     public static void testOrderNumberWithoutHyphens(String input) {
         String regex = "(\\p{Alpha}+)(\\p{Digit}+)(\\p{Alpha}\\p{Digit}+)";    //wordfollowedbydigitsfollowedbywordfollowedbydigits
-        
+  
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
- 
         if (matcher.matches()) {
             System.out.println(input + " matches regex: " + regex + " has groupcount: " + matcher.groupCount());
             System.out.println(matcher.group(1) + " " + matcher.group(2) + " " + matcher.group(3));
         } else {
-            System.out.println(input + " does NOT matches regex: " + regex);
-            
+            System.out.println(input + " does NOT matches regex: " + regex);   
         }
-        
-        
     }
 
-    
     /**
      * Enter an Order Number that looks like AWS-33-P23
      * extract the subcomponents and print them.
@@ -37,22 +32,17 @@ public class GetSubString {
         String regex = "(\\p{Alpha}+)-(\\p{Digit}+)-(\\p{Alpha}\\p{Digit}+)";    //word-followedbyhypen-digits-singlewordfollowedbydigits
         
         Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(input);
- 
+        Matcher matcher = pattern.matcher(input); 
         if (matcher.matches()) {
             System.out.println(input + " matches regex: " + regex + " has groupcount: " + matcher.groupCount());
             
             System.out.println(matcher.group(1) + " " + matcher.group(2) + " " + matcher.group(3));
         } else {
             System.out.println(input + " does NOT matches regex: " + regex);
-            
         }
-
-        
     }
     
     public static void extractFromXML(String input) {
-        
         try {
             String regexStr = "<ItemId>(\\d+)</ItemId><ItemNumber>(\\d+)</ItemNumber>";
             String identifier = "";
@@ -69,7 +59,6 @@ public class GetSubString {
             System.out.println(emailFile.getAbsolutePath());
             
             emailFile.deleteOnExit();
-        
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -82,10 +71,8 @@ public class GetSubString {
         
         // extract the first portion of string
         String demoString = "60601 / City Of Chicago / IL";
-        
         // get the zipcode at begin of string
         String pattern = "(\\d+) /.*";    
-        
         if (demoString.matches(pattern)) {
             System.out.println("Matches");
             Pattern p = Pattern.compile(pattern);
@@ -106,6 +93,5 @@ public class GetSubString {
             testOrderNumberWithHyphens(entry);
             testOrderNumberWithoutHyphens(entry.replace("-", ""));
         }
-        
     }
 }

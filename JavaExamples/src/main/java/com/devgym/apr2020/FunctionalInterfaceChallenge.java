@@ -27,7 +27,6 @@ public class FunctionalInterfaceChallenge {
 
         gustavo.accept(firstLaunder, secondLaunder);
     }
-
 }
 
 /*
