@@ -1,4 +1,4 @@
-#!/usr/local/python
+#!/usr/bin/python3
 
 # To invoke program
 # python -m doctest filename.py
@@ -19,9 +19,9 @@ if __name__ == "__main__":
     doctest.testmod()
 
 ################## sorted #############################
->>> import random
->>> [ random.randint(1,x) for x in range(1,15)]
-[1, 2, 3, 3, 2, 5, 4, 4, 6, 9, 10, 2, 10, 12]
->>> sorted([ random.randint(1,x) for x in range(1,15)])
+import random
+[ random.randint(1,x) for x in range(1,15)]
+#[1, 2, 3, 3, 2, 5, 4, 4, 6, 9, 10, 2, 10, 12]
+sorted([ random.randint(1,x) for x in range(1,15)])
 [1, 1, 2, 2, 2, 3, 3, 3, 6, 6, 6, 7, 9, 10]
->>>
+
