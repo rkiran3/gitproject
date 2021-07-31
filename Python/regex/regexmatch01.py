@@ -4,7 +4,6 @@ import string
 import glob
 from os.path import join
 
-
 mypath = 'd:\\data'
 
 # for root, dirs, files in os.walk(mypath):

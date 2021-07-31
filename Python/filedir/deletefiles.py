@@ -1,4 +1,5 @@
-import os, glob, sys
+import os
+import glob
 
 path = 'C:\\tmp'
 for root, dirs, files in os.walk(path):
@@ -14,4 +15,4 @@ for root, dirs, files in os.walk(path):
             count = len(open(fullpath).readlines())
             if count == 3 or count == 2:
                 print('Removing ', fullpath)
-		        #os.remove(fullpath)
+                os.remove(fullpath)
