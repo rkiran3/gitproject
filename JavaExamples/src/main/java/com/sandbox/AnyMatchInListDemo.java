@@ -30,7 +30,7 @@ import java.util.logging.Logger;
         AnyMatchInListDemo demo = new AnyMatchInListDemo();
 
         // Sample values for testing - we will check if array contains a specific value
-        Integer []types = {Integer.valueOf(22), Integer.valueOf(33)};
+        Integer[]types = {Integer.valueOf(22), Integer.valueOf(33)};
            
         // Convert to integer value and check if number exists in Array [22, 33]
         boolean contains24 = Arrays.asList(types).stream()

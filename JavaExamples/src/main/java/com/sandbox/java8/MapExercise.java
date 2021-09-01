@@ -27,6 +27,7 @@ public class MapExercise {
     public static List<Double> increasePrice(List <Integer> prices, int percentage) {
         List<Double> increasedPrices;
         double percentageDbl = percentage/100.0;
+        Integer nums[] = {1, 2, 3, 4};
 
         increasedPrices = prices.stream()
                 .map(cost -> (cost*percentageDbl) + cost)
@@ -113,7 +114,7 @@ public class MapExercise {
                 .forEach(ch -> System.out.printf("%c %s \n", ch, ch.getClass()));*/
                 //.forEach(System.out::println);
 
-        int [] intprices = prices.stream().mapToInt(Integer::intValue).toArray();
+        int[] intprices = prices.stream().mapToInt(Integer::intValue).toArray();
 
         System.out.println("intprices = " + intprices);
 

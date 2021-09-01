@@ -58,10 +58,7 @@ public class DescendingOrder {
 		msgStream = pattern2.splitAsStream(message);
 		msgStream.forEach(System.out::print);
 		
-		
-		System.exit(-1);
-		
-		Set <String> strTree = input.chars()
+		Set<String> strTree = input.chars()
 			.mapToObj(Character::toString)
 			.collect(Collectors.toCollection(TreeSet::new));
 			

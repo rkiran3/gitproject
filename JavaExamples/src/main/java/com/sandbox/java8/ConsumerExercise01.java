@@ -15,12 +15,10 @@ public class ConsumerExercise01 {
     public static void main(String [] args) {
         System.out.println("Hello");
         ConsumerExercise01 consumerExercise01 = new ConsumerExercise01();
-        String [] cities = { "New York", "Chicago"};
-        List <String> citiesList = Arrays.asList(cities);
+        String[] cities = { "New York", "Chicago"};
+        List<String> citiesList = Arrays.asList(cities);
 
-
-        final Consumer<String> sayHello = (userName) ->
-                consumerExercise01.sayHello(userName);
+        final Consumer<String> sayHello = (userName) -> consumerExercise01.sayHello(userName);
         sayHello.accept("Bill");
 
         citiesList.forEach(sayHello);
