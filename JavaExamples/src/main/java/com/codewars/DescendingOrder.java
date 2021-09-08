@@ -1,5 +1,6 @@
 package com.codewars;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -28,50 +29,59 @@ public class DescendingOrder {
 		
 		String input = String.valueOf(num);
 		String[] tokens = input.split("");
-		SortedSet<Integer> intSet = new TreeSet<>();
+		
+		// create output by reversing original tokens 
+		char[] outArray = new char[tokens.length];
+		int destIndex = 0;
+		for (int i=tokens.length-1; i>=0; i--) {
+			outArray[destIndex++] = input.charAt(i);
+		}
+		
+		// to show sorted set with unique elements
+		//SortedSet<Integer> intSet = new TreeSet<>();
 		
 		// sample to show strings sorted in ascending order
-		Stream<String> stream = Stream.of("UK", "US", "India", "Australia", "Armenia", "Canada", "Poland");
-		Set<String> set = stream.collect(Collectors.toCollection(TreeSet::new));
-	    set.forEach(val -> System.out.println(val));
+		//Stream<String> stream = Stream.of("UK", "US", "India", "Australia", "Armenia", "Canada", "Poland");
+		//Set<String> set = stream.collect(Collectors.toCollection(TreeSet::new));
+	    //set.forEach(val -> System.out.println(val));
 	      
 	    //	.collect(Collectors.toCollection(TreeSet::new));
-		if (tokens != null && tokens.length > 0 ) {
-			for (int i=0; i < tokens.length; i++) {
-				intSet.add(Integer.valueOf(tokens[i]));
-			}
-		}
+		//if (tokens != null && tokens.length > 0 ) {
+//			for (int i=0; i < tokens.length; i++) {
+				//intSet.add(Integer.valueOf(tokens[i]));
+			//}
+		//}
 	
 		// Convert String to Stream of Characters
-		String message = "Hello World	this is long Sentence";
-		System.out.println(message.length());
+		//String message = "Hello World	this is long Sentence";
+		//System.out.println(message.length());
 		
-		Stream<Character> streamChars = message.chars()
-			.mapToObj(c -> (char) c);
+		//Stream<Character> streamChars = message.chars()
+		//	.mapToObj(c -> (char) c);
 		
-		Pattern pattern = Pattern.compile("\\s*");
-		Stream<String> msgStream = pattern.splitAsStream(message);		
-		msgStream.forEach(System.out::print);
-		System.out.println();
+		//Pattern pattern = Pattern.compile("\\s*");
+		//Stream<String> msgStream = pattern.splitAsStream(message);		
+		//msgStream.forEach(System.out::print);
+		//System.out.println();
 		
-		Pattern pattern2 = Pattern.compile("\\P{Alpha}*");		
-		msgStream = pattern2.splitAsStream(message);
-		msgStream.forEach(System.out::print);
+		//Pattern pattern2 = Pattern.compile("\\P{Alpha}*");		
+		//msgStream = pattern2.splitAsStream(message);
+		//msgStream.forEach(System.out::print);
 		
-		Set<String> strTree = input.chars()
-			.mapToObj(Character::toString)
-			.collect(Collectors.toCollection(TreeSet::new));
+		//Set<String> strTree = input.chars()
+			//.mapToObj(Character::toString)
+			//.collect(Collectors.toCollection(TreeSet::new));
 			
-		SortedSet<Integer> descSet = new TreeSet<>(Collections.reverseOrder());
-		descSet.addAll(intSet);
+		//SortedSet<Integer> descSet = new TreeSet<>(Collections.reverseOrder());
+		//descSet.addAll(intSet);
 		
-		List<Integer> descList = descSet.stream()
-			.collect(Collectors.toList());
+		//List<Integer> descList = descSet.stream()
+			//.collect(Collectors.toList());
 		
-		String output = descList.parallelStream()
-			.map(String::valueOf)
-			.collect(Collectors.joining());
-				
+		//String output = descList.parallelStream()
+			//.map(String::valueOf)
+			//.collect(Collectors.joining());
+		String output = new String(outArray);
 		return Integer.valueOf(output);
 	}
 	

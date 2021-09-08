@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 public class AddToSeparateLists {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		List <String> allowedWords = new LinkedList<String>();
+
+		List<String> allowedWords = new LinkedList<String>();
 		
 		Stream.of("AA", "BB", "CCCC", "DDD")
 			.peek(w -> System.out.println(w))

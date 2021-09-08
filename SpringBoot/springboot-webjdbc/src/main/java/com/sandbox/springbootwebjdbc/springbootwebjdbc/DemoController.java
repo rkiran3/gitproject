@@ -1,12 +1,13 @@
 package com.sandbox.springbootwebjdbc.springbootwebjdbc;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.LogManager;
+//import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,7 +19,8 @@ public class DemoController {
     @Autowired
     private UserRepository userRepository;
 
-    static final Logger logger = LogManager.getLogger(DemoController.class.getName());
+    //static final Logger logger = LogManager.getLogger(DemoController.class.getName());
+    static final Logger logger = Logger.getLogger(DemoController.class.getName());
 
     @RequestMapping(method = RequestMethod.GET, value = "/hello",
             produces = "text/plain")
@@ -41,12 +43,12 @@ public class DemoController {
         try {
             user = userRepository.findOne(id);
         } catch (Exception e) {
-            logger.error(e.getMessage());
+            logger.info(e.getMessage());
             return e.getMessage();
         }
         if (user == null) {
             String errorMessage = "No user found for id " + id;
-            logger.error(errorMessage);
+            logger.info(errorMessage);
             return errorMessage;
         } else {
             return user.getId() + " : " + user.getName();

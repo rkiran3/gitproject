@@ -1,7 +1,8 @@
 package com.sandbox.springbootwebjdbc.springbootwebjdbc;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
+//import org.apache.log4j.LogManager;
+
+import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
-    static final Logger logger = LogManager.getLogger(ProductController.class.getName());
+    static final Logger logger = Logger.getLogger(ProductController.class.getName());
 
     @RequestMapping(value = "/product/", method = RequestMethod.GET)
     @ResponseBody
@@ -41,12 +42,12 @@ public class ProductController {
         try {
             product = productRepository.findOne(id);
         } catch (Exception e) {
-            logger.error(e.getMessage());
+            logger.info(e.getMessage());
             return e.getMessage();
         }
         if (product == null) {
             String errorMessage = "No product found for id " + id;
-            logger.error(errorMessage);
+            logger.info(errorMessage);
             return errorMessage;
         } else {
             return product.getProductId() + " : " + product.getName();

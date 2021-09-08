@@ -1,4 +1,4 @@
-# Demo App
+# Uses SQL Server Adventureworks
 
 This example shows how to create a Spring Boot Project.
 
@@ -8,7 +8,7 @@ This file specifies this project is based of *spring-boot-starter-parent*
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.4.RELEASE</version>
+        <version>1.5.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -33,16 +33,14 @@ Install the application using
 
 Run the application using the command
 
-    mvn spring-boot:run 
+    mvn spring-boot:run abcd
 
-We can see output like
- 
-	INFO 8526 --- [           main] com.example.demo.DemoApplication         : Input: Hello, World
-	INFO 8526 --- [           main] com.example.demo.DemoApplication         : Output: dlroW ,olleH
+We can see output like 
 
-To clean project
+    INFO 10868 --- [           main] com.example.demo.DemoApplication         : Program has arguments: abcd
+    INFO 10868 --- [           main] com.example.demo.DemoApplication         : Input: abcd
+    INFO 10868 --- [           main] com.example.demo.DemoApplication         : Output: dcba
 
-	mvn spring-boot:run clean
-	[INFO] Deleting /pathtoproject/springboot-simpleJava/target
-	
+
+
 
