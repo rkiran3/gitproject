@@ -1,4 +1,4 @@
-# Demo App
+# Basic SpringBoot application also shows Environment variables loaded from application.properties  
 
 This example shows how to create a Spring Boot Project.
 
@@ -46,3 +46,23 @@ To clean project
 	[INFO] Deleting /pathtoproject/springboot-simpleJava/target
 	
 
+## Load properties, 
+Spring Boot is flexible to allow users to load custom properties from application.properties
+It acts like a dictionary of key value pairs
+
+	color=red
+	
+To show the values loaded, use the following snippet to print. It uses the Environment class 
+which makes the values available to the program. 
+
+	@Bean
+    	ApplicationRunner applicationRunner(Environment environment) {
+		 return args -> {
+			 log.info("message from application.properties " + environment.getProperty("color"));
+		 };
+	 }
+	 
+When program is executed, we see output
+
+	INFO 17067 --- [           main] com.example.demo.DemoApplication         : message from application.properties red
+ 
