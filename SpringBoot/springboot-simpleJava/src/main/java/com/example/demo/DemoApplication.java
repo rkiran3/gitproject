@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import java.time.LocalDate;
+import java.util.stream.Stream;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.ApplicationRunner;
@@ -33,6 +36,13 @@ public class DemoApplication {
         }
         log.info("Input: " + message);
         log.info("Output: " + new String(charArray));
+        
+        LocalDate currDt = LocalDate.now();
+        log.info("Current Date: " + currDt.toString());
+        LocalDate futDt = currDt.plusDays(100L);
+        log.info("Future Date after 100 days: " + futDt.toString());
+        
+
 	}
 	
 	// Pick up environment information from application properties, 

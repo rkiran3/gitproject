@@ -1,11 +1,12 @@
 #!/bin/python
 
 import feedparser
-import sys
+# import sys
 
 urlDict = {
     'ibd-business': 'http://feeds2.feedburner.com/BusinessRss',
-    'nasdaq-tech':'https://www.nasdaq.com/feed/rssoutbound?category=Technology',
+    'nasdaq-tech':
+    'https://www.nasdaq.com/feed/rssoutbound?category=Technology',
     'nasdaq-stocks': 'https://www.nasdaq.com/feed/rssoutbound?category=Stocks',
 }
 
@@ -36,11 +37,11 @@ for key, value in urlDict.items():
             # linksMap = entry['links'][0]
             # print(linksMap['href'])
             # print (entry['summary_detail'])
-            fo.write("<a href=" + entry['link'] + ">" + entry['title'] + "</a>")
+            fo.write("<a href=" + entry['link'] + ">" +
+                     entry['title'] + "</a>")
             fo.write(entry['description'])
             # print (entry['subtitle'])
             fo.write("<br />")
 
         fo.write("</html>")
 
-# print ("hello")
