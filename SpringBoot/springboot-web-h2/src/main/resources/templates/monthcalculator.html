@@ -1,0 +1,32 @@
+<html>
+	<body>
+		<h1>Month Calculator</h1>
+		<p>This page will handle Month calculation with Form + Thymeleaf</p>
+		
+		<form id="frmDt" method="get" action="mtCalc"> 
+			<table>
+				<tr>
+					<td>Current Date </td>
+					<td><input name="curMt" th:value="${curMt}" /> </input>
+					<td>Format is YYYY-MM-DD</td>
+				</tr>
+				<tr>
+					<td>Months to add</td>
+					<td><input name="addMt" th:value="${addMt}" /> </input>
+					<td>uses LocalDate.addDays(n) to calculate new date </td>
+				</tr>
+
+				<tr>
+					<td>Next Month</td>
+					<td><input name="nxtMt" th:value="${nxtMt}" /> </input>
+					<td>Updated Date </td>
+				</tr>
+			
+			</table>
+		
+			<input type="submit" name="submit" value="clickme"></input>
+		</form>
+	
+		 <a href="/">Home </a>	
+	</body>
+</html>
