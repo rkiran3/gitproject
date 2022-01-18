@@ -1,6 +1,6 @@
 package com.codingbat.functional1;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import junit.framework.TestCase;
 
 import java.util.Arrays;
