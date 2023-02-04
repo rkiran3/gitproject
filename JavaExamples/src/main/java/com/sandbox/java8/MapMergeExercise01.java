@@ -42,13 +42,6 @@ public class MapMergeExercise01 {
 	public static void main(String[] args) {
 		Map<String, Integer> wordCountMap = new HashMap<String, Integer>();
 		
-		HashMap<String, String> monthMap = new HashMap<>();
-		monthMap.put("Jan", "January");
-		monthMap.compute("Jan", (key, val) -> val.concat(" has 31 days"));
-		
-		assertEquals(monthMap.get("Jan"),  "January has 31 days");
-		
-		
 		// Sample words to demo word count
 		String[] words = {"Fizz", "Bar", "Buzz", "Fizz" }; 
 		
@@ -66,7 +59,14 @@ public class MapMergeExercise01 {
 		// clear map for next exercise
 		wordCountMap.clear();
 		
-		// Frequency using Streams forEach
+		// HashMap compute 
+		HashMap<String, String> monthMap = new HashMap<>();
+		monthMap.put("Jan", "January");
+		// append to value
+		monthMap.compute("Jan", (key, val) -> val.concat(" has 31 days"));
+		assertEquals(monthMap.get("Jan"),  "January has 31 days");
+		
+		
 		Arrays.asList(words)
 			.stream()
 			.forEach(word -> {

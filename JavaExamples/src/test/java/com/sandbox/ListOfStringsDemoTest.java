@@ -1,33 +1,23 @@
 package com.sandbox;
 
-import java.util.List;
-import java.util.Optional;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.stream.*;
+import java.util.Optional;
 
-/**
- * Exercise to add entries to List, Map and modify Map
- */
-public class ListStringsDemo {
+import junit.framework.TestCase;
 
-    public static void main( String [] args) {
-        String [] contentsArr = { 
-            "This is first Line ",
-            "Requested by " + " Month", 
-            "December" };
-        List <String> contentsList = Arrays.asList(contentsArr).stream()
-            .collect(Collectors.toCollection(LinkedList::new));
-        
-        contentsList
-            .forEach(System.out::println);
-        
+public class ListOfStringsDemoTest extends TestCase {
+
+	public void testZeroLengthStringArray() throws Exception {
+	
         // Check for empty List
         String[] months = {};
         long count = Arrays.asList(months).stream()
         	.count();
-        System.out.println("Number of months: " + count);
+        assert(0 == count);
         
+	}
+	
+	public void testZeroLengthWithOptional() throws Exception {
         // Check for null value and return default empty array
         String[] cities = null;
         long cityCount = Arrays.asList(
@@ -39,7 +29,10 @@ public class ListStringsDemo {
         			)
         		).stream()
         	.count();
-        System.out.println("City Count: " + cityCount);
+        assert(0 == cityCount);
+	}
+	
+	public void testZeroLengthWithOptional2() throws Exception {
         
         // Check for null value and return default empty array
         String[] buses = null;
@@ -49,7 +42,6 @@ public class ListStringsDemo {
         			)
         		).stream()
         	.count();
-        System.out.println("Bus Count: " + busCount);
-        
-    }
+        assert(0 == busCount);
+	}
 }
