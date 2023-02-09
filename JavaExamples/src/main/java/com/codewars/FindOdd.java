@@ -1,8 +1,13 @@
 package com.codewars;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /*
  * Given an array of integers, find the one that appears an odd number of times.
@@ -58,8 +63,29 @@ public class FindOdd {
 		
 	  	return oddNum;
 	  }
-	
-	
+
+	public static int findItStreams(int[] a) {
+		Integer oddNum = null; // 
+		List<Integer> intList = Arrays.stream(a)
+			.boxed()
+			.collect(Collectors.toList());
+		
+		Map<Integer, Long> occurMap = 
+				intList.stream()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		
+		// Iterate Map to find the odd entry
+		for (Entry <Integer, Long> entry: occurMap.entrySet()) {
+
+			// find if that key occurs odd/even by using modulo
+			if (entry.getValue() % 2 == 1) {
+				oddNum = entry.getKey();
+			}
+		}
+		
+		return oddNum;
+	  }
+
 	public static void main(String[] args) {
 
 		System.out.println(FindOdd.findIt(new int[]{20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5})); 		
