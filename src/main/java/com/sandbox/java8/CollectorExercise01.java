@@ -11,30 +11,29 @@ import static java.util.stream.Collectors.*;  // Notice the static import
 
 public class CollectorExercise01 {
 
-    // Define a Predicate that will check if a number is greater than specific number
+    // Define a Predicate that will check if a number is greater than specific
+    // number
     public static Predicate<Integer> greaterThanN(final int max) {
         return number -> number > max;
     }
 
     /**
-     * Prints the elements in list that are greater than the argument passed to it.
+     * Prints the elements in list that are greater than the argument passed to
+     * it.
      */
     public static void printListGreaterThan(List<Integer> intList, int max) {
-        intList
-                .stream()
+        intList.stream()
                 .filter(greaterThanN(max))
                 .forEach(System.out::println);
 
         return;
     }
 
-
-
     public static void main(String[] args) {
-        Integer [] intArray = { 10, 20, 30};
-        List <Integer> intList = new ArrayList<>(Arrays.asList(intArray));
+        Integer[] intArray = { 10, 20, 30};
+        List<Integer> intList = new ArrayList<>(Arrays.asList(intArray));
 
-        List <Integer> listGreaterThan10 = intList
+        List<Integer> listGreaterThan10 = intList
                 .stream()
                 .filter(iA -> iA > 10)
                 .collect(toList());

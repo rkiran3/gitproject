@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
@@ -29,13 +30,20 @@ public class Scratch {
     }
 
     public static void main(String []args) {
+
+    	Consumer<Integer> cons = 
+    			(c) -> System.out.println("Number: " + String.valueOf(c));
+    	
+    	IntStream.range(1,20)
+    		.boxed()
+    		.forEach(c -> cons.accept(c));
     	
     	String[] cities = { "Chicago", "Austin", "Topeka"};
         String[] combination = combinations(cities);
 
-DoubleStream doubleStream = java.util.stream.DoubleStream.of(1.1, 1.2, 1.3);
-doubleStream
-	.forEach(System.out::print);
+		DoubleStream doubleStream = java.util.stream.DoubleStream.of(1.1, 1.2, 1.3);
+		doubleStream
+			.forEach(System.out::print);
         
         StringBuffer sb1 = new StringBuffer();
         sb1.append("012345678901234567890");

@@ -16,7 +16,7 @@ public class ReadItemsAndSort {
             // Read a file containing Item Numbers
             //lines = Files.lines(Paths.get("c://Downloads/ItemNumbers.csv"))
               //      .collect(Collectors.toList());
-        	String [] movies = {"godfather", "godfather", "airplane"};
+        	String[] movies = {"godfather", "godfather", "airplane"};
         	lines = Arrays.asList(movies);
 
             // Sort the Item Numbers ["A-Item", "B-Item", "C-Item"]

@@ -31,8 +31,7 @@ public class FunctionExercise01 {
         Function<String, Integer> parseAndAbsInt = parseInt.andThen(absInt);
         //IntFunction<String, int> parseAndAbsInt2 = parseIntPrimitive.andThen(absIntPrimitive);
 
-        Arrays
-                .stream("4, -9, 16".split(", "))
+        Arrays.stream("4, -9, 16".split(", "))
                 .map(parseAndAbsInt)
                 .forEach(System.out::println);
 

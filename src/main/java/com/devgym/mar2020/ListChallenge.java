@@ -16,7 +16,7 @@ import java.util.List;
  *
  *	Correct Answer is "java.lang.UnsupportedOperationException will be thrown.
  *		Arrays.asList() returns a fixed size list.
- *		Since the returned List is a fixed-size List, we can’t add/remove elements.
+ *		Since the returned List is a fixed-size List, we can't add/remove elements.
  */
 public class ListChallenge {
 	public static void main(final String... doYourBest) {

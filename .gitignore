@@ -1,0 +1,6 @@
+/target/
+.git
+.classpath
+.settings
+
+*.jar

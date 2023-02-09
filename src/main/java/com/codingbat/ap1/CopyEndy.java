@@ -64,7 +64,7 @@ public class CopyEndy {
     }
     public static void main(String [] args){
         System.out.println("Test1");
-        int [] nums = {9, 11, 90, 22, 6};
+        int[] nums = {9, 11, 90, 22, 6};
         System.out.println(
                 IntStream.of(copyEndy(nums, 2))
                         .mapToObj(Integer::toString)

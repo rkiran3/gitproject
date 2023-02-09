@@ -16,7 +16,7 @@ public class GetSenderNameInEmail {
 
         try {
             // Read a file containing message contents
-            List <String >lines = Files.lines(Paths.get("c://tmp/message.txt"))
+            List<String> lines = Files.lines(Paths.get("c://tmp/message.txt"))
                     .collect(Collectors.toList());
             
             // From: First Name <firstname@bon.com>
@@ -27,7 +27,7 @@ public class GetSenderNameInEmail {
             	.orElse("");
             
             // Gets all lines in email that contain  From:  and Subject:
-            List <String> wantedlines = lines.stream()
+            List<String> wantedlines = lines.stream()
                 	.filter(line -> line.startsWith("From:") || line.startsWith("Subject:"))
                 	.collect(Collectors.toList());
             
