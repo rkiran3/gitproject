@@ -1,90 +1,85 @@
-package com;
+    package com;
 
-import java.util.Arrays;
-import java.util.LinkedHashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Consumer;
-import java.util.function.Function;
+import java.util.TreeMap;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
-/**
- *
- */
-public class Scratch {
-    public static String[] combinations(String[] array) {
-        String[] res = new String[(1 << array.length) - 1];
-        int k = 0;
-        int x = 1;
-        for (int i = array.length - 1; i >= 0; --i) {
-            res[k++] = array[i];
-            for (int j = 1; j < x; ++j) {
-                res[k++] = array[i] + res[j - 1];
-            }
-            x *= 2;
-        }
-        return res;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+class Employee {
+    String name;
+    boolean mgr;
+
+    public Employee(String name, boolean mgr){
+        this.name = name;
+        this.mgr = mgr;
     }
 
+    public Employee(String name){
+        this.name = name;
+    }
+
+    // returns concise representation of this object
+    public String toString() {
+        return this.name + " " + (isMgr() ? "is Manager" : "is not a Manager");
+    }
+}
+
+// Class to show Stream AnyMatch
+public class Scratch {
     public static void main(String []args) {
+        Employee emp = new Employee("Pam");
+        System.out.println(emp); // will print "Pam is not a Manager"
 
-    	Consumer<Integer> cons = 
-    			(c) -> System.out.println("Number: " + String.valueOf(c));
-    	
-    	IntStream.range(1,20)
-    		.boxed()
-    		.forEach(c -> cons.accept(c));
-    	
-    	String[] cities = { "Chicago", "Austin", "Topeka"};
-        String[] combination = combinations(cities);
+        String numString = "4532745";
 
-		DoubleStream doubleStream = java.util.stream.DoubleStream.of(1.1, 1.2, 1.3);
-		doubleStream
-			.forEach(System.out::print);
-        
-        StringBuffer sb1 = new StringBuffer();
-        sb1.append("012345678901234567890");
-        
-        Stream<String> singleStrs = java.util.regex.Pattern.compile("\\s*")
-        	.splitAsStream("a bag sentence");
-        
-        Map<String, Long> occur = singleStrs.collect(
-        		Collectors.groupingBy(
-        				Function.identity(), LinkedHashMap::new, Collectors.counting()));
+        Pattern.compile("").splitAsStream(numString)
+            .forEach(System.out::println);
 
-        Map.Entry<String, Long> result = occur.entrySet()
-        	.stream()
-        	.filter(entry -> entry.getValue() == 1)
-        	.findFirst()
-        	.orElse(null);
-        	
-       if(result != null) {
-    	   System.out.println("First entry: " + result.getKey());
-       }
-        
-        
-        Stream<Character> strChars = Integer.toBinaryString(15)
-        	.chars()
-        	.mapToObj(i -> (char) i);
-        
-        
-        
-        
-        java.util.regex.Pattern.compile("\\s*").splitAsStream("wordx")
-        	.map(c -> c.charAt(0))
-        	.filter(c -> c == 'x')
-        	.forEachOrdered(System.out::println);
-        
-        System.out.println("");
-        String word = "wordx";
-        IntStream.rangeClosed(0, word.length()-1)
-        	.mapToObj(i -> new Character(word.charAt(i)))
-        	.filter(c -> (c != 'x'))
-        	.forEach(System.out::println);
-        //java.util.stream.Stream demoStream = Stream(0, word.length())
-        //	.forEach(i -> word[i]);
+        List<Integer> intList = Pattern.compile("").splitAsStream(numString)
+            .map(Integer::valueOf)
+            .collect(Collectors.toList());
+
+        // get the max in instream.
+        Integer maxInt = Pattern.compile("").splitAsStream(numString)
+        .map(Integer::valueOf)
+        .max(Integer::compare)
+        .get();
+
+        System.out.println(maxInt.intValue());
+
+        Collections.sort(intList);
+
+        intList.stream()
+            .forEach(System.out::println);
+
+        String sentence = "A quick fox jumped over the dog";
+        Pattern.compile("\\s+").splitAsStream(sentence)
+            .forEach(System.out::println);
+
+        // Initialize this employee to be a Manager
+        Employee emp2 = new Employee("Sam", true);
+        System.out.println(emp2); // will print "Sam is not a Manager"
+
+        // Create a list to store employees
+        List<Employee> empList = new ArrayList<>();
+        empList.add(emp);
+        empList.add(emp2);
+
+        // Use Streams to find any matching Employee who is a Manager.
+        // Notice we can use "Employee::isMgr".
+        boolean anyMgr = empList.stream()
+            .anyMatch(Employee::isMgr);
+
+        // Will print "Manager found in list"
+        System.out.println(anyMgr ? "Manager found in list." : "No Managers in list.");
     }
 }
