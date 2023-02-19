@@ -1,8 +1,8 @@
 package com;
 
 public class ConstructorChallenge {
-	
-	public static void main(String ...strings) {
+
+	public static void main(String... strings) {
 		Homer homer = new Homer();
 	}
 
@@ -11,12 +11,12 @@ public class ConstructorChallenge {
 			System.out.println("In Simpson");
 		}
 	}
-	
-	
+
 	static class Homer extends Simpson {
 		static {
 			System.out.println("Doh!");
 		}
+
 		Homer() {
 			System.out.println("In Homer");
 		}
