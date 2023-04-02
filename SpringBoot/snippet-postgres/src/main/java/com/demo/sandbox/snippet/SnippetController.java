@@ -51,6 +51,26 @@ public class SnippetController {
 				.orElseThrow(() -> new SnippetNotFoundException(id));
 	}
 	
+	// Get List of Snippets based on category
+	@GetMapping("/c/{cat}")
+	List<Snippet> findByCategory(@PathVariable String cat) {
+		List<Snippet> snippetCatList = repository.findByCategory(cat);
+		if (snippetCatList.size() == 0) {
+			snippetCatList = repository.findByCategoryContainingIgnoreCase(cat);
+		}
+		return snippetCatList;
+	}
+
+	// Get List of Snippets based on title
+	@GetMapping("/t/{title}")
+	List<Snippet> findByTitle(@PathVariable String title) {
+		List<Snippet> snippetTitleList = repository.findByTitle(title);
+		if (snippetTitleList.size() == 0) {
+			snippetTitleList = repository.findByTitleContainingIgnoreCase(title);
+		}
+		return snippetTitleList;
+	}
+
 	// Replace values of existing Snippet.
 	@PutMapping("/{id}")
 	Snippet replaceSnippet(@RequestBody Snippet newSnippet, @PathVariable Long id) {
@@ -78,4 +98,19 @@ public class SnippetController {
 		
 		repository.deleteById(id);
 	}
+	
+	// Get a single Snippet
+	@GetMapping("/rand")
+	private ResponseEntity<List<Snippet>> getRand(){
+		List<Snippet> snippetList = repository.getRand();
+		return new ResponseEntity<>(snippetList, HttpStatus.OK);
+	}
+
+	// Get a random List of Snippets based on count
+	@GetMapping("/rand/{count}")
+	private ResponseEntity<List<Snippet>> getRand(@PathVariable Integer count){
+		List<Snippet> snippetList = repository.getRand(count);
+		return new ResponseEntity<>(snippetList, HttpStatus.OK);
+	}
+	
 }

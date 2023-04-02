@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ import lombok.Setter;
 @Table(name = "SNIPPET")
 @Getter
 @Setter
+@Data
 public class Snippet {
 
 	private @Id @GeneratedValue Long id;
