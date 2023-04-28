@@ -1,5 +1,11 @@
 # Getting Started
 
+## Create user using curl
+		curl -XPOST -H 'Content-Type: application/json' -d '{ "firstName" : "Bill" }' http://localhost:8101/api/users
+	
+## Retrieve Users 
+		http://localhost:8101/api/users
+
 ## Project to use H2 database and JPA 
 
 We can setup project initially with JPA or enhance on an existing project to support JPA. To do so, add the starter-data-jpa in pom.xml
