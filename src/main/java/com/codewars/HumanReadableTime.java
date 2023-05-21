@@ -11,11 +11,8 @@ public class HumanReadableTime {
     long hrs = input / (60 * 60);
     long mmins = mins % 60;
 
-    String message = String.format("Secs: %03d  %02d:%02d:%02d", input, hrs, mmins, secs);
-
-    System.out.println(message);
-
-    return Integer.toString(input);
+    String timestr = String.format("%02d:%02d:%02d", hrs, mmins, secs);
+    return timestr;
   }
 
   /** Given seconds, return a string that depicts the seconds. */
@@ -28,19 +25,18 @@ public class HumanReadableTime {
     long mmins = (input / mins);
     // long minsMod = (input % MINS);
     long hhrs = 0;
+    String timestr = "";
 
     if (mmins <= 60) {
-      String message = String.format("Secs: %2d  %02d:%02d:%02d", input, hhrs, mmins, ssecs);
-      System.out.println(message);
+      timestr = String.format("%02d:%02d:%02d", hhrs, mmins, ssecs);
     } else {
       // secs = mins % SECS;
       mmins = mins % secs;
       hhrs = mins % 60;
-      String message = String.format("Secs: %2d  %02d:%02d:%02d", input, hhrs, mins, ssecs);
-      System.out.println(message);
+      timestr = String.format("%02d:%02d:%02d", hhrs, mins, ssecs);
     }
 
-    return Integer.toString(input);
+    return timestr;
   }
 
   /** Main Program. */
