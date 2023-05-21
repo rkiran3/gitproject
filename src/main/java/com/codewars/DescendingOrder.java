@@ -16,8 +16,17 @@ import java.util.stream.Collectors;
  Input: 123456789 Output: 987654321
 */
 
+/**
+ * Program to sort input number string.
+ */
 public class DescendingOrder {
 
+  /**
+   * Function to sort number string.
+   *
+   * @param numString input string
+   * @return converted string
+   */
   public static String sortDesc(final String numString) {
 
     // Define Comparator for reverse order
@@ -39,6 +48,11 @@ public class DescendingOrder {
     return outString;
   }
 
+  /**
+   * Main Program.
+   *
+   * @param args arguments
+   */
   public static void main(String[] args) {
     System.out.println(sortDesc("42145"));
     System.out.println(sortDesc("145263"));

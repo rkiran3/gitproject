@@ -3,6 +3,7 @@
 .classpath
 .settings
 *.jar
+*.class
 
 .vscode
 .settings.json
