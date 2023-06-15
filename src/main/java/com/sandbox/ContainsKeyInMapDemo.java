@@ -4,9 +4,9 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * Check for existence of Integer in an Array
+ * Check for existence of Key in a Map
  */
-public class ContainsKeyDemo {
+public class ContainsKeyInMapDemo {
 
     public static Map<String, Integer> STATES_MAP = new HashMap<String, Integer>();
     static {
