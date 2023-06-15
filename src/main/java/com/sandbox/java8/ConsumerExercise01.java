@@ -22,6 +22,5 @@ public class ConsumerExercise01 {
         sayHello.accept("Bill");
 
         citiesList.forEach(sayHello);
-
     }
 }

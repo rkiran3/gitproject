@@ -1,14 +1,13 @@
 package com.sandbox.java8;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * OptionalExercise01
  */
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.math.BigDecimal;
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -24,7 +23,6 @@ public class OptionalExercise01 {
     public void runExercises() throws IOException {
         System.out.println("Running exercise 1 solution...");
         exercise1();
-        
         exercise2();
     }
 
@@ -58,7 +56,22 @@ public class OptionalExercise01 {
         if (!days.equals(defaultDays)) {
             System.out.println("Exercise01: Test 3 Fails");
         }
-        
+
+        // check for null BigDecimal
+        BigDecimal bigNum = null;
+        // if null, then set it to default ZERO
+        String val = Optional.ofNullable(bigNum)
+            .orElse(BigDecimal.ZERO)
+            .toString(); // return string representation
+        assertEquals("0", val);
+
+        // check for BigDecimal value 1
+        BigDecimal bigNumOne = BigDecimal.ONE;
+        // if null, then set it to default TEN
+        val = Optional.ofNullable(bigNumOne)
+            .orElse(BigDecimal.TEN)
+            .toString(); // return string representation
+        assertEquals("1", val);
     }
 
     private void exercise2() {
@@ -79,9 +92,6 @@ public class OptionalExercise01 {
         //namesList.forEach(System.out::println);
         cover.setCoverList(namesList);
         cover.setCoverList(null);
-                
-        System.out.println(" Test: " );
-        
     }
 
     /**
@@ -94,4 +104,3 @@ public class OptionalExercise01 {
         exercises.runExercises();
     }
 }
-
