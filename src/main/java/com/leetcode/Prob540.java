@@ -38,7 +38,7 @@ public class Prob540 {
     }
 
     public static int singleNonDuplicate(int[] nums) {
-        List list = new ArrayList() {
+        List<Integer> list = new ArrayList<Integer>() {
             public int size() {
                 return nums.length;
             }

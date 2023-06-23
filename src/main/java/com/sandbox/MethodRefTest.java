@@ -59,6 +59,7 @@ public class MethodRefTest {
         // get all items that contain ITEM_NAME
         Stream<Item> filtered = itemList.stream()
                 .filter(a -> !a.getName().equals(ItemConstant.ITEM_NAME));
+        System.out.println(filtered.count());
 
         // Get first entry in list,
         // when there are no matches - return null

@@ -7,7 +7,7 @@ public class EnumChallenge {
     public static void main(String[] args) {
         DragonBalls dragonBall1 = DragonBalls.FIFTH;
         DragonBalls dragonBall2 = DragonBalls.SECOND;
-        DragonBalls dragonBalls[] = DragonBalls.FIRST.SECOND.THIRD.FOURTH.SIXTH.invokeShaneLong();
+        //DragonBalls dragonBalls[] = DragonBalls.FIRST.SECOND.THIRD.FOURTH.SIXTH.invokeShaneLong();
     
         //##REPLACE## 
         System.out.println((dragonBall2 == dragonBall1) ? "Same Dragonball" : "New Dragonball");

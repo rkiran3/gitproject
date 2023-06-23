@@ -12,38 +12,39 @@ import java.util.stream.Collectors;
 // We need to extract "First Last"
 public class GetSenderNameInEmail {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
         try {
             // Read a file containing message contents
             List<String> lines = Files.lines(Paths.get("c://tmp/message.txt"))
                     .collect(Collectors.toList());
-            
+
             // From: First Name <firstname@bon.com>
             // first pass - check if any of the input lines contain a "From: "
             String fromLine = lines.stream()
-            	.filter(line -> line.startsWith("From:"))
-            	.findFirst()
-            	.orElse("");
-            
-            // Gets all lines in email that contain  From:  and Subject:
+                    .filter(line -> line.startsWith("From:"))
+                    .findFirst()
+                    .orElse("");
+
+            // Gets all lines in email that contain From: and Subject:
             List<String> wantedlines = lines.stream()
-                	.filter(line -> line.startsWith("From:") || line.startsWith("Subject:"))
-                	.collect(Collectors.toList());
-            
+                    .filter(line -> line.startsWith("From:") || line.startsWith("Subject:"))
+                    .collect(Collectors.toList());
+            System.out.println(wantedlines.size());
+
             // search for strings with a pattern,
             // the group represents the sender name which we are interested
             Pattern pattern = Pattern.compile("From: (.*) <.*>");
             Matcher matcher = pattern.matcher(fromLine);
             if (matcher.matches()) {
-            	// remove any quotes surrounding name
-            	System.out.println(matcher.group(1).replace("\"", ""));
+                // remove any quotes surrounding name
+                System.out.println(matcher.group(1).replace("\"", ""));
             }
-            
-            //System.out.printf("[%s]\n", fromLine);
-            
+
+            // System.out.printf("[%s]\n", fromLine);
+
         } catch (Exception ex) {
-        	ex.printStackTrace();
+            ex.printStackTrace();
         }
-	}
+    }
 }

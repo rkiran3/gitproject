@@ -1,7 +1,6 @@
 package com.sandbox.java8;
 
 import java.util.Arrays;
-import java.util.Optional;
 
 /*
  * Find any entry that ends with 'y', 

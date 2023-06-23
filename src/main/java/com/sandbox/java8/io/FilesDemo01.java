@@ -18,9 +18,9 @@ public class FilesDemo01 {
             Path path = Paths.get(filePath);
             String productPattern = "43CA";
 
-//            Files.lines(path)
-//                    .filter(line -> line.contains(productPattern))
-//                    .forEach(System.out::println);
+           Files.lines(path)
+                   .filter(line -> line.contains(productPattern))
+                   .forEach(System.out::println);
             String contents = Files.lines(path)
             	.collect(Collectors.joining());
             System.out.println(contents);

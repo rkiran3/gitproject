@@ -1,6 +1,6 @@
 package com.devgym.apr2020;
 
-import java.util.function.Function;
+//import java.util.function.Function;
 
 public class InterfaceChallenge {
 

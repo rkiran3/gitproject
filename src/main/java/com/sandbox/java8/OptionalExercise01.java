@@ -31,28 +31,28 @@ public class OptionalExercise01 {
     private void exercise1() {
         // test1: check for null string
         String status = null;
-        String result = Optional.ofNullable(status)  // if status is null, then return empty string
-            .orElse("");
-            
+        String result = Optional.ofNullable(status) // if status is null, then return empty string
+                .orElse("");
+
         if (!result.equals("")) {
             System.out.println("Exercise01: Test 1 Fails");
         }
-        
-        // test2: check for existing string        
+
+        // test2: check for existing string
         status = "success";
-        result = Optional.ofNullable(status)  // if status is not null, then return status string
-            .orElse("");
-            
+        result = Optional.ofNullable(status) // if status is not null, then return status string
+                .orElse("");
+
         if (!result.equals("success")) {
             System.out.println("Exercise01: Test 2 Fails");
         }
-        
+
         // test3: check for Integer
         Integer defaultDays = Integer.valueOf(90);
         Integer current = null;
         Integer days = Optional.ofNullable(current)
-            .orElse(defaultDays);
-            
+                .orElse(defaultDays);
+
         if (!days.equals(defaultDays)) {
             System.out.println("Exercise01: Test 3 Fails");
         }
@@ -61,37 +61,43 @@ public class OptionalExercise01 {
         BigDecimal bigNum = null;
         // if null, then set it to default ZERO
         String val = Optional.ofNullable(bigNum)
-            .orElse(BigDecimal.ZERO)
-            .toString(); // return string representation
+                .orElse(BigDecimal.ZERO)
+                .toString(); // return string representation
         assertEquals("0", val);
 
         // check for BigDecimal value 1
         BigDecimal bigNumOne = BigDecimal.ONE;
         // if null, then set it to default TEN
         val = Optional.ofNullable(bigNumOne)
-            .orElse(BigDecimal.TEN)
-            .toString(); // return string representation
+                .orElse(BigDecimal.TEN)
+                .toString(); // return string representation
         assertEquals("1", val);
     }
 
     private void exercise2() {
-        // Inner class for testing List 
+        // Inner class for testing List
         class Cover {
-            private List <String> coverList;
+            private List<String> coverList;
 
-            public void setCoverList(List <String> coverList) {
+            public void setCoverList(List<String> coverList) {
                 this.coverList = coverList;
             }
             
+            public List<String> getCoverList() {
+                return this.coverList;
+            }
         }
 
         Cover cover = new Cover();
-        List <String> namesList = Stream.of("January", "February")
+        List<String> namesList = Stream.of("January", "February")
                 .collect(Collectors.toList());
-        
-        //namesList.forEach(System.out::println);
+
+        // namesList.forEach(System.out::println);
         cover.setCoverList(namesList);
         cover.setCoverList(null);
+        if (cover.getCoverList() == null) {
+            System.out.println("coverlist is empty");
+        }
     }
 
     /**

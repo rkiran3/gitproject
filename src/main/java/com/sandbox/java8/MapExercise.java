@@ -43,13 +43,14 @@ public class MapExercise {
         List<Integer> prices = Arrays.asList(100, 200, 300);
         int percentage = 10;
         List<Double> increasedPrices = increasePrice(prices, percentage);
+        System.out.println(increasedPrices.size());
 
         prices.stream()
                 .map((cost) -> (cost*0.12)+cost)
                 .forEach(System.out::println);
 
         // Declare a function that returns a boolean
-        Predicate<Integer> isGreaterThan100 = (number) -> number > 200;
+        //Predicate<Integer> isGreaterThan100 = (number) -> number > 200;
 
         // Declare a function that returns a boolean
         Function<Integer, Predicate<Integer>> isGreaterThanN =
@@ -90,7 +91,7 @@ public class MapExercise {
                 .filter(i -> (i&1)==1).count());
 
         System.out.println("Printing Integer List: ");
-        List <Integer> integerList = null;
+        //List <Integer> integerList = null;
         IntStream.range(1, 10)
                 .mapToObj(i -> Integer.toBinaryString(i))
                 .flatMap(w -> w.chars().mapToObj(i -> (char) i))

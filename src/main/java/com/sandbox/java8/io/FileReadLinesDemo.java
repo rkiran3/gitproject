@@ -27,9 +27,9 @@ public class FileReadLinesDemo {
                     .filter(line -> line.matches(regex))
                     //.peek(line -> System.out.printf("Matched [%s]\n", line))
                     .collect(Collectors.toList());
-//            System.out.println("Printing Matched Lines");
-//            matchedLines.stream()
-//                .forEach(System.out::println);
+           System.out.println("Printing Matched Lines");
+           matchedLines.stream()
+               .forEach(System.out::println);
             
             List<String> unMatchedLines = Files.lines(path)
                     //.peek(line -> System.out.printf("Starting: [%s]\n", line))

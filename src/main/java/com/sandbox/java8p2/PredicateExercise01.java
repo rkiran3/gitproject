@@ -10,7 +10,7 @@ public class PredicateExercise01 {
         
         System.out.println(isCACompany.test("BOSTON"));
             
-        final Predicate<String> isStatus = (s) -> s.contains("CA");
+        //final Predicate<String> isStatus = (s) -> s.contains("CA");
         BiFunction<String, String, Boolean> isValidStatus = (val1, val2) -> {
         	Boolean retVal= false;
         	if (val1 != null) {

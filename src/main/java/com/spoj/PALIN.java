@@ -16,7 +16,7 @@ public class PALIN {
      * @return next number which is Palindrome.
      */
     public int smallestPalindrome(int k) {
-        String result = "0";
+        
         boolean found = false;  // initial flag
 
         if (k > 0) {

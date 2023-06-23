@@ -49,6 +49,8 @@ public class DeletePriorChar {
     String[] input = { "f", "$", "s", "t" };
     String[] output = deleteChar(input);
 
+    output[0].equals("s");
+    output[1].equals("t");
     //churn();
   }
 }

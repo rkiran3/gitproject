@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.function.Function;
 import static java.util.stream.Collectors.*;
 import static java.util.Comparator.*;
+
 /**
  * We define a class that denotes a month, this class will be used later
  * to sort them by name, days
@@ -40,22 +41,23 @@ class Month {
     }
 
 }
+
 public class ComparatorExercise02 {
 
     /**
      * Helper Method
+     * 
      * @param message
      * @param monthList
      */
     public static void printMonthList(final String message, final List<Month> monthList) {
-            System.out.println(message);
-            monthList.forEach(System.out::println);
+        System.out.println(message);
+        monthList.forEach(System.out::println);
     }
 
-    public static void main(String [] args) {
-        Comparator<Month> compareAscending =
-                (month1, month2) -> month1.getName().compareTo(month2.getName());
-        Comparator<Month> compareDescending = compareAscending.reversed();
+    public static void main(String[] args) {
+        Comparator<Month> compareAscending = (month1, month2) -> month1.getName().compareTo(month2.getName());
+        //Comparator<Month> compareDescending = compareAscending.reversed();
 
         final Function<Month, Integer> byDays = month -> month.getDays();
         final Function<Month, String> byTheirName = month -> month.getName();
@@ -73,8 +75,7 @@ public class ComparatorExercise02 {
                 new Month("September", 30),
                 new Month("October", 31),
                 new Month("November", 30),
-                new Month("December", 31)
-        );
+                new Month("December", 31));
 
         /* sort the months by days and then by their name */
         printMonthList("Sort by Days and then by their Name:", monthList
@@ -83,13 +84,13 @@ public class ComparatorExercise02 {
                 .collect(toList()));
 
         /* Simple sort of months by their Names */
-        printMonthList("Sort by Name: ",    monthList
+        printMonthList("Sort by Name: ", monthList
                 .stream()
                 .sorted(compareAscending)
                 .collect(toList()));
 
         /* Another test to list months by Name */
-        List <Month> outMonths = monthList
+        List<Month> outMonths = monthList
                 .stream()
                 .sorted(compareAscending)
                 .collect(toList());

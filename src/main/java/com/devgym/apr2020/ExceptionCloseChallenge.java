@@ -6,9 +6,9 @@ import java.io.Closeable;
 
 public class ExceptionCloseChallenge{
     public static void main(String... doYourBest) {
-        String soprano = null;
+        //String soprano = null;
 
-        CloseIt closeIt = new CloseIt();
+        //CloseIt closeIt = new CloseIt();
 
         /*try(closeIt) {
             System.out.println(soprano.matches(null));

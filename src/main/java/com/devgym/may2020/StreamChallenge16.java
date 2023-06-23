@@ -16,11 +16,13 @@ public class StreamChallenge16 {
 					new Warrior("penta"),
 					new Warrior("Furs"));
 			
-			List outList = warriorSet.stream()
+			List<Warrior> outList = warriorSet.stream()
 				//.distinct()
 				.sorted()
 				.collect(Collectors.toList());
 			
+            System.out.println("list size: " + outList.size());
+
 			counterArr[count] = counterArr[count] + i;
 			count++;
 			if (count > 10000) {

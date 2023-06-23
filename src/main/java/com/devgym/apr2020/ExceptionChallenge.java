@@ -1,9 +1,6 @@
 
 package com.devgym.apr2020;
 
-import java.io.Closeable;
-import java.io.IOException;
-
 /* JAVA 9*/
 public class ExceptionChallenge {
 

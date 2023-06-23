@@ -34,11 +34,10 @@ public class StreamRecipes {
         return forward.equals(backward);
     }
 
-    public static void main(String [] args) {
-        List<BigDecimal> nums =
-                Stream.iterate(BigDecimal.ONE, n -> n.add(BigDecimal.ONE))
-                        .limit(10)
-                        .collect(Collectors.toList());
+    public static void main(String[] args) {
+        List<BigDecimal> nums = Stream.iterate(BigDecimal.ONE, n -> n.add(BigDecimal.ONE))
+                .limit(10)
+                .collect(Collectors.toList());
         System.out.println(nums); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
         // Print consecutive days from today
@@ -48,11 +47,13 @@ public class StreamRecipes {
 
         List<Integer> ints = IntStream.of(3, 1, 4, 1, 5, 9)
                 .collect(ArrayList<Integer>::new, ArrayList::add, ArrayList::addAll);
+        System.out.println(ints.size());
 
         // Convert IntStream to an Array
         int[] intArray = IntStream.of(3, 1, 4, 1, 5, 9).toArray();
+        System.out.println(intArray.length);
 
-        //int[] intArray2 = IntStream.of(3, 1, 4, 1, 5, 9).toArray(int[]::new);
+        // int[] intArray2 = IntStream.of(3, 1, 4, 1, 5, 9).toArray(int[]::new);
 
         // Summing using reduce, prints 55
         int sum = IntStream.rangeClosed(1, 10)
@@ -65,9 +66,11 @@ public class StreamRecipes {
                     System.out.printf("x=%d, y=%d%n", x, y);
                     return x + y;
                 }).orElse(0);
+        System.out.println(sum2);
 
         int sum3 = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
                 .reduce(0, Integer::sum);
+        System.out.println(sum3);
 
         // max
         Integer max = Stream.of(3, 1, 4, 1, 5, 9)
@@ -80,18 +83,19 @@ public class StreamRecipes {
         System.out.println(s);
 
         // Create a Map of BookId with Book
-        /*HashMap<Integer, Book> bookMap = books.stream()
-                .reduce(new HashMap<Integer, Book>(),  1
-        (map, book) -> {                2
-            map.put(book.getId(), book);
-            return map;
-        },
-                (map1, map2) -> {              3
-                    map1.putAll(map2);
-                    return map1;
-                });
-        bookMap.forEach((k,v) -> System.out.println(k + ": " + v));
-        */
+        /*
+         * HashMap<Integer, Book> bookMap = books.stream()
+         * .reduce(new HashMap<Integer, Book>(), 1
+         * (map, book) -> { 2
+         * map.put(book.getId(), book);
+         * return map;
+         * },
+         * (map1, map2) -> { 3
+         * map1.putAll(map2);
+         * return map1;
+         * });
+         * bookMap.forEach((k,v) -> System.out.println(k + ": " + v));
+         */
 
         // debugging while iterating
         int total = IntStream.rangeClosed(1, 10)
@@ -102,10 +106,10 @@ public class StreamRecipes {
                 .map(n -> n * 2)
                 .filter(n -> n % 3 == 0)
                 .sum();
-
+        System.out.println(total);
 
         // partition by length
-        Stream <String> stringsStream = Stream.of( "is", "a", "my", "this");
+        Stream<String> stringsStream = Stream.of("is", "a", "my", "this");
         Map<Boolean, Long> numberLengthMap = stringsStream
                 .collect(Collectors.partitioningBy(
                         ss -> ss.length() % 2 == 0,
@@ -115,41 +119,43 @@ public class StreamRecipes {
         // false: 4
         // true: 8
 
-        /*OptionalInt firstEvenDoubleDivBy3 = IntStream.range(1, 99999)
-                .map(this::multByTwo)
-                .filter(this::divByThree)
-                .findFirst();*/
+        /*
+         * OptionalInt firstEvenDoubleDivBy3 = IntStream.range(1, 99999)
+         * .map(this::multByTwo)
+         * .filter(this::divByThree)
+         * .findFirst();
+         */
 
         // Creating a LinkedList
-        List<String> actors =
-                Stream.of("Hank Azaria", "Janeane Garofalo", "William H. Macy",
-                        "Paul Reubens", "Ben Stiller", "Kel Mitchell", "Wes Studi")
-                        .collect(Collectors.toCollection(LinkedList::new));
+        List<String> actors = Stream.of("Hank Azaria", "Janeane Garofalo", "William H. Macy",
+                "Paul Reubens", "Ben Stiller", "Kel Mitchell", "Wes Studi")
+                .collect(Collectors.toCollection(LinkedList::new));
 
         System.out.println(actors.stream().collect(Collectors.joining(", ")));
 
+        // ------ Creating a Map of Actors {name: role}
+        /*
+         * Set<Actor> actors = mysteryMen.getActors();
+         * 
+         * Map<String, String> actorMap = actors.stream()
+         * .collect(Collectors.toMap(Actor::getName, Actor::getRole)); 1
+         * 
+         * actorMap.forEach((key,value) ->
+         * System.out.printf("%s played %s%n", key, value));
+         */
 
-        //------ Creating a Map of Actors {name: role}
-        /*Set<Actor> actors = mysteryMen.getActors();
-
-        Map<String, String> actorMap = actors.stream()
-                .collect(Collectors.toMap(Actor::getName, Actor::getRole)); 1
-
-        actorMap.forEach((key,value) ->
-                System.out.printf("%s played %s%n", key, value)); */
-
-
-
-        //-------- Adding books to a Map { Book Object has id, name }
-        /*Map<Integer, Book> bookMap = books.stream()
-                .collect(Collectors.toMap(Book::getId, b -> b));
-        bookMap = books.stream()
-                .collect(Collectors.toMap(Book::getId, Function.identity()));
-
-        Identity lambda: given an element, return it
-        2
-
-        Static identity method in Function does the same thing */
+        // -------- Adding books to a Map { Book Object has id, name }
+        /*
+         * Map<Integer, Book> bookMap = books.stream()
+         * .collect(Collectors.toMap(Book::getId, b -> b));
+         * bookMap = books.stream()
+         * .collect(Collectors.toMap(Book::getId, Function.identity()));
+         * 
+         * Identity lambda: given an element, return it
+         * 2
+         * 
+         * Static identity method in Function does the same thing
+         */
 
         List<String> strings = Arrays.asList("this", "is", "a", "long", "list", "of",
                 "strings", "to", "use", "as", "a", "demo");
@@ -157,30 +163,31 @@ public class StreamRecipes {
         Map<Boolean, List<String>> lengthMap = strings.stream()
                 .collect(Collectors.partitioningBy(sl -> sl.length() % 2 == 0));
 
-        lengthMap.forEach((key,value) -> System.out.printf("%5s: %s%n", key, value));
-//
-// false: [a, strings, use, a]
-//  true: [this, is, long, list, of, to, as, demo]
-        // The Collectors.partitioningBy method splits elements into those that satisfy a Predicate and those that do not.
-        // The Collectors.groupingBy method produces a Map of categories, where the values are the elements in each category.
+        lengthMap.forEach((key, value) -> System.out.printf("%5s: %s%n", key, value));
+        //
+        // false: [a, strings, use, a]
+        // true: [this, is, long, list, of, to, as, demo]
+        // The Collectors.partitioningBy method splits elements into those that satisfy
+        // a Predicate and those that do not.
+        // The Collectors.groupingBy method produces a Map of categories, where the
+        // values are the elements in each category.
 
-        //The groupingBy method performs an operation like a "group by" statement in SQL. It returns a Map where the keys are the groups and the values are lists of elements in each group.
+        // The groupingBy method performs an operation like a "group by" statement in
+        // SQL. It returns a Map where the keys are the groups and the values are lists
+        // of elements in each group.
 
-
-        //fibbonacci
+        // fibbonacci
         /*
-        private Map<Long, BigInteger> cache = new HashMap<>();
-
-public BigInteger fib(long i) {
-    if (i == 0) return BigInteger.ZERO;
-    if (i == 1) return BigInteger.ONE;
-
-    return cache.computeIfAbsent(i, n -> fib(n - 2).add(fib(n - 1))); 1
-}
-
+         * private Map<Long, BigInteger> cache = new HashMap<>();
+         * 
+         * public BigInteger fib(long i) {
+         * if (i == 0) return BigInteger.ZERO;
+         * if (i == 1) return BigInteger.ONE;
+         * 
+         * return cache.computeIfAbsent(i, n -> fib(n - 2).add(fib(n - 1))); 1
+         * }
+         * 
          */
-
-
 
     } // main ends
 }

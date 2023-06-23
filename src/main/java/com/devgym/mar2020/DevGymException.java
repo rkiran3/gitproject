@@ -11,6 +11,9 @@ public class DevGymException {
 	    public static void main(String... doYourBest) {
 	        try {
 	            double exceptionNumber = 2 / 0.0;
+                if (exceptionNumber > 0) {
+                    System.out.println("Valid");
+                }
 	            System.out.println("exceptionNumber");
 
 	            throw illegalArgument;

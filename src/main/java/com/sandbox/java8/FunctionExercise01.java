@@ -2,7 +2,6 @@ package com.sandbox.java8;
 
 import java.util.Arrays;
 import java.util.function.Function;
-import java.util.function.IntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 /**
@@ -22,11 +21,11 @@ public class FunctionExercise01 {
                 .map(i -> (i<0) ? -i : i)
                 .forEach(System.out::println);
 
-        Function<Integer, String> intToString = Object::toString;
+        //Function<Integer, String> intToString = Object::toString;
         Function<String, Integer> parseInt = Integer::parseInt;
         Function <Integer, Integer> absInt = java.lang.Math::abs;
         // this can be replaced by IntFunction which works with Primitives
-        Function<String, Integer> parseIntPrimitive = Integer::parseInt;
+        //Function<String, Integer> parseIntPrimitive = Integer::parseInt;
         //IntFunction absIntPrimitive = Math::abs;
         Function<String, Integer> parseAndAbsInt = parseInt.andThen(absInt);
         //IntFunction<String, int> parseAndAbsInt2 = parseIntPrimitive.andThen(absIntPrimitive);
