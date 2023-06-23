@@ -27,7 +27,6 @@ public class MapExercise {
     public static List<Double> increasePrice(List <Integer> prices, int percentage) {
         List<Double> increasedPrices;
         double percentageDbl = percentage/100.0;
-        Integer nums[] = {1, 2, 3, 4};
 
         increasedPrices = prices.stream()
                 .map(cost -> (cost*percentageDbl) + cost)
