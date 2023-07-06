@@ -3,12 +3,10 @@ package com.sandbox;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.function.Function;
 import java.util.logging.Logger;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,10 +41,9 @@ public class SalesAggregateDemo {
             .boxed()
             .collect(Collectors.toList());
             
-        SalesAggregateDemo sad = new SalesAggregateDemo();
         Random random = new Random();
-
         String randYr = String.valueOf(years.get(random.nextInt(years.size())));
+        System.out.println("Printing Random year from list " + randYr);
 
         // Create a list of SalesItem
         List<SalesItem> salesItemList = IntStream.rangeClosed(0, 10)

@@ -22,7 +22,7 @@ public class ItemPriceList {
 	}
 
 	public static void main(String[] args) {
-		SalesAggregateDemo itemPriceList = new SalesAggregateDemo();
+		ItemPriceList itemPriceList = new ItemPriceList();
 
 		// Array of primitives
 		int[] priceArray = { 0, 100, 200, 300 };
