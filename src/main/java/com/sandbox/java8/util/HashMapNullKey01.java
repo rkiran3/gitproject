@@ -5,6 +5,8 @@ import java.util.HashMap;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
 
 /**
  * 
@@ -12,6 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@Log
 public class HashMapNullKey01 {
 
     /**
@@ -29,6 +32,7 @@ public class HashMapNullKey01 {
     }
     
     public static void main(String[] args) {
+        log.info("hello");
         HashMap<String, Integer> hm = new HashMap<>();
         hm.put("Population", Integer.valueOf(20));
         hm.put(null, Integer.valueOf(40));
