@@ -21,7 +21,13 @@
         	<table>
 	    		<tr>
 	    			<td>Category</td>
-	    			<td><input id="category" type="text" th:field="*{category}" name="title" /></td>      			
+	    			<td>
+	    				<input id="category" type="text" th:field="*{category}" name="title" />
+	    				<select id="categoryDropDownList">
+	    					<option value="">select option</option>
+	    					<option th:each="option : ${snippetForm.categoryList}" th:value="${option}" th:text="${option}"></option>
+	    				</select>
+	    			</td>      			
 	    		</tr>
         		<tr>
 	    			<td>Title</td>
@@ -30,7 +36,7 @@
         		<tr>
 	    			<td><label for="content">Content</label></td>
 	    			<td>
-	    				<input id="content" type="text" th:field="*{content}" name="content" /></td>
+	    				<textarea id="content" rows="20" cols="80" th:field="*{content}" name="content" /></textarea>
 	    		</tr>
         		<tr>
 	    			<td></td>
@@ -50,10 +56,12 @@
         <table border="1"> 
         	<tr>
         		<th>ID</th>
-        		<th>content</th>
+        		<th>Category</th>
+        		<th>Content</th>
         	</tr>        	
         	<tr th:each="snippet: ${snippetForm.snippetsList}">
         		<td th:text="${snippet.id}"> </td>
+        		<td th:text="${snippet.category}"> </td>
         		<td><div><output th:text="${snippet.content}" /></div>
         		</td>
         	</tr>

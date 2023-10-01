@@ -13,12 +13,13 @@ import lombok.Setter;
 @Data
 @NoArgsConstructor
 public class SnippetForm {
-	List<Snippet> snippetsList;
+	private Integer id;
 	private String keyword = "";
 	private String title = "";
 	private String category = "";
 	private String content = "";
-	
+	List<Snippet> snippetsList;
+	List<String> categoryList;
 	
 	public List<Snippet> getSnippetsList() {
 		return snippetsList;
@@ -44,12 +45,22 @@ public class SnippetForm {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	
 	public String getKeyword() {
 		return keyword;
 	}
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
+	}
+	public List<String> getCategoryList() {
+		return categoryList;
+	}
+	public void setCategoryList(List<String> categoryList) {
+		this.categoryList = categoryList;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }
