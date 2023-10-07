@@ -1,0 +1,36 @@
+assert [].size() == 0
+def listA = [10, 20, 30]
+assert listA.size() == 3
+def listB = [40, 50, 60]
+listA.addAll(listB)
+assert listA.size() == 6
+
+def listC = [10, 20, 30, 40, 50, 60]
+assert listA == listC
+
+def listAll = [ 10, 20, 30]
+def listThirty = [ 30 ]
+def listRemain = listAll - listThirty
+assert listRemain == [10,20]
+
+// Check if an element is in the list
+mylist = [2,3]
+assert mylist.contains(2)
+assert mylist.any {it == 2}   
+
+// Get the first and last elements in the list
+listA = [10, 5, 9]
+assert [10, 9] == listA[0,-1]
+
+// Check for max value amongst the first and last element in list
+listA = [10, 9, 11]
+assert 11 == listA[0,-1].max()
+
+// get list of all roots of range of number
+assert [1, 4, 9, 16] = (1..4).collect { it*2 }
+
+// Subtract one list from another
+def biglist = [1, 2, 3, 4]
+def excludeNums = [2, 3]
+def outlist = biglist - excludeNums
+assert outlist == [1, 4]
