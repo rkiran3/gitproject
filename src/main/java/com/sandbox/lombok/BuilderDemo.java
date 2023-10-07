@@ -24,16 +24,12 @@ public class BuilderDemo extends Parent {
     }
 
     public static void main(String[] args) {
-        BuilderDemo bd = new BuilderDemo("Parent", 46, "child", 19);
+        BuilderDemo bd = new BuilderDemo("Parent", 
+            46, 
+            "child", 
+            19);
 
-        BuilderDemo bd1 = BuilderDemo.builder()
-            .name("PParent")
-            .age(446)
-            .childName("CChild")
-            .childAge(19)
-            .build();
+        System.out.println(bd);
 
-        //System.out.println(bd);
-        System.out.println(bd1);
     }
 }

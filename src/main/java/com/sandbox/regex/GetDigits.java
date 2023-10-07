@@ -1,7 +1,6 @@
 package com.sandbox.regex;
 
 import java.util.Arrays;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
