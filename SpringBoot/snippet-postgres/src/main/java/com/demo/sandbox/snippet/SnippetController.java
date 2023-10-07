@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping(value = "/")
@@ -25,7 +26,7 @@ public class SnippetController {
 	}
 	
 	@GetMapping("th_snippets")
-	public String getAll(Model model){
+	public String getAll(Model model, @RequestParam(name="keyword", required=false) String keyword){
 		List<Snippet> snippetList = repository.findAllByOrderByCrtdtDesc();
 		//model.addAttribute("snippet", new Snippet());
 		SnippetForm snippetForm = new SnippetForm();
@@ -38,6 +39,8 @@ public class SnippetController {
 		List<String> categoryList = null;
 		if (snippetList != null) {
 			categoryList = snippetList.stream()
+					.filter(s -> s.getCategory() != null)
+					.filter(s -> !s.getCategory().isBlank())
 					.map(s -> s.getCategory())
 					.distinct()
 					.collect(Collectors.toList());
@@ -49,7 +52,7 @@ public class SnippetController {
 		//model.addAttribute("categoryList", categoryList);
 		
 		model.addAttribute("snippets", snippetList);
-		logger.info("Adding snippets");
+		logger.info("Getting snippets");
 		
 		return "list_snippets";
 	}
@@ -63,10 +66,12 @@ public class SnippetController {
 		if (bindingResult.hasErrors()) {
 			return "error";
 		}
+		String keyword = snippetForm.getKeyword() != null ? snippetForm.getKeyword().toLowerCase() : "";
 		List<Snippet> snippetList = repository.findAllByOrderByCrtdtDesc();
 		snippetList = snippetList.stream()
-			.map(s -> new Snippet(s.getId(), s.getCategory(), s.getTitle(), s.getContent().trim()))
-			.collect(Collectors.toList());
+				.filter(s -> s.getCategory().toLowerCase().contains(keyword))
+				.map(s -> new Snippet(s.getId(), s.getCategory(), s.getTitle(), s.getContent().trim()))
+				.collect(Collectors.toList());
 		
 		List<String> categoryList = null;
 		if (snippetList != null) {

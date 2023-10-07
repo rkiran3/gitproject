@@ -17,14 +17,15 @@
         </div>
             
         <form action="#" th:action="@{/th_snippets}" th:object="${snippetForm}" th:method="POST">
-        	Keyword: <input id="keyword" type="text" th:name="keyword" />
+        	Keyword: <input id="keyword" type="text" th:name="keyword" th:value="*{keyword}"/>
+        	<input type="submit" value="Search with keywords"/>
         	<table>
 	    		<tr>
 	    			<td>Category</td>
 	    			<td>
 	    				<input id="category" type="text" th:field="*{category}" name="title" />
 	    				<select id="categoryDropDownList">
-	    					<option value="">select option</option>
+	    					<option value="*{category}">select option</option>
 	    					<option th:each="option : ${snippetForm.categoryList}" th:value="${option}" th:text="${option}"></option>
 	    				</select>
 	    			</td>      			
@@ -40,7 +41,7 @@
 	    		</tr>
         		<tr>
 	    			<td></td>
-	    			<td><input type="submit" value="Add"/></td>      			
+	    			<td><input type="submit" value="Submit"/></td>      			
         		</tr>
         		<tr>
 	    			<td></td>
@@ -49,6 +50,10 @@
         		<tr>
 	    			<td></td>
 	    			<td><a href="/th_snippets">All Snippets</a></td>      			
+        		</tr>
+        		<tr>
+	    			<td></td>
+	    			<td><a href="/">Home</a></td>      			
         		</tr>
         	</table>
         </form>

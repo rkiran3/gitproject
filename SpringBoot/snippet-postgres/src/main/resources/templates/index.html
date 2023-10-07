@@ -6,7 +6,7 @@
 	<body>
 		<h1> Welcome ! </h1>
 		<p> Click <a th:href="@{/hello}">here to see greeting </a> </p>
-		<table>
+		<table border="1">
 			<tr>
 				<td><a href="/actuator">Actuator </a> </td>
 				<td>expose endpoints</td>				
@@ -34,15 +34,22 @@
 		</table>
 		<hr />
 		Thymeleaf samples
-		<table>
+		<table border="1">
 			<tr>
 				<td><a href="/th_snippets">Snippets</a> </td>
-				<td>Use Thymeleaf to list Snippets</td>
+				<td>List all Snippets</td>
 			</tr>
 			<tr>
-				<form action="#" th:action="@{/th_snippets}" th:object="${snippet}" method="POST">
-					<button type="submit"> PostDemo </button>
-				</form>
+				<td><a href="/th_rand">Random Snippets</a> </td>
+				<td>List Random Snippets</td>
+			</tr>
+			<tr>
+				<td>
+					<form action="#" th:action="@{/th_snippets}" th:object="${snippet}" method="POST">
+						<button type="submit"> Post Demo </button>
+					</form>
+				</td>
+				<td>Form Post to get Snippets</td>
 			</tr>
 		</table>
 		
