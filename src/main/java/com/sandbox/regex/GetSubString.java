@@ -1,4 +1,4 @@
-package com.sandbox.regextest;
+package com.sandbox.regex;
 
 import java.io.File;
 import java.util.Arrays;

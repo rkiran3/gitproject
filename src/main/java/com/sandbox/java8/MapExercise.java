@@ -34,6 +34,8 @@ public class MapExercise {
 
         return increasedPrices;
     }
+
+    
     public static void main(String [] args) {
         Converter<String, Integer> converter = (from) -> Integer.valueOf(from);
 
