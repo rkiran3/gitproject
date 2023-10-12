@@ -1,6 +1,8 @@
 package com.demo.sandbox.snippet;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -27,11 +29,12 @@ public class SnippetController {
 	
 	@GetMapping("th_snippets")
 	public String getAll(Model model, @RequestParam(name="keyword", required=false) String keyword){
-		List<Snippet> snippetList = repository.findAllByOrderByCrtdtDesc();
+		List<Snippet> snippetList = repository.findAllByOrderByLstmoddtDesc();
 		//model.addAttribute("snippet", new Snippet());
 		SnippetForm snippetForm = new SnippetForm();
 				
 		snippetList = snippetList.stream()
+			.filter(s -> s.getContent() != null)
 			.map(s -> new Snippet(s.getId(), s.getCategory(), s.getTitle(), s.getContent().trim()))
 					.collect(Collectors.toList());		
 		snippetForm.setSnippetsList(snippetList);
@@ -67,9 +70,33 @@ public class SnippetController {
 			return "error";
 		}
 		String keyword = snippetForm.getKeyword() != null ? snippetForm.getKeyword().toLowerCase() : "";
-		List<Snippet> snippetList = repository.findAllByOrderByCrtdtDesc();
+
+		if (snippetForm.getCategory() != null && snippetForm.getTitle() != null && snippetForm.getContent() != null) {
+			Snippet snippet = null;			
+			if (snippetForm.getId() != null) {
+				Optional<Snippet> snippetOpt = repository.findById(snippetForm.getId());
+				if (snippetOpt.isPresent()) {
+					snippet = snippetOpt.get();
+				}
+			} else {
+				snippet = new Snippet();
+				Timestamp ts = new Timestamp(System.currentTimeMillis());
+				snippet.setCrtdt(ts);
+			}
+
+			snippet.setCategory(snippetForm.getCategory());
+			snippet.setTitle(snippetForm.getTitle());
+			snippet.setContent(snippetForm.getContent());
+			snippet.setLstmoddt(new Timestamp(System.currentTimeMillis()));
+
+			repository.save(snippet);
+		}
+
+		List<Snippet> snippetList = repository.findAllByOrderByLstmoddtDesc();
 		snippetList = snippetList.stream()
-				.filter(s -> s.getCategory().toLowerCase().contains(keyword))
+				.filter(s -> s.getCategory().toLowerCase().contains(keyword) ||
+					s.getTitle().toLowerCase().contains(keyword) ||
+					s.getContent().toLowerCase().contains(keyword))
 				.map(s -> new Snippet(s.getId(), s.getCategory(), s.getTitle(), s.getContent().trim()))
 				.collect(Collectors.toList());
 		
@@ -108,6 +135,33 @@ public class SnippetController {
 		snippetForm.setSnippetsList(snippetList);
 		model.addAttribute("snippetForm", snippetForm);
 		model.addAttribute("snippet", new Snippet());
+		model.addAttribute("snippets", snippetList);
+		logger.info("Adding snippets");
+		return "list_snippets";
+	}
+
+	public static SnippetForm  createNewSnippetForm(Snippet snippet) {
+		SnippetForm snippetForm = new SnippetForm();
+		snippetForm.setCategory(snippet.getCategory());
+		snippetForm.setContent(snippet.getContent());
+		snippetForm.setTitle(snippet.getTitle());
+		snippetForm.setId(snippet.getId());
+
+		return snippetForm;
+	}
+	// Get a random List of Snippet based on count
+	@GetMapping("/th_edit/{id}")
+	private String editSnippet(Model model, @PathVariable Long id){
+		Optional<Snippet> optSnippet = repository.findById(id);
+		Snippet snippet = new Snippet();
+		if (optSnippet.isPresent()) {
+			snippet = optSnippet.get();
+		}
+		List<Snippet> snippetList = repository.findAllByOrderByLstmoddtDesc();
+		SnippetForm snippetForm = createNewSnippetForm(snippet);
+		snippetForm.setSnippetsList(snippetList);
+		model.addAttribute("snippetForm", snippetForm);
+		model.addAttribute("snippet", snippet);
 		model.addAttribute("snippets", snippetList);
 		logger.info("Adding snippets");
 		return "list_snippets";

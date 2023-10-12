@@ -13,7 +13,7 @@ import lombok.Setter;
 @Data
 @NoArgsConstructor
 public class SnippetForm {
-	private Integer id;
+	private Long id;
 	private String keyword = "";
 	private String title = "";
 	private String category = "";
@@ -57,10 +57,10 @@ public class SnippetForm {
 	public void setCategoryList(List<String> categoryList) {
 		this.categoryList = categoryList;
 	}
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 }
