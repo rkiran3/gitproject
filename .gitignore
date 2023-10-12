@@ -1,0 +1,10 @@
+/target/
+.git
+.classpath
+.settings
+*.jar
+*.class
+
+.vscode
+.settings.json
+.project
