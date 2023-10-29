@@ -12,7 +12,8 @@ A loop starts and ends at a particular index with more
 than 1 element along the loop.
 The loop must be "forward" or "backward'.
 
-Example 1: Given the array [2, -1, 1, 2, 2], there is a loop, from index 0 -> 2 -> 3 -> 0.
+Example 1: Given the array [2, -1, 1, 2, 2], 
+there is a loop, from index 0 -> 2 -> 3 -> 0.
 
 Example 2: Given the array [-1, 2], there is no loop.
 
