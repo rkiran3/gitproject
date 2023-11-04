@@ -17,9 +17,13 @@
         </div>
             
         <form action="#" th:action="@{/th_snippets}" th:object="${snippetForm}" th:method="POST">
-        	Keyword: <input id="keyword" type="text" th:name="keyword" th:value="*{keyword}"/>
-        	<input type="hidden" th:field="*{id}" id="id" />
+    	Keyword: <input id="keyword" type="text" th:name="keyword" th:value="*{keyword}"/>
+	    	<input type="hidden" th:field="*{id}" id="id" />
 			<input type="submit" value="Search with keywords"/>
+		</form>		
+		<br />
+		
+        <form action="#" th:action="@{/th_snippets}" th:object="${snippetForm}" th:method="POST">
         	<table>
 	    		<tr>
 	    			<td>Category</td>
