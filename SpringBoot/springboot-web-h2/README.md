@@ -35,6 +35,12 @@ Project is setup to run on H2 database and we can see dependency in pom.xml
 			<scope>runtime</scope>
 		</dependency>
 
+		spring.datasource.url=jdbc:h2:mem:testdb
+		spring.datasource.driverClassName=org.h2.Driver
+		spring.datasource.username=sa
+		spring.datasource.password=password
+		spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+
 ## Thyme dependency
 Now, let us add a front end support using Thymeleaf for which we need below section in pom.xml
 

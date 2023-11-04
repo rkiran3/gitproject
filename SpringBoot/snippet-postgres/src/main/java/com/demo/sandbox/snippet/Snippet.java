@@ -38,7 +38,8 @@ public class Snippet {
 		this.setLstmoddt(new Timestamp(new Date().getTime())); 
 	}
 	 
-	public Snippet(String category, String title, String content) {
+	public Snippet(Long id, String category, String title, String content) {
+		this.id = id;
 		this.category = category;
 		this.title = title;
 		this.content = content;

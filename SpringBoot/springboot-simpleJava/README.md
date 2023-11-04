@@ -46,7 +46,7 @@ To clean project
 	[INFO] Deleting /pathtoproject/springboot-simpleJava/target
 	
 
-## Load properties, 
+## Load properties 
 Spring Boot is flexible to allow users to load custom properties from application.properties
 It acts like a dictionary of key value pairs
 
@@ -65,4 +65,46 @@ which makes the values available to the program.
 When program is executed, we see output
 
 	INFO 17067 --- [           main] com.example.demo.DemoApplication         : message from application.properties red
- 
+
+## Multiple properties files
+When we need to specify different values in dev and prod for example, we can separate those
+into different files 
+
+resources/application-prod.properties
+
+resources/application.properties
+
+Each property file can now contain different value for that variable.
+
+for example:
+
+application.properties 
+
+color=red
+
+Whereas the prod version can contain different values for same variable "color"
+
+application-prod.properties 
+
+color=blue-prod
+
+	$ mvn install # build changes and deploy to create new jar file and copy the properties files.
+
+This will pick up the environment variable from application.properties.
+
+	$ java  -jar target/demo-0.0.1-SNAPSHOT.jar "This is a very large string"
+
+This will pick up the environment variable from application.properties.
+
+	$ java -Dspring.profiles.active=prod -jar target/demo-0.0.1-SNAPSHOT.jar "This is a very large string"
+	
+To run using mvn spring-boot command line
+
+This will pick up environment variables from application-prod.properties
+
+	$ mvn spring-boot:run -Drun.profiles=prod  
+
+This will pick up environment variables from application.properties
+
+	$ mvn spring-boot:run 
+
