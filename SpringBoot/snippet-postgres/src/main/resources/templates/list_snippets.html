@@ -66,8 +66,9 @@
         		<th>Content</th>
         	</tr>        	
         	<tr th:each="snippet: ${snippetForm.snippetsList}">
-        		<td > 
-					<a th:href="@{'/th_edit/' + ${snippet.id}}" th:text="${snippet.id}"> </a>
+        		<td> 
+					<a th:href="@{'/th_edit/' + ${snippet.id}}">Edit</a>
+					<a th:href="@{'/th_delete_disable/' + ${snippet.id}}">Delete</a>
 				</td>
         		<td th:text="${snippet.category}"> </td>
         		<td><div><output th:text="${snippet.content}" /></div>

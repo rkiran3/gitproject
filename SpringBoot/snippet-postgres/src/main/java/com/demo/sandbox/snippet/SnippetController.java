@@ -166,4 +166,23 @@ public class SnippetController {
 		logger.info("Adding snippets");
 		return "list_snippets";
 	}
+
+	// Delete Snippet, id passed by form
+	@GetMapping("/th_delete/{id}")
+	private String deleteSnippet(Model model, @PathVariable Long id){
+		Optional<Snippet> optSnippet = repository.findById(id);
+		Snippet snippet = new Snippet();
+		if (optSnippet.isPresent()) {
+			snippet = optSnippet.get();
+			repository.delete(snippet);
+		}
+		List<Snippet> snippetList = repository.findAllByOrderByLstmoddtDesc();
+		SnippetForm snippetForm = createNewSnippetForm(snippet);
+		snippetForm.setSnippetsList(snippetList);
+		model.addAttribute("snippetForm", snippetForm);
+		model.addAttribute("snippet", snippet);
+		model.addAttribute("snippets", snippetList);
+		logger.info("Delete snippets");
+		return "list_snippets";
+	}
 }
