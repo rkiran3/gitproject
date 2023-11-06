@@ -1,25 +1,24 @@
 package com.demo.sandbox.snippet;
 
-import java.util.ArrayList;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@RestController
-@RequestMapping(value = "/snippets")
+@Controller
+@RequestMapping(value = "/")
 public class SnippetController {
 	private final SnippetRepository repository;
 	private Logger logger = LoggerFactory.getLogger(SnippetController.class);
@@ -28,89 +27,162 @@ public class SnippetController {
 		this.repository = repository;
 	}
 	
-	@GetMapping
-	@CrossOrigin
-	private ResponseEntity<List<Snippet>> allSnippets(){
-		System.out.println("Getting all Snippets");
-		List<Snippet> snippetList = repository.findAllByOrderByCrtdtDesc();
-		return new ResponseEntity<>(snippetList, HttpStatus.OK);
-	}
-	
-	// Save a new Snippet
-	@PostMapping
-	@CrossOrigin
-	Snippet newSnippet(@RequestBody Snippet newSnippet) {
-		logger.info("Saving Snippet");
-		return repository.save(newSnippet);
-	}
-	
-	// Get a single Snippet
-	@GetMapping("/{id}")
-	Snippet one(@PathVariable Long id) {
-		return repository.findById(id)
-				.orElseThrow(() -> new SnippetNotFoundException(id));
-	}
-	
-	// Get List of Snippets based on category
-	@GetMapping("/c/{cat}")
-	List<Snippet> findByCategory(@PathVariable String cat) {
-		List<Snippet> snippetCatList = repository.findByCategory(cat);
-		if (snippetCatList.size() == 0) {
-			snippetCatList = repository.findByCategoryContainingIgnoreCase(cat);
+	@GetMapping("th_snippets")
+	public String getAll(Model model, @RequestParam(name="keyword", required=false) String keyword){
+		List<Snippet> snippetList = repository.findAllByOrderByLstmoddtDesc();
+		//model.addAttribute("snippet", new Snippet());
+		SnippetForm snippetForm = new SnippetForm();
+				
+		snippetList = snippetList.stream()
+			.filter(s -> s.getContent() != null)
+			.map(s -> new Snippet(s.getId(), s.getCategory(), s.getTitle(), s.getContent().trim()))
+					.collect(Collectors.toList());		
+		snippetForm.setSnippetsList(snippetList);
+		
+		List<String> categoryList = null;
+		if (snippetList != null) {
+			categoryList = snippetList.stream()
+					.filter(s -> s.getCategory() != null)
+					.filter(s -> !s.getCategory().isBlank())
+					.map(s -> s.getCategory())
+					.distinct()
+					.collect(Collectors.toList());
 		}
-		return snippetCatList;
+		// set categoryList to display drop down in view 
+		snippetForm.setCategoryList(categoryList);
+
+		model.addAttribute("snippetForm", snippetForm);
+		//model.addAttribute("categoryList", categoryList);
+		
+		model.addAttribute("snippets", snippetList);
+		logger.info("Getting snippets");
+		
+		return "list_snippets";
+	}
+	
+	// Displays all the entries fetched from database.
+	// SnippetForm is a wrapper around Snippet (which is an Model)
+	@PostMapping("th_snippets")
+	public String snippetSubmit(@ModelAttribute("snippetForm") SnippetForm snippetForm
+			, BindingResult bindingResult
+			, Model model){
+		if (bindingResult.hasErrors()) {
+			return "error";
+		}
+		String keyword = snippetForm.getKeyword() != null ? snippetForm.getKeyword().toLowerCase() : "";
+
+		if (snippetForm.getCategory() != null && snippetForm.getTitle() != null && snippetForm.getContent() != null) {
+			Snippet snippet = null;			
+			if (snippetForm.getId() != null) {
+				Optional<Snippet> snippetOpt = repository.findById(snippetForm.getId());
+				if (snippetOpt.isPresent()) {
+					snippet = snippetOpt.get();
+				}
+			} else {
+				snippet = new Snippet();
+				Timestamp ts = new Timestamp(System.currentTimeMillis());
+				snippet.setCrtdt(ts);
+			}
+
+			snippet.setCategory(snippetForm.getCategory());
+			snippet.setTitle(snippetForm.getTitle());
+			snippet.setContent(snippetForm.getContent());
+			snippet.setLstmoddt(new Timestamp(System.currentTimeMillis()));
+
+			repository.save(snippet);
+		}
+
+		List<Snippet> snippetList = repository.findAllByOrderByLstmoddtDesc();
+		snippetList = snippetList.stream()
+				.filter(s -> s.getCategory().toLowerCase().contains(keyword) ||
+					s.getTitle().toLowerCase().contains(keyword) ||
+					s.getContent().toLowerCase().contains(keyword))
+				.map(s -> new Snippet(s.getId(), s.getCategory(), s.getTitle(), s.getContent().trim()))
+				.collect(Collectors.toList());
+		
+		List<String> categoryList = null;
+		if (snippetList != null) {
+			categoryList = snippetList.stream()
+					.map(s -> s.getCategory())
+					.distinct()
+					.collect(Collectors.toList());
+		}
+
+		// set categoryList to display drop down in view 
+		snippetForm.setCategoryList(categoryList);
+		model.addAttribute("categoryList", categoryList);
+		
+		snippetForm.setSnippetsList(snippetList);
+		model.addAttribute("snippetForm", snippetForm);
+		
+		logger.info("Adding snippets");
+		model.addAttribute("snippets", snippetList);
+		return "list_snippets";
+	}
+	
+	// Get random Snippet
+	@GetMapping("/th_rand")
+	private String getRand(Model model){
+		return getRand(model, 5);
 	}
 
-	// Get List of Snippets based on title
-	@GetMapping("/t/{title}")
-	List<Snippet> findByTitle(@PathVariable String title) {
-		List<Snippet> snippetTitleList = repository.findByTitle(title);
-		if (snippetTitleList.size() == 0) {
-			snippetTitleList = repository.findByTitleContainingIgnoreCase(title);
-		}
-		return snippetTitleList;
-	}
-
-	// Replace values of existing Snippet.
-	@PutMapping("/{id}")
-	Snippet replaceSnippet(@RequestBody Snippet newSnippet, @PathVariable Long id) {
-		
-		Optional<Snippet> existSnippetOpt = repository.findById(id);
-		Snippet repSnippet;
-		
-		if (existSnippetOpt.isPresent()) {
-			repSnippet = existSnippetOpt.get();
-			repSnippet.setCategory(newSnippet.getCategory());
-			repSnippet.setContent(newSnippet.getContent());
-			repSnippet.setTitle(newSnippet.getTitle());
-			repository.save(repSnippet);
-		} else {
-			newSnippet.setId(id);
-			repSnippet = repository.save(newSnippet);
-		}
-		
-		return repSnippet;
-	}
-	
-	
-	@DeleteMapping("/{id}") 
-	void deleteSnippet(@PathVariable Long id) {
-		
-		repository.deleteById(id);
-	}
-	
-	// Get a single Snippet
-	@GetMapping("/rand")
-	private ResponseEntity<List<Snippet>> getRand(){
-		List<Snippet> snippetList = repository.getRand();
-		return new ResponseEntity<>(snippetList, HttpStatus.OK);
-	}
-
-	// Get a random List of Snippets based on count
-	@GetMapping("/rand/{count}")
-	private ResponseEntity<List<Snippet>> getRand(@PathVariable Integer count){
+	// Get a random List of Snippet based on count
+	@GetMapping("/th_rand/{count}")
+	private String getRand(Model model, @PathVariable Integer count){
 		List<Snippet> snippetList = repository.getRand(count);
-		return new ResponseEntity<>(snippetList, HttpStatus.OK);
+		SnippetForm snippetForm = new SnippetForm();
+		
+		snippetForm.setSnippetsList(snippetList);
+		model.addAttribute("snippetForm", snippetForm);
+		model.addAttribute("snippet", new Snippet());
+		model.addAttribute("snippets", snippetList);
+		logger.info("Adding snippets");
+		return "list_snippets";
 	}
-	
+
+	public static SnippetForm  createNewSnippetForm(Snippet snippet) {
+		SnippetForm snippetForm = new SnippetForm();
+		snippetForm.setCategory(snippet.getCategory());
+		snippetForm.setContent(snippet.getContent());
+		snippetForm.setTitle(snippet.getTitle());
+		snippetForm.setId(snippet.getId());
+
+		return snippetForm;
+	}
+	// Get a random List of Snippet based on count
+	@GetMapping("/th_edit/{id}")
+	private String editSnippet(Model model, @PathVariable Long id){
+		Optional<Snippet> optSnippet = repository.findById(id);
+		Snippet snippet = new Snippet();
+		if (optSnippet.isPresent()) {
+			snippet = optSnippet.get();
+		}
+		List<Snippet> snippetList = repository.findAllByOrderByLstmoddtDesc();
+		SnippetForm snippetForm = createNewSnippetForm(snippet);
+		snippetForm.setSnippetsList(snippetList);
+		model.addAttribute("snippetForm", snippetForm);
+		model.addAttribute("snippet", snippet);
+		model.addAttribute("snippets", snippetList);
+		logger.info("Adding snippets");
+		return "list_snippets";
+	}
+
+	// Delete Snippet, id passed by form
+	@GetMapping("/th_delete/{id}")
+	private String deleteSnippet(Model model, @PathVariable Long id){
+		Optional<Snippet> optSnippet = repository.findById(id);
+		Snippet snippet = new Snippet();
+		if (optSnippet.isPresent()) {
+			snippet = optSnippet.get();
+			repository.delete(snippet);
+		}
+		List<Snippet> snippetList = repository.findAllByOrderByLstmoddtDesc();
+		SnippetForm snippetForm = createNewSnippetForm(snippet);
+		snippetForm.setSnippetsList(snippetList);
+		model.addAttribute("snippetForm", snippetForm);
+		model.addAttribute("snippet", snippet);
+		model.addAttribute("snippets", snippetList);
+		logger.info("Delete snippets");
+		return "list_snippets";
+	}
 }

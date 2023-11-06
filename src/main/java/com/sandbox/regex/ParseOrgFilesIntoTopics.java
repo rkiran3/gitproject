@@ -26,12 +26,14 @@ public class ParseOrgFilesIntoTopics {
         List<String> contentsList;
     }
 
-    public static void processFile(Path path) {
-        try { 
+    public List<Snippet> processFile(Path path) {
+        List<Snippet> snippets = new ArrayList<>();
+        try {
             List<String> lines = Files.readAllLines(path);
-            
+
             // Org file topic 
-            String regex = "\\* .*";
+            String regex = "\\* .*"; // Header line
+            String regexDrill = ":.*"; // Drill
             Snippet current = null;
             boolean isHeader = false;
             List<Snippet> snippetList = new ArrayList<>();
@@ -44,30 +46,37 @@ public class ParseOrgFilesIntoTopics {
                     newSnippet.setContentsList(new ArrayList<>());
                     snippetList.add(newSnippet);
                     current = newSnippet;
+                } else if (line.matches(regexDrill)) {
+                    continue;
                 } else if (current != null) {
                     current.contentsList.add(line);
-                } else {
-                    //System.out.println("Ignoring line: " + line);
                 }
             }
 
             Snippet snippet = snippetList.get(new Random().nextInt(snippetList.size()));
+            System.out.println("====> [" + path + "]");
             System.out.println(snippet.getHeader());
             String contents = snippet.getContentsList().stream()
                 .collect(Collectors.joining("\n"));
             System.out.println(contents);
-        } catch (IOException ioEx) {
-            ioEx.printStackTrace();
+            } catch (Exception ex) {
         }
+
+        return snippets;
     }
+
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Please enter org file name to parse");
             System.exit(-1);
         }
         try {
+            ParseOrgFilesIntoTopics parseOrgFile = new ParseOrgFilesIntoTopics();
+
             Path path = Paths.get(args[0]);
+            List<Snippet> snippets = new ArrayList<>();
             if (path != null && path.getFileName() != null) {
+<<<<<<< HEAD
                 if (Files.isDirectory(path)) {
                     
                     List<Path> orgFiles = Files.list(path)
@@ -82,7 +91,24 @@ public class ParseOrgFilesIntoTopics {
                     processFile(path);
                 }
 
+=======
+                boolean isDir = Files.isDirectory(path);
+                if (isDir) {
+                    List<Path> files = Files.list(path).collect(Collectors.toList());
+                    for (Path entry : files) {
+                        if (entry.getFileName().toString().endsWith(".org")) {
+                            snippets.addAll(parseOrgFile.processFile(entry));
+                        }
+                    }
+                } else {
+                    snippets.addAll(parseOrgFile.processFile(path));
+                }
+>>>>>>> ab369a21c53d22712032677bb4b8c72570f1cbaa
             }
+
+            if (snippets.size() > 0) {
+                System.out.println("completed");
+            } 
         } catch (Exception ex) {
             ex.printStackTrace();
         }

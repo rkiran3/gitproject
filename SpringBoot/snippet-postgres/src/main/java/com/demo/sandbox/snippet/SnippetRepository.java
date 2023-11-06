@@ -9,6 +9,10 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 public interface SnippetRepository extends CrudRepository<Snippet, Long> {
 
 	List<Snippet> findAllByOrderByCrtdtDesc();
+
+	List<Snippet> findAllByOrderByLstmoddtDesc();
+
+	List<Snippet> findAllByOrderByLstmoddt();
 	
 	@Query(nativeQuery = true, value = "SELECT * FROM SNIPPET ORDER by random() LIMIT 3")
 	List<Snippet> getRand();

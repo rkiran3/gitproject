@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <title>Listing Snippets</title>
+        <style>
+	        div {
+	          white-space: pre-wrap;
+	        }
+	      </style>
+    </head>
+    <body>
+        <div th:if="${param.error}">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}">
+            You have been logged out.
+        </div>
+            
+        <form action="#" th:action="@{/th_snippets}" th:object="${snippetForm}" th:method="POST">
+    	Keyword: <input id="keyword" type="text" th:name="keyword" th:value="*{keyword}"/>
+	    	<input type="hidden" th:field="*{id}" id="id" />
+			<input type="submit" value="Search with keywords"/>
+		</form>		
+		<br />
+		
+        <form action="#" th:action="@{/th_snippets}" th:object="${snippetForm}" th:method="POST">
+        	<table>
+	    		<tr>
+	    			<td>Category</td>
+	    			<td>
+	    				<input id="category" type="text" th:field="*{category}" name="title" />
+	    				<select id="categoryDropDownList">
+	    					<option value="*{category}">select option</option>
+	    					<option th:each="option : ${snippetForm.categoryList}" th:value="${option}" th:text="${option}"></option>
+	    				</select>
+	    			</td>      			
+	    		</tr>
+        		<tr>
+	    			<td>Title</td>
+	    			<td><input id="title" type="text" th:field="*{title}" name="title" /></td>      			
+        		</tr>
+        		<tr>
+	    			<td><label for="content">Content</label></td>
+	    			<td>
+	    				<textarea id="content" rows="20" cols="80" th:field="*{content}" name="content" style="font-family:Times New Roman;font-size:larger;white-space:pre-wrap" /></textarea>
+	    		</tr>
+        		<tr>
+	    			<td></td>
+	    			<td><input type="submit" value="Submit"/></td>      			
+        		</tr>
+        		<tr>
+	    			<td></td>
+	    			<td><a href="/th_rand">Random</a></td>      			
+        		</tr>
+        		<tr>
+	    			<td></td>
+	    			<td><a href="/th_snippets">All Snippets</a></td>      			
+        		</tr>
+        		<tr>
+	    			<td></td>
+	    			<td><a href="/">Home</a></td>      			
+        		</tr>
+        	</table>
+        </form>
+        Listing 
+        <table border="1" cellspacing="10"> 
+        	<tr>
+        		<th>ID</th>
+        		<th>Category</th>
+        		<th>Content</th>
+        	</tr>        	
+        	<tr th:each="snippet: ${snippetForm.snippetsList}">
+        		<td> 
+					<a th:href="@{'/th_edit/' + ${snippet.id}}">Edit</a>
+					<a th:href="@{'/th_delete_disable/' + ${snippet.id}}">Delete</a>
+				</td>
+        		<td th:text="${snippet.category}"> </td>
+        		<td><div><output th:text="${snippet.content}" /></div>
+        		</td>
+        	</tr>
+        </table>
+            
+    </body>
+</html>
