@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="demo.js"></script>
+</head>
+
+<body> Tasks
+    <form method="Get" action="/js_button_demo.html">
+		<div>Enter city name: <input type="text" name="city" 
+			value="onBlur shows message" onBlur="tasks.initialize()">
+		</div>
+		
+		<div>
+		State Name: <input id="stateInId" type="text" name="state" 
+		value="display in output" onBlur="tasks.processState(this)">
+        <input type="button" value="click me" />
+        </div>
+        
+        <output id="stateOutId" name="state"> </output>
+    </form>
+</body>
+</html>
