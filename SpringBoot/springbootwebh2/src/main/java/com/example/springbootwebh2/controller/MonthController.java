@@ -1,4 +1,4 @@
-package com.example.springbootwebh2;
+package com.example.springbootwebh2.controller;
 
 import java.time.LocalDate;
 

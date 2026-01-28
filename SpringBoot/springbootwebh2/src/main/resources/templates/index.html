@@ -1,37 +1,35 @@
 <html>
 	<body>
 		<h1>Home Page </h1>
-		
 		<table>
 			<tr>
 				<td><a href="/h2-console">H2 Console </a></td>
 				<td>H2 Console - connect using user/pass from application.properties</td>
-				
 			</tr>
 			<tr>
 				<td>Look for table created using data.sql</td>
 				<td>Table POSTS will be available with data</td>
 			</tr>
-			
 		</table>
 		<hr />
 		<p>This page will show links for general purpose calculation</p>
-		
 		<table>
 			<tr>
-				<td><a href="/tasks_demo.html">Tasks </td>
+				<td><a href="/tasks_demo.html">Tasks </a></td>
 				<td>Tasks</td>
 			</tr>
-
 			<tr>
-				<td><a href="/actuator">Actuator </td>
+				<td><a href="/actuator">Actuator </a></td>
 				<td>expose endpoints</td>				
 			</tr>
+            <tr>
+                <td><a href="/actuator/mappings">Actuator mappings</a></td>
+                <td>mappings </td>
+            </tr>
 			<tr>
-				<td><a href="/api/users/">Get all Users</td>
+				<td><a href="/users/">Get all Users</a></td>
 				<td>Get all users</td>
 			</tr>
-			
 			<tr>
 				<td><a th:href="@{dtCalc}">Date Calculator </td>
 				<td>Calculate new date based on days added. Uses Controller + Thymeaf Form</td>
@@ -60,7 +58,6 @@
 				<td><a href="/trim_zeroes.html">Trim Zeroes</td>
 				<td>Trim Zeroes</td>
 			</td>
-			
 		</table>
 	</body>
 </html>

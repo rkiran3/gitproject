@@ -1,32 +1,33 @@
 package com.example.springbootwebh2.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
 @Builder
-@NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor // Required by JPA
 @AllArgsConstructor
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
-	private Integer id;
+	private Long id;
 	private String name;
-	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "user_id", nullable = false, updatable=false)
-	private User user;
 
-	public String getName() {
+    public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
 	}
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

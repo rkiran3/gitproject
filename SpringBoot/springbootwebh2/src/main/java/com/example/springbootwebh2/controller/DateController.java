@@ -1,4 +1,4 @@
-package com.example.springbootwebh2;
+package com.example.springbootwebh2.controller;
 
 import java.time.LocalDate;
 
@@ -16,7 +16,7 @@ public class DateController {
 			Model model) {
 		LocalDate now = LocalDate.parse(name);
 		
-		LocalDate nxt = now.plusDays(Integer.valueOf(addDays));
+		LocalDate nxt = now.plusDays(Integer.parseInt(addDays));
 		System.out.println("New date: " + nxt.toString());
 		
 		model.addAttribute("curDt", now.toString());		

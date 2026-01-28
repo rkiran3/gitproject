@@ -1,4 +1,4 @@
-package com.demo.sandbox.catalog;
+package com.example.springbootwebh2.catalog;
 
 import java.util.Arrays;
 import java.util.List;

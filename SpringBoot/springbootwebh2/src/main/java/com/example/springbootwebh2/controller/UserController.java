@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.springbootwebh2.model.User;
@@ -12,9 +13,9 @@ import com.example.springbootwebh2.service.UserService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @AllArgsConstructor
-@RequestMapping("api/users")
+@RequestMapping("users")
 public class UserController {
 
 	@Autowired

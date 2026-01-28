@@ -1,4 +1,4 @@
-package com.demo.sandbox.catalog;
+package com.example.springbootwebh2.catalog;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
