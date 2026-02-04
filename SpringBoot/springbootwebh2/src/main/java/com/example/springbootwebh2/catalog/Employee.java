@@ -17,7 +17,7 @@ create table Production.Employee (
     Salary	decimal(10,2)
 )
 */
-@Entity
+//@Entity
 public class Employee {
 
    @Id
