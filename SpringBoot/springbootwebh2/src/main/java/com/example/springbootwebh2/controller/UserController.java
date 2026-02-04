@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-@RequestMapping("users")
+@RequestMapping("/api/users/")
 public class UserController {
 
 	@Autowired
@@ -32,13 +32,14 @@ public class UserController {
     // http://localhost:8080/api/users/1
     @GetMapping("{id}")
     public ResponseEntity<User> getUserById(@PathVariable("id") Long userId){
+        System.out.println(Long.toString(userId));
         User user = userService.getUserById(userId);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     // Build Get All Users REST API
     // http://localhost:8080/api/users
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<List<User>> getAllUsers(){
         List<User> users = userService.getAllUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
