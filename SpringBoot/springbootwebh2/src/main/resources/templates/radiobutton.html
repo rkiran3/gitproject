@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<h1>Radio Button</h1>
+		<p>This page will handle date calculation with Form + Thymeleaf</p>
+        <p>List Size: <span th:text="${radioButtonForm.months?.size()}">0</span></p>
+		<form id="radiobutton" method="get" th:action="@{/radiobutton}" th:object="${radioButtonForm}">
+			<table>
+                <tr>
+                    <td><p th:text="${radioButtonForm.selMonth}"></p></td>
+                </tr>
+                <tr>
+                    <td><div th:each="month : ${radioButtonForm.months}">
+                        <input type="radio"
+                                th:field="*{selMonth}"
+                               th:value="${month}" />
+                        <label th:for="${#ids.prev('selMonth')}"
+                               th:text="${month}">Month Name</label>
+                    </div>
+                    </td>
+
+                </tr>
+			</table>
+			<input type="submit" name="submit" value="clickme"></input>
+		</form>
+        <a href="/radiobutton">reload </a>
+        <hr />
+		<a href="/">Home </a>	
+	</body>
+</html>

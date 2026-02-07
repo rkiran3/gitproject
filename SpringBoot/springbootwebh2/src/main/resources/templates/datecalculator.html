@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 	<body>
 		<h1>Date Calculator - templates</h1>
 		<p>This page will handle date calculation with Form + Thymeleaf</p>
@@ -7,20 +7,29 @@
 			<table>
 				<tr>
 					<td>Current Date </td>
-					<td><input name="curDt" th:value="${curDt}" /> </input>
+                    <td><input name="curDt" th:value="${curDt}" /> </input></td>
 					<td>Format is YYYY-MM-DD</td>
 				</tr>
 				<tr>
 					<td>Days to add</td>
-					<td><input name="addDays" th:value="${addDays}" /> </input>
+                    <td><input name="addDays" th:value="${addDays}" /> </input></td>
 					<td>uses LocalDate.addDays(n) to calculate new date </td>
 				</tr>
-
 				<tr>
 					<td>Next Date</td>
-					<td><input name="nxtDt" th:value="${nxtDt}" /> </input>
+                    <td><input name="nxtDt" th:value="${nxtDt}" /> </input></td>
 					<td>Updated Date </td>
 				</tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div th:each="month : ${months}">
+                        <input type="radio" th:field="*{selMonth}" th:value="${month}"/>
+                            <label th:for="${selMonth}" th:text="${month}">Month</label>
+                        </div>
+                    </td>
+                    <td></td>
+                </tr>
 			</table>
 		
 			<input type="submit" name="submit" value="clickme"></input>
